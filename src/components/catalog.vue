@@ -1,21 +1,24 @@
 <template>
-  <div id="app">
-    <h1>Сайт</h1>
-    <div id="mainMenu">
-      <router-link to="/home">Главная</router-link>
-      <router-link to="/about">О Нас</router-link>
-      <router-link to="/catalog">Каталог</router-link>
-    </div>
-    <div id="mainMenu">
+  <div>
+    <h1>Каталог</h1>
+    <p>
       <router-link to="/category/visky">Виски</router-link>
+    </p>
+    <p>
       <router-link to="/category/vine">Вино</router-link>
+    </p>
+    <p>
       <router-link to="/category/beer">Пиво</router-link>
+    </p>
+    <p>
       <router-link to="/category/konjack">Коньяк</router-link>
-    </div>
-    <router-view />
-  </div> 
+    </p>
+  </div>
 </template>
 
 <script>
 export default {};
 </script>
+
+<style>
+</style>
