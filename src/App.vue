@@ -1,21 +1,20 @@
 <template>
   <div id="app">
-    <h1>Сайт</h1>
-    <div id="mainMenu">
-      <router-link to="/home">Главная</router-link>
-      <router-link to="/about">О Нас</router-link>
-      <router-link to="/catalog">Каталог</router-link>
-    </div>
-    <div id="mainMenu">
-      <router-link to="/category/visky">Виски</router-link>
-      <router-link to="/category/vine">Вино</router-link>
-      <router-link to="/category/beer">Пиво</router-link>
-      <router-link to="/category/konjack">Коньяк</router-link>
-    </div>
+    <main-header></main-header>
     <router-view />
-  </div> 
+    <main-footer></main-footer>
+  </div>
 </template>
 
 <script>
-export default {};
+import MainHeader from './components/layout/AppHeader.vue'
+import MainFooter from './components/layout/AppFooter.vue'
+
+export default {
+  name: 'App',
+  components: {
+    MainHeader,
+    MainFooter
+  }
+};
 </script>
