@@ -1,5 +1,5 @@
 <template>
-  <section id="PopularSection">
+  <section id="popularSection">
       Популярное
   </section>
 </template>

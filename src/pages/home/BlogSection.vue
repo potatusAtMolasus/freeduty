@@ -1,5 +1,5 @@
 <template>
-  <section id="BlogSection">
+  <section id="blogSection">
       Блог
   </section>
 </template>

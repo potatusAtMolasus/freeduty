@@ -1,11 +1,11 @@
 <template>
-  <section id="BannerSection">
+  <section id="banner">
       Банер
   </section>
 </template>
 
 <script>
 export default {
-    name: 'BannerSection'
+    name: 'Banner'
 }
 </script>

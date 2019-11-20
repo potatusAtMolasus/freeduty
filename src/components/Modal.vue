@@ -1,0 +1,136 @@
+<template>
+  <div class="modal-wrap">
+    <transition name="popup">
+      <div v-if="showWarning" class="modal-window">
+        <div id="modal-content-wrap">
+          <div id="modal-title-wrap">
+            <div id="circle">
+              <!-- <h2>18+</h2> -->
+              <h2>OK</h2>
+            </div>
+          </div>
+          <div id="modal-msg-wrap">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores voluptates sed saepe, eveniet aperiam maxime excepturi! Modi consectetur architecto hic, id consequatur dolor minima, exercitationem accusamus repellat voluptatum quia sequi. Veniam, corrupti corporis maxime alias rem ipsa hic totam, tempore delectus quod ratione animi voluptatem id quidem ipsum rerum suscipit.</p>
+          </div>
+          <div id="modal-btns-wrap">
+            <button class="confirm-btn" @click="ageConfirmed">Подтвердить</button>
+          </div>
+        </div>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div v-if="showWarning" class="modal-back"></div>
+    </transition>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+  async created() {
+    this.showWarning = !(await axios.post("http://localhost:5000/confirm-age")).data;
+  },
+  data() {
+    return {
+      showWarning: false
+    };
+  },
+  methods: {
+    async ageConfirmed(){
+      await axios.post("http://localhost:5000/age-confirmed");
+      this.showWarning = false;
+    }
+  }
+};
+</script>
+
+<style>
+.modal-wrap {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+
+.modal-window {
+  position: relative;
+  top: 20vh;
+  width: 35%;
+  padding: 15px;
+  margin: auto;
+  border: 4px solid red;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  box-shadow: #555 4px 4px 10px;
+  z-index: 200;
+}
+#modal-title-wrap{
+  display: flex;
+  justify-content: center;
+}
+#modal-title-wrap #circle{
+  display: flex;
+  width: 100px;
+  height: 100px;
+  margin: 10px 0 20px 0;
+  padding: 20px;
+  text-align: center;
+  border: 3px solid;
+  border-radius: 50%;
+}
+#modal-title-wrap #circle h2 {
+  font-weight: bold;
+  margin: auto;
+  text-align: center;
+}
+#modal-msg-wrap p {
+  text-indent: 10px;
+  text-align: justify;
+}
+#modal-btns-wrap{
+  display: flex;
+  justify-content: center;
+}
+.confirm-btn{
+  padding: 18px 40px;
+  margin: 20px 0 10px 0;
+  background: linear-gradient(180deg, white 5%, red 150%);
+  border-radius: 30px;
+  border: 1px solid red;
+  font-size: 18px;
+}
+.confirm-btn:hover{
+  background: linear-gradient(180deg, white 0%, red 130%);
+}
+.confirm-btn:active{
+  background: linear-gradient(180deg, white -5%, red 110%);
+}
+
+
+.popup-enter,
+.popup-leave-to {
+  top: -100vh;
+}
+.popup-enter-active,
+.popup-leave-active {
+  transition: top 0.5s;
+}
+
+.modal-back {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #555;
+  opacity: 0.55;
+  z-index: 100;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <section id="OffersSection">
+  <section id="offersSection">
       Акции
   </section>
 </template>
