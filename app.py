@@ -21,8 +21,8 @@ def check_age():
 
 @app.route('/age-confirmed', methods=['POST'])
 def confirm_age():
-    global age_confirmed
-    age_confirmed = True
+    # global age_confirmed
+    # age_confirmed = True
     return jsonify(True)
 
 if __name__ == '__main__':

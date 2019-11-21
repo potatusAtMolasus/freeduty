@@ -5,15 +5,16 @@
         <div id="modal-content-wrap">
           <div id="modal-title-wrap">
             <div id="circle">
-              <!-- <h2>18+</h2> -->
               <h2>OK</h2>
+              <!-- <h2>18+</h2> -->
             </div>
           </div>
           <div id="modal-msg-wrap">
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores voluptates sed saepe, eveniet aperiam maxime excepturi! Modi consectetur architecto hic, id consequatur dolor minima, exercitationem accusamus repellat voluptatum quia sequi. Veniam, corrupti corporis maxime alias rem ipsa hic totam, tempore delectus quod ratione animi voluptatem id quidem ipsum rerum suscipit.</p>
           </div>
           <div id="modal-btns-wrap">
-            <button class="confirm-btn" @click="ageConfirmed">Подтвердить</button>
+            <button class="confirm-btn" @click="ageConfirmed">Подведить</button>
+            <!-- <button class="confirm-btn" @click="ageConfirmed">Мне исполнилось 18</button> -->
           </div>
         </div>
       </div>
@@ -59,11 +60,23 @@ export default {
   margin: auto;
   border: 4px solid red;
   border-radius: 10px;
-  background: white;
+  background: #eee;
   color: black;
   box-shadow: #555 4px 4px 10px;
   z-index: 200;
 }
+/* .modal-window {
+  position: relative;
+  top: 20vh;
+  width: 35%;
+  padding: 15px;
+  margin: auto;
+  border: 4px solid white;
+  background: #222;
+  color: #ccc;
+  box-shadow: #555 4px 4px 10px;
+  z-index: 200;
+} */
 #modal-title-wrap{
   display: flex;
   justify-content: center;
@@ -76,6 +89,8 @@ export default {
   padding: 20px;
   text-align: center;
   border: 3px solid;
+  /* border: 3px solid red; */
+  /* color: red; */
   border-radius: 50%;
 }
 #modal-title-wrap #circle h2 {
@@ -94,16 +109,16 @@ export default {
 .confirm-btn{
   padding: 18px 40px;
   margin: 20px 0 10px 0;
-  background: linear-gradient(180deg, white 5%, red 150%);
+  background: linear-gradient(180deg, white 5%, green 150%);
   border-radius: 30px;
   border: 1px solid red;
   font-size: 18px;
 }
 .confirm-btn:hover{
-  background: linear-gradient(180deg, white 0%, red 130%);
+  background: linear-gradient(180deg, white 0%, green 130%);
 }
 .confirm-btn:active{
-  background: linear-gradient(180deg, white -5%, red 110%);
+  background: linear-gradient(180deg, white -5%, green 110%);
 }
 
 
