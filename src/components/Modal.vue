@@ -47,7 +47,7 @@ export default {
 
 <style>
 .modal-wrap {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
 }
@@ -132,7 +132,7 @@ export default {
 }
 
 .modal-back {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
   height: 100vh;

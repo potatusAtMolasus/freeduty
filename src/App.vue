@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <div>
-      <header-message></header-message>
+    <div id="page">
       <main-header></main-header>
       <router-view />
     </div>
@@ -11,7 +10,6 @@
 </template>
 
 <script>
-import HeaderMessage from "./components/layout/HeaderNotice.vue";
 import MainHeader from "./components/layout/AppHeader.vue";
 import MainFooter from "./components/layout/AppFooter.vue";
 import Modal from "./components/Modal.vue";
@@ -19,7 +17,6 @@ import Modal from "./components/Modal.vue";
 export default {
   name: "App",
   components: {
-    HeaderMessage,
     MainHeader,
     MainFooter,
     Modal
@@ -44,6 +41,7 @@ html {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .container, .wide-container {
   width: 100%;
   padding-right: 15px;

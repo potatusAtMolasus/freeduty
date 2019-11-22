@@ -24,3 +24,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+#page{
+  display: flex;
+  height: 100vh;
+}
+</style>
