@@ -195,16 +195,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem 1rem 3rem;
+  padding: 1rem 2rem 1rem 2rem;
 }
 .buttons .btn1 .circle {
   background-color: red;
-  height: 1rem;
-  width: 1rem;
+  height: .5rem;
+  width: .5rem;
   border-radius: 100%;
-  margin-right: 1rem;
   position: absolute;
-  left: 1rem;
+  bottom: .5rem;
   z-index: -1;
   transition: 0.25s;
 }
@@ -217,9 +216,7 @@ header {
   color: white;
 }
 .buttons .btn1:hover .circle {
-  transform: scale(25);
+  transform: scale(50);
 }
-.buttons .btn1:hover .text {
-  left: -0.5rem;
-}
+
 </style>
