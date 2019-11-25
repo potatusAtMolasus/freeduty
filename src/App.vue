@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="page">
-      <main-header></main-header>
+      <main-header :links="links" :categories="categories" @search="search"></main-header>
       <router-view />
     </div>
     <main-footer></main-footer>
@@ -13,9 +13,40 @@
 import MainHeader from "./components/layout/AppHeader.vue";
 import MainFooter from "./components/layout/AppFooter.vue";
 import Modal from "./components/Modal.vue";
+import axios from "axios";
 
 export default {
   name: "App",
+  data(){
+    return {
+      links: [{
+        url:'/home',
+        label: 'Главная',
+      },{
+        url:'/about',
+        label: 'О нас',
+      },{
+        url:'/stores',
+        label: 'Адреса',
+      },{
+        url:'/offers',
+        label: 'Акции',
+      },{
+        url:'/blog',
+        label: 'Блог',
+      }],
+      categories:[],
+    }
+  },
+  async mounted(){
+    this.categories = (await axios.post("http://localhost:5000/get-categories")).data;
+  },
+  methods: {
+    async search(query){
+      await axios.post("http://localhost:5000/find", {query});
+      console.log(query)
+    },
+  },
   components: {
     MainHeader,
     MainFooter,

@@ -27,6 +27,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   async created() {
     this.showWarning = !(await axios.post("http://localhost:5000/confirm-age")).data;

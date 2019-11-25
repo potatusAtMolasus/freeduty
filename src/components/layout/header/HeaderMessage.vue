@@ -1,0 +1,39 @@
+<template>
+  <div id="HeaderMessage" :class="{'no-height': scrollPosition>0}">
+    <p>Tommodi repellat. Voluptatum corporis consequuntur, fugiat quae libero, assumend porro ab</p>
+    <p>A labore explicabo aliquam mollitia similique 8:12 safa 12:23 quasi debitis rem quod nobis. Consequuntur, quisquam.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad facilis voluptates deserunt voluptate</p>
+  </div>
+</template>
+
+<script>
+export default {
+  props:{
+    scrollPosition: Number
+  }
+}
+</script>
+
+<style>
+/* Стили для предупреждения */
+#HeaderMessage {
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 1.1em;
+  background: black;
+  transition: all 0.2s;
+  height: 6em;
+}
+#HeaderMessage.no-height {
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+#HeaderMessage p {
+  line-height: 1.5em;
+  font-size: 0.9em;
+  text-align: center;
+  margin: 0;
+  color: white;
+}
+</style>
