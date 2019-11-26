@@ -10,19 +10,22 @@
         <p class="text">{{i.label}}</p>
       </router-link>
 
-      <a id="dropdown" class="btn btn1" v-if="scrollPosition>0" @click="showCategories=!showCategories">
+      <a
+        id="dropdown"
+        :class="{'router-link-active': showCategories, btn: true, btn1: true}"
+        v-if="scrollPosition>0"
+        @click="showCategories=!showCategories"
+        v-click-outside="()=>showCategories=false"
+      >
         <i :class="{rotate: showCategories}" class="fa fa-arrow-down"></i>
         <p class="text">Категории</p>
-        <transition>
-          <!-- <ul id="categoriesUl" v-if="showCategories"> -->
-          <ul id="categoriesUl" class="buttons" v-if="true">
-            <router-link v-for="i in categories" :key="i.url" :to="i.url" class="btn btn1">
-              <p>{{i.label}}</p>
-            </router-link>
-          </ul>
-        </transition>
+        <ul id="categoriesUl" class="buttons" v-if="showCategories">
+          <!-- <ul id="categoriesUl" class="buttons" v-if="true"> -->
+          <router-link v-for="i in categories" :key="i.url" :to="i.url" class="btn btn1">
+            <p>{{i.label}}</p>
+          </router-link>
+        </ul>
       </a>
-
     </div>
     <search-bar @search="search"></search-bar>
   </div>
@@ -32,7 +35,7 @@
 import SearchBar from "@/components/SearchBar.vue";
 
 export default {
-  props:{
+  props: {
     links: Array,
     categories: Array,
     scrollPosition: Number
@@ -42,15 +45,15 @@ export default {
       showCategories: false
     };
   },
-  methods:{
+  methods: {
     search(query) {
       this.$emit("search", query);
     }
   },
   components: {
-    SearchBar,
+    SearchBar
   }
-}
+};
 </script>
 <style scoped>
 #mainMenu {
@@ -58,6 +61,7 @@ export default {
 }
 #logoWrapper {
   flex: 1;
+  /* visibility: hidden; */
 }
 
 #headerLinks {
@@ -81,11 +85,13 @@ export default {
   margin: auto;
   text-align: center;
 }
-#headerLinks a:hover {
+#headerLinks a:hover,
+#headerLinks a.router-link-active {
   position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.2);
 }
-#headerLinks a:hover:before {
+#headerLinks a:hover:before,
+#headerLinks a.router-link-active:before {
   content: "";
   position: absolute;
   top: 0;
@@ -145,15 +151,17 @@ export default {
   left: 0;
   transition: 0.5s;
 }
-.buttons .btn1:hover {
+.buttons .btn1:hover,
+#headerLinks .btn1.router-link-active {
   color: white;
 }
-.buttons .btn1:hover .circle {
+.buttons .btn1:hover .circle,
+#headerLinks a.router-link-active .circle {
   transform: scale(50);
 }
 
 /* Стили для категорий */
-#dropdown{
+#dropdown {
   position: relative;
   display: block;
   overflow: visible;
@@ -165,7 +173,7 @@ export default {
   left: -0.2em;
   transition: all 0.2s;
 }
-#categoriesUl{
+#categoriesUl {
   position: absolute;
   top: 100%;
   display: flex;
@@ -174,10 +182,14 @@ export default {
   margin: auto;
   padding-left: 0;
 }
-#categoriesUl .btn{
+#categoriesUl .btn {
   width: 100%;
 }
-i.rotate{
+#categoriesUl a.btn {
+  box-sizing: border-box;
+  background: #dddddd18;
+}
+i.rotate {
   transform: rotate(180deg);
 }
 #dropdown p {

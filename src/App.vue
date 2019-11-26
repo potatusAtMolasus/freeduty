@@ -2,7 +2,7 @@
   <div id="app">
     <div id="page">
       <main-header :links="links" :categories="categories" @search="search"></main-header>
-      <router-view />
+      <router-view :offers="offers" :popular="popular" />
     </div>
     <main-footer></main-footer>
     <modal></modal>
@@ -17,35 +17,45 @@ import axios from "axios";
 
 export default {
   name: "App",
-  data(){
+  data() {
     return {
-      links: [{
-        url:'/home',
-        label: 'Главная',
-      },{
-        url:'/about',
-        label: 'О нас',
-      },{
-        url:'/stores',
-        label: 'Адреса',
-      },{
-        url:'/offers',
-        label: 'Акции',
-      },{
-        url:'/blog',
-        label: 'Блог',
-      }],
-      categories:[],
-    }
+      links: [
+        {
+          url: "/home",
+          label: "Главная"
+        },
+        {
+          url: "/about",
+          label: "О нас"
+        },
+        {
+          url: "/stores",
+          label: "Адреса"
+        },
+        {
+          url: "/offers",
+          label: "Акции"
+        },
+        {
+          url: "/blog",
+          label: "Блог"
+        }
+      ],
+      categories: [],
+      offers: [],
+      popular: [],
+    };
   },
-  async mounted(){
+  async mounted() {
     this.categories = (await axios.post("http://localhost:5000/get-categories")).data;
+    this.offers = (await axios.post("http://localhost:5000/get-offers")).data;
+    this.popular = (await axios.post("http://localhost:5000/get-popular")).data;
   },
   methods: {
-    async search(query){
-      await axios.post("http://localhost:5000/find", {query});
-      console.log(query)
-    },
+    async search(query) {
+      await axios.post("http://localhost:5000/find", { query });
+      console.log(query);
+    }
   },
   components: {
     MainHeader,
@@ -55,9 +65,9 @@ export default {
 };
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 body,
 html {
@@ -73,7 +83,8 @@ html {
   justify-content: space-between;
 }
 
-.container, .wide-container {
+.container,
+.wide-container {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -87,7 +98,7 @@ ul {
   .container {
     max-width: 540px;
   }
-  .wide-container{
+  .wide-container {
     max-width: 540px;
   }
 }
@@ -96,7 +107,7 @@ ul {
   .container {
     max-width: 720px;
   }
-  .wide-container{
+  .wide-container {
     max-width: 840px;
   }
 }
@@ -105,7 +116,7 @@ ul {
   .container {
     max-width: 960px;
   }
-  .wide-container{
+  .wide-container {
     max-width: 1040px;
   }
 }
@@ -114,7 +125,7 @@ ul {
   .container {
     max-width: 1140px;
   }
-  .wide-container{
+  .wide-container {
     max-width: 1300px;
   }
 }

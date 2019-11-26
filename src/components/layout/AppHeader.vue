@@ -2,7 +2,12 @@
   <header>
     <header-message :scrollPosition="scrollPosition"></header-message>
     <div id="headerContent">
-      <main-menu :scrollPosition="scrollPosition" :links="links" :categories="categories" @search="search"></main-menu>
+      <main-menu
+        :scrollPosition="scrollPosition"
+        :links="links"
+        :categories="categories"
+        @search="search"
+      ></main-menu>
       <categories :scrollPosition="scrollPosition" :categories="categories"></categories>
     </div>
   </header>
@@ -18,12 +23,12 @@ export default {
 
   props: {
     links: Array,
-    categories: Array,
+    categories: Array
   },
 
   data() {
     return {
-      scrollPosition: null,
+      scrollPosition: null
     };
   },
 
@@ -44,7 +49,7 @@ export default {
   components: {
     HeaderMessage,
     MainMenu,
-    Categories,
+    Categories
   }
 };
 </script>
