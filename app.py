@@ -157,5 +157,33 @@ def get_popular():
         'url': "#",
     }])
 
+@app.route('/get-posts', methods=['POST'])
+def get_posts():
+    return jsonify([{
+        'id': 1,
+        'title': "Погода",
+        'image': "image1.jpg",
+    }, {
+        'id': 2,
+        'title': "Глобусы",
+        'image': "image2.jpg",
+    }, {
+        'id': 3,
+        'title': "Глобальное потепление",
+        'image': "image3.jpg",
+    }, {
+        'id': 4,
+        'title': "Конь Боджек",
+        'image': "image4.jpg",
+    }, {
+        'id': 5,
+        'title': "Канье Вест",
+        'image': "image5.jpg",
+    }, {
+        'id': 6,
+        'title': "Работа Фронтэндера",
+        'image': "image6.jpg",
+    }])
+
 if __name__ == '__main__':
     app.run()

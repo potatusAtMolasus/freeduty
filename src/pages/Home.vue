@@ -4,7 +4,7 @@
       <banner></banner>
       <offers-section :offers="offers"></offers-section>
       <popular-section :popularItems="popular"></popular-section>
-      <blog-section></blog-section>
+      <blog-section :postsData="posts.slice(0, 5)"></blog-section>
     </main>
   </div>
 </template>
@@ -18,7 +18,8 @@ import Banner from "@/pages/home/Banner.vue";
 export default {
   props: {
     offers: Array,
-    popular: Array
+    popular: Array,
+    posts: Array,
   },
   components: {
     Banner,

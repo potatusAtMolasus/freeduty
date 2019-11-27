@@ -2,7 +2,7 @@
   <div id="app">
     <div id="page">
       <main-header :links="links" :categories="categories" @search="search"></main-header>
-      <router-view :offers="offers" :popular="popular" />
+      <router-view :offers="offers" :popular="popular" :posts="posts" />
     </div>
     <main-footer></main-footer>
     <modal></modal>
@@ -44,12 +44,14 @@ export default {
       categories: [],
       offers: [],
       popular: [],
+      posts: [],
     };
   },
   async mounted() {
     this.categories = (await axios.post("http://localhost:5000/get-categories")).data;
     this.offers = (await axios.post("http://localhost:5000/get-offers")).data;
     this.popular = (await axios.post("http://localhost:5000/get-popular")).data;
+    this.posts = (await axios.post("http://localhost:5000/get-posts")).data;
   },
   methods: {
     async search(query) {
