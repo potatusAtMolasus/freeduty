@@ -4,7 +4,7 @@
       <banner></banner>
       <offers-section :offers="offers"></offers-section>
       <popular-section :popularItems="popular"></popular-section>
-      <blog-section :postsData="posts.slice(0, 5)"></blog-section>
+      <blog-section :posts="posts.slice(0, 5)"></blog-section>
     </main>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div id="mainMenu">
+  <div id="mainMenu" :class="{ 'main-not-top': scrollPosition }">
     <div id="logoWrapper">
       <img src="../../../assets/logo.png" id="logo" />
     </div>
@@ -59,6 +59,11 @@ export default {
 #mainMenu {
   display: flex;
 }
+.main-not-top#mainMenu {
+  background: #77777770;
+  /* opacity: .7; */
+}
+
 #logoWrapper {
   flex: 1;
   /* visibility: hidden; */
@@ -187,7 +192,7 @@ export default {
 }
 #categoriesUl a.btn {
   box-sizing: border-box;
-  background: #dddddd18;
+  background: #454545cc;
 }
 i.rotate {
   transform: rotate(180deg);

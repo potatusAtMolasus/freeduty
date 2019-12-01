@@ -1,45 +1,19 @@
 <template>
   <section id="blogSection">
-    <div class="x" :style="{'grid-template-areas': layout}">
-
-      <div class="post-wrap" v-for="post in posts" :key="post.id" :style="{'grid-area': post.area}">
-        {{post.area}}
-        <div class="inner-post-wrap">
-          <h2 class="title">{{ post.title }}</h2>
+    <div class="wide-container">
+      <div id="postGrid">
+        <div class="post-wrap" v-for="post in posts" :key="post.id">
+          <div class="inner-post-wrap">
+            <h2 class="title">{{ post.title }}</h2>
+          </div>
+          <router-link class="post-link" :to="'/post/' + post.id">
+            <p>
+              Перейти
+              <i class="fa fa-arrow-right"></i>
+            </p>
+          </router-link>
         </div>
       </div>
-
-
-
-      <!-- <div class="post-wrap first-post">
-        <div class="inner-post-wrap">
-          <h2 class="title">Lorem1</h2>
-        </div>
-      </div>
-      
-      
-      <div class="post-wrap second-post">
-        <div class="inner-post-wrap">
-          <h2 class="title">Lorem2</h2>
-        </div>
-      </div>
-      <div class="post-wrap thrid-post">
-        <div class="inner-post-wrap">
-          <h2 class="title">Lorem3</h2>
-        </div>
-      </div>
-      <div class="post-wrap fourth-post">
-        <div class="inner-post-wrap">
-          <h2 class="title">Lorem4</h2>
-        </div>
-      </div>
-      <div class="post-wrap fifth-post">
-        <div class="inner-post-wrap">
-          <h2 class="title">Lorem5</h2>
-        </div>
-      </div> -->
-
-
     </div>
   </section>
 </template>
@@ -47,37 +21,60 @@
 <script>
 export default {
   name: "BlogSection",
-  props:{
-    postsData: Array,
-  },
-  data() {
-    return {
-      posts: [],
-      layout: '',
-    };
-  },
-  watch: {
-    postsData(){
-      console.log('this.postsData = ',this.postsData);
-      
-      if (this.postsData.length < 5) return
-      this.posts = this.postsData.map(post=>{return {area: post.id+'post', ...post}});
-      
-      let posts = this.posts;
-      console.log('posts = ', posts);
-      this.layout = `
-          "${posts[0].area} ${posts[0].area} ${posts[1].area} ${posts[3].area}"
-          "${posts[0].area} ${posts[0].area} ${posts[1].area} ${posts[4].area}"
-          "${posts[0].area} ${posts[0].area} ${posts[2].area} ${posts[2].area}"`;
-    }
+  props: {
+    posts: Array
   }
 };
 </script>
 <style>
+a {
+  text-decoration: none;
+}
+#postGrid {
+  padding: 30px;
+  height: 60vh;
+  margin: 20px auto;
+  display: grid;
+  grid-gap: 0.8em;
+  grid-template-areas:
+    "firstPost firstPost secondPost fourthPost"
+    "firstPost firstPost secondPost fifthPost"
+    "firstPost firstPost thridPost thridPost";
+}
 .post-wrap {
   background: #ccc;
   position: relative;
   padding: 0.7em;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 0.7em;
+}
+.post-link {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #333;
+  opacity: 0.8;
+  transform: scale(0);
+  z-index: 100;
+  display: flex;
+  transition: all 0.4s ease-in-out;
+  color: white;
+}
+.post-link p {
+  margin: auto;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.post-link p i {
+  position: relative;
+  right: -0.3em;
+  transition: right 0.2s;
+}
+.post-link p:hover i {
+  right: -0.6em;
 }
 .inner-post-wrap {
   background: #ccc;
@@ -87,38 +84,34 @@ export default {
   display: flex;
   transition: all 0.4s ease-in-out;
   transform: scale(1);
+  box-sizing: border-box;
+  z-index: 300;
+  top: 0;
+  left: 0;
 }
 .post-wrap:hover .inner-post-wrap {
   transform: scale(0);
 }
+.post-wrap:hover .post-link {
+  transform: scale(1);
+}
 .inner-post-wrap .title {
   margin: auto;
 }
-.x {
-  width: 1000px;
-  height: 500px;
-  padding: 30px;
-  display: grid;
-  /* grid-template-areas:
-    "first first second fourth"
-    "first first second fifth"
-    "first first thrid thrid"; */
-  grid-gap: 0.7em;
-}
 
-/* .first-post {
-  grid-area: first;
+#postGrid .post-wrap:nth-child(1) {
+  grid-area: firstPost;
 }
-.second-post {
-  grid-area: second;
+#postGrid .post-wrap:nth-child(2) {
+  grid-area: secondPost;
 }
-.thrid-post {
-  grid-area: thrid;
+#postGrid .post-wrap:nth-child(3) {
+  grid-area: thridPost;
 }
-.fourth-post {
-  grid-area: fourth;
+#postGrid .post-wrap:nth-child(4) {
+  grid-area: fourthPost;
 }
-.fifth-post {
-  grid-area: fifth;
-} */
+#postGrid .post-wrap:nth-child(5) {
+  grid-area: fifthPost;
+}
 </style>
