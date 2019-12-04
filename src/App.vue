@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div id="page">
-      <main-header :links="links" :categories="categories" @search="search"></main-header>
-      <router-view :offers="offers" :popular="popular" :posts="posts" />
+      <main-header :isMobile="isMobile" :links="links" :categories="categories" @search="search"></main-header>
+      <router-view :isMobile="isMobile" :offers="offers" :popular="popular" :posts="posts" />
     </div>
-    <main-footer></main-footer>
+    <main-footer :links="links" :categories="categories"></main-footer>
     <modal></modal>
   </div>
 </template>
@@ -57,6 +57,16 @@ export default {
     async search(query) {
       await axios.post("http://localhost:5000/find", { query });
       console.log(query);
+    },
+  },
+  computed:{
+    isMobile() {
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return true
+        // return false
+      }
     }
   },
   components: {
@@ -70,6 +80,10 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 * {
   font-family: "Roboto", sans-serif;
+}
+body.modal-open {
+  overflow: hidden;
+  height: 100px;
 }
 body,
 html {

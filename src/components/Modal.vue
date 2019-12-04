@@ -13,7 +13,11 @@
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores voluptates sed saepe, eveniet aperiam maxime excepturi! Modi consectetur architecto hic, id consequatur dolor minima, exercitationem accusamus repellat voluptatum quia sequi. Veniam, corrupti corporis maxime alias rem ipsa hic totam, tempore delectus quod ratione animi voluptatem id quidem ipsum rerum suscipit.</p>
           </div>
           <div id="modal-btns-wrap">
-            <button class="confirm-btn" @click="ageConfirmed">Подведить</button>
+            <button class="confirm-btn" @click="ageConfirmed">
+              <span>
+                Подведить
+              </span>
+            </button>
             <!-- <button class="confirm-btn" @click="ageConfirmed">Мне исполнилось 18</button> -->
           </div>
         </div>
@@ -110,17 +114,41 @@ export default {
 .confirm-btn{
   padding: 18px 40px;
   margin: 20px 0 10px 0;
-  background: linear-gradient(180deg, white 5%, green 150%);
-  border-radius: 30px;
+  /* background: linear-gradient(180deg, white 5%, green 150%); */
+  /* border-radius: 30px; */
   border: 1px solid red;
   font-size: 18px;
+  position: relative;
+  transition: color .3s;
+}
+.confirm-btn:after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0px;
+  transition: height .3s;
+  background: red;
+  z-index: 100;
+}
+.confirm-btn span{
+  position: relative;
+  z-index: 200;
+}
+.confirm-btn:hover:after{
+  height: 100%;
 }
 .confirm-btn:hover{
+  color: white;
+}
+/* .confirm-btn:hover{
   background: linear-gradient(180deg, white 0%, green 130%);
 }
 .confirm-btn:active{
   background: linear-gradient(180deg, white -5%, green 110%);
-}
+} */
 
 
 .popup-enter,

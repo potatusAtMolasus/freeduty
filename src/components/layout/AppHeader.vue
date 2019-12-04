@@ -2,13 +2,17 @@
   <header>
     <header-message :scrollPosition="scrollPosition"></header-message>
     <div id="headerContent">
-      <main-menu
+      <main-menu 
+        v-if="!isMobile"
         :scrollPosition="scrollPosition"
         :links="links"
         :categories="categories"
         @search="search"
       ></main-menu>
-      <categories :scrollPosition="scrollPosition" :categories="categories"></categories>
+      <categories v-if="!isMobile" :scrollPosition="scrollPosition" :categories="categories"></categories>
+
+      <mobile-menu v-if="isMobile"></mobile-menu>
+
     </div>
   </header>
 </template>
@@ -16,6 +20,7 @@
 <script>
 import HeaderMessage from "@/components/layout/header/HeaderMessage.vue";
 import MainMenu from "@/components/layout/header/MainMenu.vue";
+import MobileMenu from "@/components/layout/header/MobileMenu.vue";
 import Categories from "@/components/layout/header/Categories.vue";
 
 export default {
@@ -23,7 +28,8 @@ export default {
 
   props: {
     links: Array,
-    categories: Array
+    categories: Array,
+    isMobile: Boolean,
   },
 
   data() {
@@ -49,7 +55,8 @@ export default {
   components: {
     HeaderMessage,
     MainMenu,
-    Categories
+    Categories,
+    MobileMenu
   }
 };
 </script>

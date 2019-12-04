@@ -4,11 +4,11 @@
       <div id="mainFooterContent" class="wide-container">
         <div id="footerCategories">
           <ul>
-            <li>Категория 1</li>
-            <li>Категория 3</li>
-            <li>Категория 2</li>
-            <li>Категория 4</li>
-            
+            <li v-for="i in categories" :key="i.url" >
+              <router-link :to="i.url">
+                {{i.label}}
+              </router-link>
+            </li>
           </ul>
         </div>
         <div id="footerMenu">
@@ -39,6 +39,13 @@
           </div>
         </div>
       </div>
+      
+      <div id="franchaise" class="container">
+        <div class="franchaise-wrap">
+          <a>Франшиза</a>
+        </div>
+      </div>
+      
       <div id="rights" class="container">
         <p>Duty Free © Все права защищены 2019</p>
       </div>
@@ -52,11 +59,18 @@
 
 <script>
 export default {
+  props: {
+    links: Array,
+    categories: Array,
+  },
   name: "MainHeader"
 };
 </script>
 
 <style scoped>
+a{
+  color: #ccc;
+}
 li{
   margin: 10px 0;
   cursor: pointer;
@@ -142,5 +156,70 @@ li{
   color: #aaa;
   text-transform: uppercase;
   margin: auto;
+}
+#franchaise{
+  width: 100%;
+  display: flex;
+  margin-bottom: 2em;
+}
+.franchaise-wrap{
+  margin:auto;
+  background: red;
+  padding: 1em 3em;
+}
+.franchaise-wrap a{
+  text-transform: uppercase;
+}
+@media(max-width: 500px){
+  #footerContent{
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  #footerMessage p {
+    font-size: 1.1em;
+  }
+  #footerCategories ul{
+    margin: 0 0 30px 0;
+    padding: 5px 20px;
+    display: block;
+    text-align: center;
+  }
+  #footerCategories ul li{
+    margin: 5px 10px;
+    display: inline-block;
+  }
+  #footerMenu ul{
+    margin: 0;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  #footerMenu ul li{
+    flex: 1 0 31%;
+  }
+  #mainFooterContent{
+    display: block;
+  }
+  #footerCategories {
+    border-right: none;
+  }
+  #footerMenu {
+    display: none;
+  }
+  #socialLinks h3{
+    display: none;
+  }
+  #social-buttons{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  #franchaise.container{
+    padding: 0;
+  }
+  #rights{
+    padding: 0;
+  }
 }
 </style>

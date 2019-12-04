@@ -22,6 +22,7 @@
 export default {
   name: "BlogSection",
   props: {
+    isMobile: Boolean,
     posts: Array
   }
 };
@@ -113,5 +114,20 @@ a {
 }
 #postGrid .post-wrap:nth-child(5) {
   grid-area: fifthPost;
+}
+@media(max-width: 500px){
+  .wide-container{
+    padding: 0;
+  }
+  #postGrid .post-wrap:nth-child(4),
+  #postGrid .post-wrap:nth-child(5) {
+    display: none;  
+  }
+  #postGrid {
+    grid-template-areas:
+      "firstPost"
+      "secondPost"
+      "thridPost";
+  }
 }
 </style>

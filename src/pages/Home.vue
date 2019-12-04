@@ -2,9 +2,9 @@
   <div class="content">
     <main>
       <banner></banner>
-      <offers-section :offers="offers"></offers-section>
-      <popular-section :popularItems="popular"></popular-section>
-      <blog-section :posts="posts.slice(0, 5)"></blog-section>
+      <offers-section :isMobile="isMobile" :offers="offers"></offers-section>
+      <popular-section :isMobile="isMobile" :popularItems="popular"></popular-section>
+      <blog-section :isMobile="isMobile" :posts="posts.slice(0, 5)"></blog-section>
     </main>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
     offers: Array,
     popular: Array,
     posts: Array,
+    isMobile: Boolean,
   },
   components: {
     Banner,

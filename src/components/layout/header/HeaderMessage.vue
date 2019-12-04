@@ -36,4 +36,13 @@ export default {
   margin: 0;
   color: white;
 }
+@media(max-width: 500px){
+  #HeaderMessage p {
+    font-size: 0.7em;
+  }
+  #HeaderMessage {
+    padding: .1em;
+    height: auto;
+  }
+}
 </style>

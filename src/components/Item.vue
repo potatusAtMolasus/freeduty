@@ -26,7 +26,7 @@ export default {
       id: this.popularData.id,
       title: this.popularData.title,
       image: this.popularData.image,
-      price: this.popularData.newPrice,
+      price: this.popularData.price,
       url: this.popularData.url
     };
   },
@@ -65,24 +65,6 @@ a{
   margin: 3em 2em;
   background: white;
 }
-.discount{
-  position: absolute;
-  width: 8em;
-  height: 8em;
-  right: -1em;
-  top: 0em;
-  transform: rotate(0deg);
-  transition: transform .2s;
-}
-.popular-wrap:hover .discount{
-  transform: rotate(400deg);
-}
-.discount img{
-  filter: none; 
-}
-.popular-wrap:hover .discount img{
-  filter: drop-shadow(5px 5px 5px #222); 
-}
 .popular-img-wrap{
   height: 200px;
   margin: auto;
@@ -112,5 +94,33 @@ a{
 }
 p.title {
   height: 3.8em;
+}
+@media(max-width: 500px){
+  p.title {
+    height: 6.6em;
+    font-size: 1.1em;
+  }
+  .price-wrap{
+    font-size: 1.5em;
+  }
+  .popular-img-wrap{
+    height: 100px;
+  }
+  .outer-wrap{
+    margin: 1.5em 1.5em;
+    width: 180px;
+    box-sizing: border-box;
+  }
+  .popular-wrap {
+    padding: 5px;
+    margin: 0px;
+  }
+  .outer-wrap{
+    margin: 1.5em .5em;
+  }
+  .popular-wrap {
+    padding: 1em;
+    margin: 0px;
+  }
 }
 </style>
