@@ -1,9 +1,10 @@
 <template>
-  <div id="mainMenu" :class="{ 'main-not-top': scrollPosition }">
-    <div id="logoWrapper">
-      <img src="../../../assets/logo.png" id="logo" />
-    </div>
-
+  <div id="mainMenu" :class="{ 'main-not-top': scrollPosition||$route.path!='/home' }">
+    <router-link to="/home">
+      <div id="logoWrapper">
+        <img src="../../../assets/logo.png" id="logo" />
+      </div>
+    </router-link>
     <div id="headerLinks" class="buttons">
       <router-link v-for="i in links" :key="i.url" class="btn btn1" :to="i.url">
         <span class="circle"></span>
@@ -13,7 +14,7 @@
       <a
         id="dropdown"
         :class="{'router-link-active': showCategories, btn: true, btn1: true}"
-        v-if="scrollPosition>0"
+        v-if="scrollPosition>0||$route.path!='/home'"
         @click="showCategories=!showCategories"
         v-click-outside="()=>showCategories=false"
       >
@@ -60,7 +61,7 @@ export default {
   display: flex;
 }
 .main-not-top#mainMenu {
-  background: #77777770;
+  background: #777e;
   /* opacity: .7; */
 }
 
@@ -115,6 +116,7 @@ export default {
       rgba(255, 255, 255, 0.226) 50%,
       rgba(255, 255, 255, 0)
     );
+  z-index: 250;
 }
 
 /* Стили для анимации кружка */
@@ -150,11 +152,13 @@ export default {
   bottom: 0.5rem;
   z-index: -1;
   transition: 0.25s;
+  z-index: 200;
 }
 .buttons .btn1 .text {
   position: relative;
   left: 0;
   transition: 0.5s;
+  z-index: 300;
 }
 .buttons .btn1:hover,
 #headerLinks .btn1.router-link-active {

@@ -29,10 +29,6 @@ export default {
           label: "О нас"
         },
         {
-          url: "/stores",
-          label: "Адреса"
-        },
-        {
           url: "/offers",
           label: "Акции"
         },
@@ -64,8 +60,8 @@ export default {
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         return true
       } else {
-        return true
-        // return false
+        // return true
+        return false
       }
     }
   },

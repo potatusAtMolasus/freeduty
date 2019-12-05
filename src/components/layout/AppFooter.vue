@@ -4,21 +4,16 @@
       <div id="mainFooterContent" class="wide-container">
         <div id="footerCategories">
           <ul>
-            <li v-for="i in categories" :key="i.url" >
-              <router-link :to="i.url">
-                {{i.label}}
-              </router-link>
+            <li v-for="i in categories" :key="i.url">
+              <router-link :to="i.url">{{i.label}}</router-link>
             </li>
           </ul>
         </div>
         <div id="footerMenu">
           <ul>
-            <li>Главная</li>
-            <li>О нас</li>
-            <li>Адреса</li>
-            <li>Акции</li>
-            <li>Блог</li>
-            <li>Корпоративным клиентам</li>
+            <li v-for="i in links" :key="i.url">
+              <router-link :to="i.url">{{i.label}}</router-link>
+            </li>
           </ul>
         </div>
         <div id="socialLinks">
@@ -27,25 +22,31 @@
           <div id="social-buttons">
             <ul class="social">
               <li>
-                <i class="fa fa-facebook" aria-hidden="true"></i>
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <a href="#">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      
+
       <div id="franchaise" class="container">
-        <div class="franchaise-wrap">
-          <a>Франшиза</a>
-        </div>
+        <a class="franchaise-wrap" href="#">
+          <p>Франшиза</p>
+        </a>
       </div>
-      
+
       <div id="rights" class="container">
         <p>Duty Free © Все права защищены 2019</p>
       </div>
@@ -61,17 +62,17 @@
 export default {
   props: {
     links: Array,
-    categories: Array,
+    categories: Array
   },
   name: "MainHeader"
 };
 </script>
 
 <style scoped>
-a{
+a {
   color: #ccc;
 }
-li{
+li {
   margin: 10px 0;
   cursor: pointer;
   transition: ease 0.3s;
@@ -80,9 +81,8 @@ li{
   /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
   background-color: #222;
   color: #ccc;
-
 }
-#mainFooterContent{
+#mainFooterContent {
   display: flex;
   justify-content: space-between;
   padding: 2.5em 0 2.2em 0;
@@ -112,8 +112,10 @@ li{
   display: flex;
   padding-left: 0;
 }
-#social-buttons li {
+#social-buttons li a{
   color: rgba(167, 146, 129, 0.6);
+}
+#social-buttons li {
   list-style-type: none;
   width: 50px;
   height: 50px;
@@ -128,17 +130,19 @@ li{
   color: #a79281;
   border: 1px solid #a79281;
 }
-.social:hover > li, ul:hover li {
+.social:hover > li,
+ul:hover li {
   opacity: 0.5;
 }
-.social:hover > li:hover, ul:hover li:hover {
+.social:hover > li:hover,
+ul:hover li:hover {
   opacity: 1;
 }
 
-#rights{
+#rights {
   display: flex;
 }
-#rights p{
+#rights p {
   margin: auto;
   text-align: center;
   font-size: 1.08em;
@@ -157,48 +161,48 @@ li{
   text-transform: uppercase;
   margin: auto;
 }
-#franchaise{
+#franchaise {
   width: 100%;
   display: flex;
   margin-bottom: 2em;
 }
-.franchaise-wrap{
-  margin:auto;
+.franchaise-wrap {
+  margin: auto;
   background: red;
   padding: 1em 3em;
 }
-.franchaise-wrap a{
+.franchaise-wrap a {
   text-transform: uppercase;
 }
-@media(max-width: 500px){
-  #footerContent{
+@media (max-width: 800px) {
+  #footerContent {
     padding-right: 15px;
     padding-left: 15px;
   }
   #footerMessage p {
     font-size: 1.1em;
   }
-  #footerCategories ul{
+  #footerCategories ul {
     margin: 0 0 30px 0;
     padding: 5px 20px;
     display: block;
     text-align: center;
   }
-  #footerCategories ul li{
+  #footerCategories ul li {
     margin: 5px 10px;
     display: inline-block;
   }
-  #footerMenu ul{
+  #footerMenu ul {
     margin: 0;
     padding: 5px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  #footerMenu ul li{
+  #footerMenu ul li {
     flex: 1 0 31%;
   }
-  #mainFooterContent{
+  #mainFooterContent {
     display: block;
   }
   #footerCategories {
@@ -207,18 +211,18 @@ li{
   #footerMenu {
     display: none;
   }
-  #socialLinks h3{
+  #socialLinks h3 {
     display: none;
   }
-  #social-buttons{
+  #social-buttons {
     display: flex;
     justify-content: center;
     text-align: center;
   }
-  #franchaise.container{
+  #franchaise.container {
     padding: 0;
   }
-  #rights{
+  #rights {
     padding: 0;
   }
 }

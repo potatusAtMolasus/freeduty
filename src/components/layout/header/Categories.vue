@@ -1,5 +1,5 @@
 <template>
-  <div id="categories" class="wide-container" v-if="!scrollPosition>0">
+  <div id="categories" class="wide-container" v-if="scrollPosition<=0&&$route.path=='/home'">
     <router-link v-for="i in categories" :key="i.url" :to="i.url">
         <p>{{i.label}}</p>
     </router-link>

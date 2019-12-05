@@ -81,8 +81,6 @@ export default {
   line-height: 1.5em;
 }
 
-
-
 #watchOffersWrap{
   display: flex;
   justify-content: right;
@@ -123,6 +121,25 @@ export default {
 #offersBtn:hover{
   color: white;
 }
+
+@media(max-width: 800px){
+  .wide-container{
+    padding: 0;
+  }
+  #offersWrap {
+    margin: 3em 0;
+    padding: 0 .3em;
+  }
+  #offersContent {
+    font-size: 0.8em;
+    display: block;
+  }
+  #offersText{
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 @media(max-width: 500px){
   #offersContent {
     font-size: 0.8em;

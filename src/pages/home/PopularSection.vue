@@ -143,7 +143,23 @@ export default {
   color: white;
   box-shadow: #232323 2px 2px 15px 7px;
 }
-@media(max-width: 500px){
+
+@media(max-width: 800px){
+  #popularItemsWrap {
+    border: none;
+  }
+  #popularFooterWrapWrap{
+    position: relative;
+    bottom: 0;
+  }
+  #popularFooterWrap{
+    width: 100%;
+    padding: 3em 4em;
+    display: flex;
+  }
+  #popularsBtn{
+    margin: auto;
+  }
   .wide-container{
     padding: 0;
   }
@@ -161,6 +177,12 @@ export default {
     display: flex;
     justify-content: center;
   }
+}
+
+@media(max-width: 500px){
+  .wide-container{
+    padding: 0;
+  }
   #popularContent {
     font-size: 0.8em;
     display: block;
@@ -169,17 +191,8 @@ export default {
     width: 100%;
     box-sizing: border-box;
   }
-  #popularFooterWrapWrap{
-    position: relative;
-    bottom: 0;
-  }
-  #popularFooterWrap{
-    width: 100%;
-    padding: 3em 4em;
-    display: flex;
-  }
-  #popularsBtn{
-    margin: auto;
+  #popularItemsWrap {
+    border: 2px solid #555;
   }
 }
 </style>

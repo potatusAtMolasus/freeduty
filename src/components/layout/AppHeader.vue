@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{'fixed': scrollPosition>0||$route.path=='/home'}">
     <header-message :scrollPosition="scrollPosition"></header-message>
     <div id="headerContent">
       <main-menu 
@@ -61,9 +61,12 @@ export default {
 };
 </script>
 <style scoped>
+header.fixed {
+  position: fixed;
+}
 header {
   width: 100%;
-  position: fixed;
+  position: relative;
   z-index: 500;
 }
 </style>

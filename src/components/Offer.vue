@@ -139,6 +139,31 @@ a{
 p.title {
   height: 3.8em;
 }
+
+@media(max-width: 1000px){
+  p.title {
+    height: 4.5em;
+    font-size: .9em;
+  }
+  .offer-img-wrap{
+    height: 100px;
+  }
+  .outer.offer-wrap{
+    margin: 1.5em 1em;
+  }
+  .offer-wrap {
+    width: 140px;
+    padding: 9px;
+    margin: 0px;
+  }
+  .discount{
+    width: 5em;
+    height: 5em;
+    right: 0em;
+    top: 0em;
+  }
+}
+
 @media(max-width: 500px){
   p.title {
     height: 7em;

@@ -31,6 +31,8 @@ export default {
 a {
   text-decoration: none;
 }
+</style>
+<style>
 #postGrid {
   padding: 30px;
   height: 60vh;
@@ -115,7 +117,27 @@ a {
 #postGrid .post-wrap:nth-child(5) {
   grid-area: fifthPost;
 }
+#blogSection{
+  margin-top: 5em;
+}
+@media(max-width: 800px){
+  #blogSection{
+    margin-top: 4em;
+  }
+  #postGrid .post-wrap:nth-child(4),
+  #postGrid .post-wrap:nth-child(5) {
+    display: none;  
+  }
+  #postGrid {
+    grid-template-areas:
+      "firstPost firstPost"
+      "secondPost thridPost";
+  }
+}
 @media(max-width: 500px){
+  #blogSection{
+    margin-top: 3em;
+  }
   .wide-container{
     padding: 0;
   }
