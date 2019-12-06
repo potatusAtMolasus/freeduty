@@ -161,28 +161,55 @@ def get_popular():
 def get_posts():
     return jsonify([{
         'id': 1,
-        'title': "Погода",
-        'image': "image1.jpg",
+        'title': "Фламинго",
+        'image': "flamingo.jpg",
+        'text': """white, pink, green or blue
+                show off your natural hue
+                flamingo, Oh oh o-uuu-o
+                if you're multicolored, that's cool too"""
     }, {
         'id': 2,
         'title': "Глобусы",
-        'image': "image2.jpg",
+        'image': "image.jpg",
+        'text': """Гло гло гло-бу-сы
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, saepe!"""
     }, {
         'id': 3,
         'title': "Глобальное потепление",
-        'image': "image3.jpg",
+        'image': "climate.jpg",
+        'text': """Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, saepe!"""
     }, {
         'id': 4,
         'title': "Конь Боджек",
-        'image': "image4.jpg",
+        'image': "man.jpg",
+        'text': """Back in the 90s I was in a very famous tv show
+                Bojack the horse, Bojack the horse don't act like you don't know
+                And i'm trying to hold on to my past
+                it's been so long i don't think that i am gonna last
+                i guess i'll just try and make you understand
+                That i'm more a horse than a man
+                Or i'm more man than a horse"""
     }, {
         'id': 5,
         'title': "Канье Вест",
-        'image': "image5.jpg",
+        'image': "ye.png",
+        'text': """Grrrat-gat (I can still feel the love)
+                Gat-gat-gat-gat-gat
+                Grrrat-gat-gat-gat (I can still feel the love)
+                Grrrat-gat-gat-gat-gat-gat (feel the love)
+                Grrrat
+                Ba-ba-ba-ba
+                Brrat-tat-da-da-da-da
+                Ga-ga-ga-ga
+                Brrr-ah-da-da, brrr-ah-da-da
+                Brrr-ah-da-da-da, brrr-ah-da-da-da
+                Brrr-ah-brrr-ah, brrr-ah-ga-grrrat
+                Ru-ru-ru-ru-oh!"""
     }, {
         'id': 6,
         'title': "Работа Фронтэндера",
-        'image': "image6.jpg",
+        'image': "discount.jpg",
+        'text': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque in sequi illo laborum neque."
     }])
 
 if __name__ == '__main__':

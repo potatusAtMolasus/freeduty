@@ -41,7 +41,6 @@ export default {
   methods: {
     updateScroll() {
       this.scrollPosition = window.scrollY;
-      console.log(window.scrollY);
     },
     search(query) {
       this.$emit("search", query);

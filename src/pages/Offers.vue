@@ -35,7 +35,7 @@ main {
   justify-content: space-between;
 }
 #offerWrap .offer-wrap.outer {
-  margin: 1em
+  margin: 1em;
 }
 #offerWrap .offer-wrap {
   background: white;

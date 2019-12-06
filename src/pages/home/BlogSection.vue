@@ -7,6 +7,7 @@
             <h2 class="title">{{ post.title }}</h2>
           </div>
           <router-link class="post-link" :to="'/post/' + post.id">
+            <img :src="getImgUrl(post.image)">
             <p>
               Перейти
               <i class="fa fa-arrow-right"></i>
@@ -24,15 +25,27 @@ export default {
   props: {
     isMobile: Boolean,
     posts: Array
-  }
+  },
+  methods:{
+    getImgUrl(pic) {
+        return require('../../assets/'+pic);
+
+      // try{
+      //   return require('../assets/'+pic);
+      // } catch(e) {
+      //   return '';
+      // }
+    },
+  },
 };
 </script>
 <style>
 a {
   text-decoration: none;
 }
-</style>
-<style>
+#blogSection{
+  background: #333;
+}
 #postGrid {
   padding: 30px;
   height: 60vh;
@@ -43,14 +56,14 @@ a {
     "firstPost firstPost secondPost fourthPost"
     "firstPost firstPost secondPost fifthPost"
     "firstPost firstPost thridPost thridPost";
+  background: transparent;
+
 }
 .post-wrap {
   background: #ccc;
   position: relative;
   padding: 0.7em;
-  box-sizing: border-box;
   cursor: pointer;
-  padding: 0.7em;
 }
 .post-link {
   width: 100%;
@@ -70,6 +83,19 @@ a {
   margin: auto;
   text-decoration: none;
   text-transform: uppercase;
+  z-index: 300;
+  background: #CCCCCC99;
+  box-shadow: #CCCCCC99 2px 2px 5px 15px;
+  color: #333;
+  border-radius: 10px;
+  padding: .3em;
+}
+.post-link img {
+  position: absolute;
+  margin: auto;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
 }
 .post-link p i {
   position: relative;
@@ -81,13 +107,13 @@ a {
 }
 .inner-post-wrap {
   background: #ccc;
-  border: 2px solid #222;
+  border: 2px solid red;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   display: flex;
   transition: all 0.4s ease-in-out;
   transform: scale(1);
-  box-sizing: border-box;
   z-index: 300;
   top: 0;
   left: 0;
@@ -118,11 +144,12 @@ a {
   grid-area: fifthPost;
 }
 #blogSection{
-  margin-top: 5em;
+  padding-top: 5em;
+  overflow: auto;
 }
 @media(max-width: 800px){
   #blogSection{
-    margin-top: 4em;
+    padding-top: 4em;
   }
   #postGrid .post-wrap:nth-child(4),
   #postGrid .post-wrap:nth-child(5) {
@@ -136,7 +163,7 @@ a {
 }
 @media(max-width: 500px){
   #blogSection{
-    margin-top: 3em;
+    padding-top: 3em;
   }
   .wide-container{
     padding: 0;
