@@ -11,7 +11,7 @@
       ></main-menu>
       <categories v-if="!isMobile" :scrollPosition="scrollPosition" :categories="categories"></categories>
 
-      <mobile-menu v-if="isMobile"></mobile-menu>
+      <mobile-menu :scrollPosition="scrollPosition" :links="links" v-if="isMobile"></mobile-menu>
 
     </div>
   </header>

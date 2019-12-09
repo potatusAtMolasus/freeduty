@@ -56,8 +56,14 @@ export default {
 </script>
 <style scoped>
 #offersSection{
+  background-image: url('../../assets/patternBlack.png');
+  
   position: relative;
   z-index: 200;
+}
+#offersSection .wide-container{
+  background-color: #ccc;
+  margin-bottom: 3em;
 }
 #offersContent {
   display: flex;

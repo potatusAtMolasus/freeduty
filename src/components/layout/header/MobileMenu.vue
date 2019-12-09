@@ -1,6 +1,6 @@
 <template>
   <div id="mobileMenuWrap">
-    <div id="mobileMenuToggle" :class="{toggled:show}" @click="show=!show">
+    <div id="mobileMenuToggle" :class="{toggled:show, top: !scrollPosition&&!show}" @click="show=!show">
       <span id="overlay-button">
         <span></span>
       </span>
@@ -20,42 +20,24 @@
 
 <script>
 export default {
+  props:{
+    links: Array,  
+    scrollPosition: Number,
+  },
   data() {
     return {
       show: false,
-      links: [
-        {
-          url: "/home",
-          label: "Главная"
-        },
-        {
-          url: "/about",
-          label: "О нас"
-        },
-        {
-          url: "/stores",
-          label: "Адреса"
-        },
-        {
-          url: "/offers",
-          label: "Акции"
-        },
-        {
-          url: "/blog",
-          label: "Блог"
-        }
-      ]
     };
   },
-  watch:{
-    show(){
-      if(this.show){
-        document.querySelector('body').classList.add('modal-open');
-      } else {
-        document.querySelector('body').classList.remove('modal-open');
-      }
-    }
-  }
+  // watch:{
+  //   show(){
+  //     // if(this.show){
+  //     //   document.querySelector('body').classList.add('modal-open');
+  //     // } else {
+  //     //   document.querySelector('body').classList.remove('modal-open');
+  //     // }
+  //   }
+  // }
 };
 </script>
 
@@ -75,7 +57,9 @@ a{
   z-index: 300;
   cursor: pointer;
 }
-
+#mobileMenuToggle.top{
+  top: 6.5em;
+}
 #overlay-button {
   z-index: 5;
   cursor: pointer;

@@ -29,10 +29,11 @@ export default {
 
 <style scoped>
 main{
-  background: #ccc;
+  background-image: url('../assets/patternWhite.png');
+  background-color: #ccc;
 }
 .container{
-  background: #999;
+  background-color: #999;
   padding: 3em 1em;
 }
 #postsWrap{

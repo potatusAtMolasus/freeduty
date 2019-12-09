@@ -23,7 +23,7 @@ export default {
 </script>
 <style>
 main {
-  background: #ccc;
+  background-color: #ccc;
 }
 #offersPage .container {
   background: #999;
@@ -54,6 +54,11 @@ main {
 }
 #offerWrap .offer-wrap:hover .discount img{
   filter: none; 
+}
+</style>
+<style scoped>
+main {
+  background-image: url('../assets/patternBlack.png');
 }
 </style>
 

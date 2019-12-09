@@ -1,7 +1,7 @@
 <template>
   <div id="searchWrap" v-click-outside="()=>showFull=false">
     <div :class="{searchBox: true, showFull: showFull}">
-      <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" placeholder="Search" />
+      <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" placeholder="Поиск" />
       <button class="searchButton" @click="searchClicked">
         <i v-if="showFull" class="fa fa-arrow-right" aria-hidden="true"></i>
         <i v-if="!showFull" class="fa fa-search" aria-hidden="true"></i>

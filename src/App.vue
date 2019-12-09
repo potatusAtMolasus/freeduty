@@ -60,8 +60,8 @@ export default {
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         return true
       } else {
-        // return true
-        return false
+        return true
+        // return false
       }
     }
   },
@@ -77,10 +77,10 @@ export default {
 * {
   font-family: "Roboto", sans-serif;
 }
-body.modal-open {
+/* body.modal-open {
   overflow: hidden;
   height: 100px;
-}
+} */
 body,
 html {
   padding: 0;

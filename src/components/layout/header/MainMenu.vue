@@ -60,14 +60,18 @@ export default {
 #mainMenu {
   display: flex;
 }
-.main-not-top#mainMenu {
+#mainMenu #logoWrapper{
+  padding: .6em .5em;
+}
+.main-not-top#mainMenu{
   background: #777e;
-  /* opacity: .7; */
+}
+.main-not-top#mainMenu #logoWrapper{
+  padding: .15em;
 }
 
 #logoWrapper {
   flex: 1;
-  /* visibility: hidden; */
 }
 
 #headerLinks {

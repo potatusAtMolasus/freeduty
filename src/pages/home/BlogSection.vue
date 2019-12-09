@@ -44,7 +44,8 @@ a {
   text-decoration: none;
 }
 #blogSection{
-  background: #333;
+  background-image: url('../../assets/patternWhite.png');
+  background-color: #333;
 }
 #postGrid {
   padding: 30px;

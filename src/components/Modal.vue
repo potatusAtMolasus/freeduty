@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async ageConfirmed(){
-      await axios.post("http://localhost:5000/age-confirmed");
+      await axios.post("http://77.222.60.13:5000/age-confirmed");
       this.showWarning = false;
     }
   }
@@ -55,6 +55,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100vw;
+  z-index: 500;
 }
 
 .modal-window {
@@ -176,5 +177,23 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+
+@media(max-width: 1000px){
+  .modal-window {
+    width: 80%;
+    box-sizing: border-box;
+  }
+}
+@media(max-width: 750px){
+  .modal-window {
+    width: 88%;
+  }
+}
+@media(max-width: 500px){
+  .modal-window {
+    width: 96%;
+  }
 }
 </style>
