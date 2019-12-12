@@ -36,6 +36,24 @@ export default {
   margin: 0;
   color: white;
 }
+
+@media only screen and (max-device-width: 480px) {
+  body {
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+@media(max-width: 700px){
+  #HeaderMessage p {
+    font-size: 0.8em;
+  }
+  #HeaderMessage {
+    padding: .1em;
+    height: auto;
+  }
+}
 @media(max-width: 500px){
   #HeaderMessage p {
     font-size: 0.7em;

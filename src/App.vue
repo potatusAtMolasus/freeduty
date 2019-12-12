@@ -1,8 +1,22 @@
 <template>
   <div id="app">
     <div id="page">
-      <main-header :isMobile="isMobile" :links="links" :categories="categories" @search="search"></main-header>
-      <router-view :isMobile="isMobile" :offers="offers" :popular="popular" :posts="posts" />
+      <main-header
+        :scrollPosition="scrollPosition"
+        :isMobile="isMobile"
+        :links="links"
+        :categories="categories"
+        @search="search"
+      ></main-header>
+      <router-view
+        :scrollPosition="scrollPosition"
+        :isMobile="isMobile"
+        :offers="offers"
+        :popular="popular"
+        :posts="posts"
+        :foundData="foundData"
+        @filtersChanged="setFilters"
+      />
     </div>
     <main-footer :links="links" :categories="categories"></main-footer>
     <modal></modal>
@@ -29,6 +43,10 @@ export default {
           label: "О нас"
         },
         {
+          url: "/contacts",
+          label: "Контакты"
+        },
+        {
           url: "/offers",
           label: "Акции"
         },
@@ -37,31 +55,53 @@ export default {
           label: "Блог"
         }
       ],
+      scrollPosition: null,
       categories: [],
       offers: [],
       popular: [],
       posts: [],
+
+      foundData: [],
+      activeFilters: { category: '' },
     };
   },
   async mounted() {
-    this.categories = (await axios.post("http://localhost:5000/get-categories")).data;
+    window.addEventListener("scroll", this.updateScroll);
+
+    this.categories = (await axios.post(
+      "http://localhost:5000/get-categories"
+    )).data;
     this.offers = (await axios.post("http://localhost:5000/get-offers")).data;
     this.popular = (await axios.post("http://localhost:5000/get-popular")).data;
     this.posts = (await axios.post("http://localhost:5000/get-posts")).data;
+    this.foundData = (await axios.post("http://localhost:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
   },
   methods: {
     async search(query) {
-      await axios.post("http://localhost:5000/find", { query });
-      console.log(query);
+      this.activeQuery = query;
+      this.foundData = (await axios.post("http://localhost:5000/find", { query, ...this.activeFilters })).data;
+      this.$router.push({ path: '/search/0/' });
     },
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
+    },
+    async setFilters(newFilters){
+      this.activeFilters = newFilters;
+      this.foundData = (await axios.post("http://localhost:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
+      // this.router.push({ path: 'search' })
+    }
   },
-  computed:{
+  computed: {
     isMobile() {
-      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        return true
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        return true;
       } else {
-        return true
-        // return false
+        // return true
+        return false;
       }
     }
   },
@@ -105,6 +145,9 @@ html {
 }
 ul {
   list-style: none;
+}
+a {
+  text-decoration: none;
 }
 @media (min-width: 576px) {
   .container {

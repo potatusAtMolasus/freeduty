@@ -17,11 +17,11 @@
           </ul>
         </div>
         <div id="socialLinks">
-          <h3>Social links</h3>
+          <!-- <h3>Мы в соц сетях</h3> -->
 
           <div id="social-buttons">
             <ul class="social">
-              <li>
+              <!-- <li>
                 <a href="#">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
@@ -30,7 +30,7 @@
                 <a href="#">
                   <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a href="#">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -209,9 +209,6 @@ ul:hover li:hover {
     border-right: none;
   }
   #footerMenu {
-    display: none;
-  }
-  #socialLinks h3 {
     display: none;
   }
   #social-buttons {

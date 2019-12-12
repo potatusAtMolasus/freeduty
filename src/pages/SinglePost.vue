@@ -1,30 +1,38 @@
 <template>
   <main>
-    <div id="postWrap">
+    <div id="postWrap" :class="{'top': scrollPosition}">
       <div id="postContent">
-        
-        <div>Пост: {{ currentPost.title }}</div>
-        <div id="date">{{ currentPost.date }}</div>
-        <div id="imageWrap">
-          <img :src="getImgUrl(currentPost.image)" alt="Не удалось загрузить картинку, посетите страницу в instagram">
-        </div>
+        <carousel
+          :key="currentPost.id"
+          :autoplay="false"
+          :loop="false"
+          :adjustableHeight="true"
+          :perPage="1"
+          :paginationEnabled="false"
+          :navigationEnabled="true"
+          :paginationColor="'#454545'"
+        >
+          <slide v-for="i in currentPost.images" :key="i">
+            <div class="imageWrap">
+              <img
+                :src="getImgUrl(i)"
+                alt="Не удалось загрузить картинку, посетите страницу в instagram"
+              />
+            </div>
+          </slide>
+        </carousel>
         <p id="text">{{ currentPost.text }}</p>
-
       </div>
       <div id="navigation">
         <router-link id="prev" v-if="prevPost.id" :to="'/post/' + prevPost.id">
-          <div :style="{ 'background-image': 'url('+getImgUrl(prevPost.image)+')' }">
-            <p>
-              {{ prevPost.title }}
-            </p>
+          <div :style="{ 'background-image': 'url('+getImgUrl(prevPost.images[0])+')' }">
+            <p>{{ prevPost.title }}</p>
           </div>
         </router-link>
 
         <router-link id="next" v-if="nextPost.id" :to="'/post/' + nextPost.id">
-          <div :style="{ 'background-image': `url(${getImgUrl(nextPost.image)})` }">
-            <p>
-              {{ nextPost.title }}
-            </p>
+          <div :style="{ 'background-image': `url(${getImgUrl(nextPost.images[0])})` }">
+            <p>{{ nextPost.title }}</p>
           </div>
         </router-link>
       </div>
@@ -34,38 +42,47 @@
 
 <script>
 export default {
-  props:{
+  props: {
     posts: Array,
+    scrollPosition: Number,
   },
-  data(){
+  data() {
     return {
       nextPost: {},
       prevPost: {},
-      currentPost: {},
+      currentPost: {}
+    };
+  },
+  mounted() {
+    this.getPosts();
+    setTimeout(()=>this.$children[0].computeCarouselHeight(), 1000)
+  },
+  watch: {
+    posts() {
+      this.getPosts();
+    },
+    $route() {
+      this.getPosts();
     }
   },
-  mounted(){
-    this.getPosts();
-  },
-  watch:{
-    posts(){
-      this.getPosts();
-    },
-    $route(){
-      this.getPosts();
-    },
-  },
-  methods:{
-    getPosts(){
-      this.nextPost = this.posts.find(post=>post.id===Number(this.$route.params.id)+1) || {};
-      this.prevPost = this.posts.find(post=>post.id===Number(this.$route.params.id)-1) || {};
-      this.currentPost = this.posts.find(post=>post.id==Number(this.$route.params.id)) || {};  
+  methods: {
+    getPosts() {
+      this.nextPost =
+        this.posts.find(
+          post => post.id === Number(this.$route.params.id) + 1
+        ) || {};
+      this.prevPost =
+        this.posts.find(
+          post => post.id === Number(this.$route.params.id) - 1
+        ) || {};
+      this.currentPost =
+        this.posts.find(post => post.id === Number(this.$route.params.id)) || {};
     },
     getImgUrl(pic) {
-      try{
-        return require('../assets/'+pic);
-      } catch(e) {
-        return '';
+      try {
+        return require("../assets/" + pic);
+      } catch (e) {
+        return "";
       }
     }
   }
@@ -73,37 +90,44 @@ export default {
 </script>
 
 <style scoped>
-main{
-  padding: 5em;
+main {
+  width: 100%;
   background: #aaa;
+  display: flex;
 }
-#postWrap{
+#postWrap.top {
+  margin: 20% auto;
+}
+#postWrap {
+  margin: 5% auto;
   background: #fff;
+  width: 800px;
 }
-#imageWrap{
+.imageWrap img {
   width: 100%;
 }
-#imageWrap img{
-  width: 100%;
-}
-#navigation{
+#navigation {
   display: flex;
   width: 100%;
   height: 5.5em;
 }
-#prev, #next{
+#prev,
+#next {
   width: 50%;
   height: 100%;
 }
-#prev div, #next div{
+#prev div,
+#next div {
   height: 100%;
   display: flex;
 }
-#prev div:hover, #next div:hover{
+#prev div:hover,
+#next div:hover {
   position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.2);
 }
-#prev div:hover:before, #next div:hover:before{
+#prev div:hover:before,
+#next div:hover:before {
   content: "";
   position: absolute;
   top: 0;
@@ -124,9 +148,16 @@ main{
     );
   z-index: 250;
 }
-#prev div p, #next div p{
+#prev div p,
+#next div p {
   margin: auto;
 }
-  
-
+</style>
+<style>
+.VueCarousel-slide-adjustableHeight {
+  display: block !important;
+}
+.VueCarousel-inner {
+  align-items: flex-start !important;
+}
 </style>

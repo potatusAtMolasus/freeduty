@@ -8,6 +8,7 @@
             <h2 class="title">{{ post.title }}</h2>
           </div>
           <router-link class="post-link" :to="'/post/' + post.id">
+            <img :src="getImgUrl(post.image)">
             <p>
               Перейти
               <i class="fa fa-arrow-right"></i>
@@ -23,6 +24,15 @@
 export default {
   props:{
     posts: Array,
+  },
+  methods:{
+    getImgUrl(pic) {
+      try{
+        return require('../assets/'+pic);
+      } catch(e) {
+        return '';
+      }
+    },
   },
 };
 </script>
@@ -52,9 +62,16 @@ main{
   margin: .45em;
   box-shadow: #888 2px 2px 10px 5px;
 }
+.post-link img {
+  position: absolute;
+  margin: auto;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+}
 .inner-post-wrap {
   background: #ccc;
-  border: 2px solid #222;
+  border: 2px solid red;
   width: 100%;
   height: 100%;
   display: flex;

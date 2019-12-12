@@ -30,27 +30,14 @@ export default {
     links: Array,
     categories: Array,
     isMobile: Boolean,
-  },
-
-  data() {
-    return {
-      scrollPosition: null
-    };
+    scrollPosition: Number,
   },
 
   methods: {
-    updateScroll() {
-      this.scrollPosition = window.scrollY;
-    },
     search(query) {
       this.$emit("search", query);
     }
   },
-
-  mounted() {
-    window.addEventListener("scroll", this.updateScroll);
-  },
-
   components: {
     HeaderMessage,
     MainMenu,

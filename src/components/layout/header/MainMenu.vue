@@ -1,5 +1,5 @@
 <template>
-  <div id="mainMenu" :class="{ 'main-not-top': scrollPosition||$route.path!='/home' }">
+  <div id="mainMenu" :class="{ 'main-not-top': scrollPosition||$route.path!='/home', 'padding': scrollPosition }">
     <router-link to="/home">
       <div id="logoWrapper">
         <img src="../../../assets/logo.png" id="logo" />
@@ -66,7 +66,7 @@ export default {
 .main-not-top#mainMenu{
   background: #777e;
 }
-.main-not-top#mainMenu #logoWrapper{
+.padding#mainMenu #logoWrapper{
   padding: .15em;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div id="searchWrap" v-click-outside="()=>showFull=false">
+  <div id="searchWrap" v-click-outside="()=>showFull=searchQuery.length">
     <div :class="{searchBox: true, showFull: showFull}">
       <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" placeholder="Поиск" />
       <button class="searchButton" @click="searchClicked">
@@ -32,6 +32,9 @@ export default {
     },
     typing(){
       clearTimeout(this.timeout);
+      if (this.searchQuery.length < 4){
+        return;
+      }
       var self = this;
       this.timeout = setTimeout(() => self.$emit('search', self.searchQuery), 1000);
     }

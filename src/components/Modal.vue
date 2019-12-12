@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async ageConfirmed(){
-      await axios.post("http://77.222.60.13:5000/age-confirmed");
+      await axios.post("http://localhost:5000/age-confirmed");
       this.showWarning = false;
     }
   }

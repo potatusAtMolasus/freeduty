@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Offer from "@/components/Offer.vue";
+import Offer from "@/components/Item.vue";
 
 export default {
   props: {
