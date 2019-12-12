@@ -14,10 +14,11 @@
             :centerMode="true"
             :perPage="perPage"
             :paginationEnabled="true"
+            :navigationEnabled="true"
             :paginationColor="'#454545'"
           >
             <slide v-for="i in offers" :key="i.id">
-              <offer :offerData="i"></offer>
+              <item :item="i"></item>
             </slide>
           </carousel>
         </div>
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import Offer from "@/components/Offer.vue";
+import Item from "@/components/Item.vue";
 
 export default {
   name: "OffersSection",
@@ -45,7 +46,7 @@ export default {
     offers: Array
   },
   components: {
-    Offer
+    Item
   },
   computed:{
     perPage(){
@@ -62,7 +63,6 @@ export default {
   z-index: 200;
 }
 #offersSection .wide-container{
-  background-color: #ccc;
   margin-bottom: 3em;
 }
 #offersContent {

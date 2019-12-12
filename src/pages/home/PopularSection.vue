@@ -1,6 +1,5 @@
 <template>
   <section id="popularSection">
-    <div class="wide-container">
       <div id="popuplarWrap">
         <div id="popularTitleWrapWrap">
           <div id="popularTitleWrap">
@@ -15,10 +14,11 @@
             :centerMode="true"
             :perPage="perPage"
             :paginationEnabled="true"
+            :navigationEnabled="true"
             :paginationColor="'#454545'"
           >
             <slide v-for="i in popularItems" :key="i.id">
-              <item :popularData="i"></item>
+              <item :item="i"></item>
             </slide>
           </carousel>
         </div>
@@ -35,7 +35,6 @@
         </div>
 
       </div>
-    </div>
   </section>
 </template>
 
@@ -52,7 +51,7 @@ export default {
   },
   computed:{
     perPage(){
-      return this.isMobile ? 2 : 4;
+      return this.isMobile ? 2 : 5;
     }
   }
 };
@@ -87,7 +86,6 @@ export default {
 #popularItemsWrap {
   z-index: 300;
   /* box-shadow: #555 2px 2px 10px 5px; */
-  border: 2px solid #555;
 }
 
 #popularFooterWrapWrap{

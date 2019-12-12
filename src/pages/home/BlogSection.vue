@@ -7,7 +7,7 @@
             <h2 class="title">{{ post.title }}</h2>
           </div>
           <router-link class="post-link" :to="'/post/' + post.id">
-            <img :src="getImgUrl(post.image)">
+            <img :src="getImgUrl(post.images[0])">
             <p>
               Перейти
               <i class="fa fa-arrow-right"></i>
@@ -28,21 +28,17 @@ export default {
   },
   methods:{
     getImgUrl(pic) {
+      try{
         return require('../../assets/'+pic);
-
-      // try{
-      //   return require('../assets/'+pic);
-      // } catch(e) {
-      //   return '';
-      // }
+      } catch(e) {
+        return '';
+      }
     },
   },
 };
 </script>
-<style>
-a {
-  text-decoration: none;
-}
+<style scoped>
+
 #blogSection{
   background-image: url('../../assets/patternWhite.png');
   background-color: #333;
