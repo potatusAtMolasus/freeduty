@@ -7,7 +7,7 @@
       <span>{{ title }}</span>
     </div>
     <div :class="{'filter-options': true, 'no-height': !toggle}" >
-      <div v-for="option in options" :key="option" class="filter-option">
+      <div v-for="option in options" :key="option.value" class="filter-option">
         <input
           type="checkbox"
           :value="option.value"
@@ -54,7 +54,7 @@ export default {
   },
   watch:{
     checkedOptions(){
-      this.$emit('input', this.checkedOptions)()
+      this.$emit('input', this.checkedOptions);
     },
   },
 };

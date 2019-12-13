@@ -70,7 +70,7 @@ export default {
   justify-content: space-between;
 }
 #offersWrap {
-  margin: 3em;
+  padding: 3em;
   flex: 3;
   overflow: hidden;
 }
@@ -98,12 +98,14 @@ export default {
 #offersBtn{
   padding: 18px 40px;
   margin: 20px 0 10px 0;
-  /* background: linear-gradient(180deg, white 5%, green 150%); */
+  background: linear-gradient(180deg, #bbb 5%, #E9E9E9 150%);
   /* border-radius: 30px; */
-  border: 1px solid #222;
+  border: 2px solid #222;
   font-size: 18px;
   position: relative;
   transition: color .3s;
+  /* text-decoration: 2px underline dotted red; */
+  box-shadow: #889988 2px 2px 10px 5px;
 }
 #offersBtn:after{
   content: '';

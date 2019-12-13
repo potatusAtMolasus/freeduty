@@ -9,7 +9,9 @@
           <router-link class="post-link" :to="'/post/' + post.id">
             <img :src="getImgUrl(post.images[0])">
             <p>
-              Перейти
+              <span v-if="!isMobile">Перейти</span>
+              <span v-if="isMobile" class="title">{{ post.title }}</span>
+
               <i class="fa fa-arrow-right"></i>
             </p>
           </router-link>
@@ -38,7 +40,9 @@ export default {
 };
 </script>
 <style scoped>
-
+.wide-container{
+  box-sizing: border-box;
+}
 #blogSection{
   background-image: url('../../assets/patternWhite.png');
   background-color: #333;
@@ -82,10 +86,9 @@ export default {
   text-transform: uppercase;
   z-index: 300;
   background: #CCCCCC99;
-  box-shadow: #CCCCCC99 2px 2px 5px 15px;
+  border: 2px solid #999;
   color: #333;
-  border-radius: 10px;
-  padding: .3em;
+  padding: .6em;
 }
 .post-link img {
   position: absolute;
@@ -159,6 +162,9 @@ export default {
   }
 }
 @media(max-width: 500px){
+  #postGrid{
+    height: auto;
+  }
   #blogSection{
     padding-top: 3em;
   }
@@ -174,6 +180,15 @@ export default {
       "firstPost"
       "secondPost"
       "thridPost";
+  }
+  .post-wrap{
+    padding: 5rem;
+  }
+  .post-wrap .inner-post-wrap {
+    transform: scale(0);
+  }
+  .post-wrap .post-link {
+    transform: scale(1);
   }
 }
 </style>

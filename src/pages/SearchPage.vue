@@ -36,4 +36,9 @@ export default {
 #searchView.not-top {
   margin: 10% auto 0 auto; 
 }
+@media (max-width: 500px) {
+  #searchView{
+    flex-direction: column;
+  } 
+}
 </style>

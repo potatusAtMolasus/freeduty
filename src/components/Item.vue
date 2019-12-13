@@ -162,10 +162,9 @@ p.title {
 }
 .new-price{
   display: flex;
-  font-size: 1.4em;
+  font-size: 1.2em;
   color: red;
 }
-
 
 .discount{
   position: absolute;
@@ -187,6 +186,23 @@ p.title {
 }
 
 @media(max-width: 500px){
+  .discount{
+    width: 6em;
+    height: 6em;
+  }
+  .title-wrap{
+    font-weight: normal;
+    font-size: 1rem;
+  }
+  .price{
+    font-size: 1rem;
+  }
+  .new-price{
+    font-size: 1rem;
+  }
+  .old-price{
+    font-size: .7rem;
+  }
   p.title {
     height: 6.6em;
     font-size: 1.1em;
@@ -195,19 +211,15 @@ p.title {
     font-size: 1.5em;
   }
   .item-img-wrap{
-    height: 100px;
+    height: 200px;
   }
   .outer-wrap{
-    margin: 1.5em 1.5em;
-    width: 180px;
+    margin: 1.5em .2em;
     box-sizing: border-box;
   }
   .item-wrap {
     padding: 5px;
     margin: 0px;
-  }
-  .outer-wrap{
-    margin: 1.5em .5em;
   }
   .item-wrap {
     padding: 1em;

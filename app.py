@@ -26,63 +26,82 @@ def confirm_age():
     age_confirmed = True
     return jsonify(True)
 
+
+@app.route('/get-item', methods=['POST'])
+def get_item():
+    return jsonify({
+        'id': 1,
+        'title': "Коньяк Максим Трижоль ВС Эйфелева Башня",
+        'photo': "image.jpg",
+        'description': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime impedit dignissimos dicta veritatis atque aliquam deserunt dolorem itaque, ab omnis?",
+        'country': "Россия",
+        'price': "3290",
+        'salePrice': "1699.00",
+        'sale': True,
+        'category': "Коньяк",
+        'volume': "0,5л",
+        'strength': "40% ",
+        'brand': "Трижоль",
+        'popularity': "9.9"
+    })
+
 @app.route('/find', methods=['POST'])
 def find():
     return jsonify([{
         'id': 1,
         'title': "Коньяк Максим Трижоль ВС Эйфелева Башня 40% 0,5л п/у",
         'image': "image.jpg",
-        'salePrice': "2 699.00",
-        'sale': True,
+        'salePrice': "1699.00",
+        'sale': False,
         'price': "3290",
-        'popularity': "9.1", 
+        'popularity': "9.9", 
     }, {
         'id': 3,
         'title': "Текила Монтезума Белая 40% 0,75л",
         'image': "image.jpg",
-        'salePrice': "2 699.00",
+        'salePrice': "2699.00",
         'sale': True,
         'price': "3290",
-        'popularity': "9.1", 
+        'popularity': "5.2", 
     }, {
         'id': 4,
         'title': "You may think he loves you for your money 40% 0,5л п/у",
         'image': "image.jpg",
-        'salePrice': "2 699.00",
-        'sale': True,
-        'price': "3290",
-        'popularity': "9.1", 
+        'salePrice': "3699.00",
+        'sale': False,
+        'price': "1290",
+        'popularity': "7.3", 
     }, {
         'id': 5,
         'title': "But I Know What he Actually loves you For 15% 0,6л п/у",
         'image': "image.jpg",
-        'salePrice': "2 699.00",
-        'sale': True,
-        'price': "3290",        
-        'popularity': "9.1", 
+        'salePrice': "2699.00",
+        'sale': False,
+        'price': "3340",
+        'popularity': "9.2",         
     }, {
         'id': 6,
         'title': "Коньяк Максим Трижоль ВС Эйфелева Башня 40% 0,5л п/у",
         'image': "image.jpg",
-        'salePrice': "2 699.00",
-        'sale': True,
-        'price': "3290",
-        'popularity': "9.1", 
+        'salePrice': "2699.00",
+        'sale': False,
+        'price': "1230",
+        'popularity': "9.7", 
     }, {
         'id': 7,
         'title': "Thats your brand new Leopard Skin PilBox Hat 40% 0,5л п/у",
         'image': "image.jpg",
-        'salePrice': "2 699.00",
+        'salePrice': "2659.00",
         'sale': True,
-        'price': "3290",
-        'popularity': "9.1", 
+        'price': "2560",
+        'popularity': "8.1", 
     }, {
         'id': 8,
         'title': "Коньяк Максим Трижоль ВС Эйфелева Башня 40% 0,5л п/у",
         'image': "image.jpg",
-        'salePrice': "2 699.00",
+        'salePrice': "2799.00",
         'sale': True,
-        'price': "3290",
+        'price': "4110",
         'popularity': "9.1", 
     }])
     
