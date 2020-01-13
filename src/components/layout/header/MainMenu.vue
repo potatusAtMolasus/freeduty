@@ -14,7 +14,6 @@
       <a
         id="dropdown"
         :class="{'router-link-active': showCategories, btn: true, btn1: true}"
-        v-if="scrollPosition>0||$route.path!='/home'"
         @click="showCategories=!showCategories"
         v-click-outside="()=>showCategories=false"
       >
@@ -59,12 +58,13 @@ export default {
 <style scoped>
 #mainMenu {
   display: flex;
+  background: rgba(0,0,0,0.9);
 }
 #mainMenu #logoWrapper{
   padding: .6em .5em;
 }
 .main-not-top#mainMenu{
-  background: #777e;
+
 }
 .padding#mainMenu #logoWrapper{
   padding: .15em;

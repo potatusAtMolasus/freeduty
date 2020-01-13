@@ -4,9 +4,7 @@
       <h2 id="offers-title">Наши Акции</h2>
 
       <div id="offersContent">
-        <div
-          id="offersText"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate asperiores placeat consequatur? Eos excepturi soluta placeat reiciendis rerum. Delectus eaque ea nemo eveniet fugiat qui pariatur ab illum error aspernatur deleniti cumque animi laboriosam tempora eligendi rem corporis quae, esse atque nam accusamus aliquam. Soluta accusantium recusandae velit quia dolorem!</div>
+        <div id="offersText">Ассортимент «Дьюти Фри» насчитывает около 3000 алкогольных напитков со всего мира — от демократичных бестселлеров до мировых звезд, отмеченных престижными рейтингами. Благодаря тому, что мы напрямую сотрудничаем с ведущими импортерами, цены для вас мы постарались сделать максимально низкими.</div>
         <div id="offersWrap">
           <carousel
             :autoplay="false"
@@ -63,13 +61,13 @@ export default {
   z-index: 200;
 }
 #offersSection .wide-container{
-  margin-bottom: 3em;
 }
 #offersContent {
   display: flex;
   justify-content: space-between;
 }
 #offersWrap {
+  background: rgba(180, 180, 180, 0.9);
   padding: 3em;
   flex: 3;
   overflow: hidden;
@@ -105,7 +103,6 @@ export default {
   position: relative;
   transition: color .3s;
   /* text-decoration: 2px underline dotted red; */
-  box-shadow: #889988 2px 2px 10px 5px;
 }
 #offersBtn:after{
   content: '';
@@ -135,7 +132,6 @@ export default {
     padding: 0;
   }
   #offersWrap {
-    margin: 3em 0;
     padding: 0 .3em;
   }
   #offersContent {
@@ -158,7 +154,6 @@ export default {
     box-sizing: border-box;
   }
   #offersWrap {
-    margin: 3em 0;
     padding: 0 .3em;
   }
   #watchOffersWrap{

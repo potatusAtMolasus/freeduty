@@ -48,7 +48,7 @@ a{
 #mobileMenuToggle {
   position: fixed;
   top: .5em;
-  left: .5em;
+  right: .5em;
   display: flex;
   width: 4em;
   height: 4em;

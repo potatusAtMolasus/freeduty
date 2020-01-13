@@ -77,7 +77,7 @@ a{
   color: inherit;
 }
 .item-wrap {
-  background: #E9E9E9;
+  background: #ffffff;
   padding: 10px;
   margin: 0px;
   /* box-shadow: 2px 3px 10px 5px #444; */
@@ -89,7 +89,7 @@ a{
   box-shadow: 2px 3px 15px 3px #666;
 }
 .outer-wrap{
-  margin: 3em 2em;
+  margin: 0 0.5em;
   background: white;
 }
 .item-img-wrap{
@@ -214,6 +214,7 @@ p.title {
     height: 200px;
   }
   .outer-wrap{
+    background: white;
     margin: 1.5em .2em;
     box-sizing: border-box;
   }

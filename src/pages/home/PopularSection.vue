@@ -59,7 +59,8 @@ export default {
 <style scoped>
 
 #popularSection {
-  background: #888;
+  background-image: url('../../assets/patternBlack.png');
+  background-color: #4f4f4f;
   position: relative;
   z-index: 100;
 }
@@ -85,6 +86,7 @@ export default {
 }
 #popularItemsWrap {
   z-index: 300;
+  margin-bottom: 10px;
   /* box-shadow: #555 2px 2px 10px 5px; */
 }
 
@@ -145,6 +147,7 @@ export default {
 @media(max-width: 800px){
   #popularItemsWrap {
     border: none;
+    margin-bottom: 10px;
   }
   #popularFooterWrapWrap{
     position: relative;
@@ -190,7 +193,8 @@ export default {
     box-sizing: border-box;
   }
   #popularItemsWrap {
-    border: 2px solid #555;
+    border: none;
+    margin-bottom: 10px;
   }
 }
 </style>

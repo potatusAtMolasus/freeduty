@@ -40,7 +40,7 @@ export default {
     },
   },
   async mounted() {
-    const filters = (await axios.post("http://localhost:5000/get-filters"))
+    const filters = (await axios.post("http://127.0.0.1:5000/get-filters"))
       .data;
     this.categories = filters.categories;
     this.brands = filters.brands;

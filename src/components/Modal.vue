@@ -34,7 +34,7 @@ import axios from "axios";
 
 export default {
   async created() {
-    this.showWarning = !(await axios.post("http://localhost:5000/confirm-age")).data;
+    this.showWarning = !(await axios.post("http://127.0.0.1:5000/confirm-age")).data;
   },
   data() {
     return {
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async ageConfirmed(){
-      await axios.post("http://localhost:5000/age-confirmed");
+      await axios.post("http://127.0.0.1:5000/age-confirmed");
       this.showWarning = false;
     }
   }

@@ -93,6 +93,7 @@ main {
   position: relative;
 }
 .outer-wrap {
+  background: white;
   margin: 0.5em 0.5em;
 }
 .combo-wrap{

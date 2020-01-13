@@ -9,7 +9,7 @@
         :categories="categories"
         @search="search"
       ></main-menu>
-      <categories v-if="!isMobile" :scrollPosition="scrollPosition" :categories="categories"></categories>
+
 
       <mobile-menu :scrollPosition="scrollPosition" :links="links" v-if="isMobile"></mobile-menu>
 
@@ -21,7 +21,6 @@
 import HeaderMessage from "@/components/layout/header/HeaderMessage.vue";
 import MainMenu from "@/components/layout/header/MainMenu.vue";
 import MobileMenu from "@/components/layout/header/MobileMenu.vue";
-import Categories from "@/components/layout/header/Categories.vue";
 
 export default {
   name: "MainHeader",
@@ -41,7 +40,6 @@ export default {
   components: {
     HeaderMessage,
     MainMenu,
-    Categories,
     MobileMenu
   }
 };

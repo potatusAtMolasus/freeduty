@@ -44,9 +44,13 @@ export default {
   box-sizing: border-box;
 }
 #blogSection{
-  background-image: url('../../assets/patternWhite.png');
-  background-color: #333;
+  background-image: url('../../assets/patternBlack.png');
 }
+
+#blogSection .wide-container {
+  background: rgba(180, 180, 180, 0.9);
+}
+
 #postGrid {
   padding: 30px;
   height: 60vh;

@@ -83,7 +83,7 @@ export default {
     }
   },
   async mounted(){
-    const data = (await axios.post("http://localhost:5000/get-item", )).data;
+    const data = (await axios.post("http://127.0.0.1:5000/get-item", )).data;
    
     this.title = data.title, 
     this.photo = data.photo, 

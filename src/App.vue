@@ -69,17 +69,17 @@ export default {
     window.addEventListener("scroll", this.updateScroll);
 
     this.categories = (await axios.post(
-      "http://localhost:5000/get-categories"
+      "http://127.0.0.1:5000/get-categories"
     )).data;
-    this.offers = (await axios.post("http://localhost:5000/get-offers")).data;
-    this.popular = (await axios.post("http://localhost:5000/get-popular")).data;
-    this.posts = (await axios.post("http://localhost:5000/get-posts")).data;
-    this.foundData = (await axios.post("http://localhost:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
+    this.offers = (await axios.post("http://127.0.0.1:5000/get-offers")).data;
+    this.popular = (await axios.post("http://127.0.0.1:5000/get-popular")).data;
+    this.posts = (await axios.post("http://127.0.0.1:5000/get-posts")).data;
+    this.foundData = (await axios.post("http://127.0.0.1:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
   },
   methods: {
     async search(query) {
       this.activeQuery = query;
-      this.foundData = (await axios.post("http://localhost:5000/find", { query, ...this.activeFilters })).data;
+      this.foundData = (await axios.post("http://127.0.0.1:5000/find", { query, ...this.activeFilters })).data;
       this.$router.push({ path: '/search/0/' });
     },
     updateScroll() {
@@ -87,7 +87,7 @@ export default {
     },
     async setFilters(newFilters){
       this.activeFilters = newFilters;
-      this.foundData = (await axios.post("http://localhost:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
+      this.foundData = (await axios.post("http://127.0.0.1:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
       // this.router.push({ path: 'search' })
     }
   },
