@@ -40,7 +40,6 @@ export default {
       this.items = this.data;
     },
     sortBy(){
-      console.log(this.sortBy)
       if(this.sortBy === 'popularity') {
         this.items = this.items.sort((a, b)=>b.popularity - a.popularity);
       }

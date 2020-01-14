@@ -2,6 +2,7 @@
   <div id="app">
     <div id="page">
       <main-header
+        v-if="$route.name!=='landing'"
         :scrollPosition="scrollPosition"
         :isMobile="isMobile"
         :links="links"
@@ -18,7 +19,7 @@
         @filtersChanged="setFilters"
       />
     </div>
-    <main-footer :links="links" :categories="categories"></main-footer>
+    <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
     <modal></modal>
   </div>
 </template>

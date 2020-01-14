@@ -63,9 +63,9 @@ export default {
 #mainMenu #logoWrapper{
   padding: .6em .5em;
 }
-.main-not-top#mainMenu{
-
-}
+/* .main-not-top#mainMenu{ */
+/*  */
+/* } */
 .padding#mainMenu #logoWrapper{
   padding: .15em;
 }
