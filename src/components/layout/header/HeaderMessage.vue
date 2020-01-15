@@ -45,7 +45,7 @@ export default {
   }
 }
 
-@media(max-width: 700px){
+@media(max-width: 800px){
   #HeaderMessage p {
     font-size: 0.8em;
   }

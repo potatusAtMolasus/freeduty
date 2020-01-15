@@ -9,11 +9,11 @@
 
         <div id="popularItemsWrap">
           <carousel
-            :autoplay="false"
+            :autoplay="true"
             :loop="false"
             :centerMode="true"
             :perPage="perPage"
-            :paginationEnabled="true"
+            :paginationEnabled="false"
             :navigationEnabled="true"
             :paginationColor="'#454545'"
           >
@@ -62,20 +62,20 @@ export default {
   background-image: url('../../assets/patternBlack.png');
   background-color: #4f4f4f;
   position: relative;
-  z-index: 100;
+  z-index: 300;
 }
 #popuplarWrap {
   position: relative;
+  display: flex;
+  justify-content: center;
   overflow: visible;
   padding: 6em 4em 6em 4em;
 }
 #popularTitleWrapWrap {
   position: absolute;
   top: -3em;
-  left: 0;
   display: flex;
-  width: 100%;
-  z-index: 200;
+  z-index: 400;
 }
 #popularTitleWrap {
   position: relative;

@@ -8,12 +8,13 @@
           </div>
           <router-link class="post-link" :to="'/post/' + post.id">
             <img :src="getImgUrl(post.images[0])">
-            <p>
-              <span v-if="!isMobile">Перейти</span>
-              <span v-if="isMobile" class="title">{{ post.title }}</span>
-
-              <i class="fa fa-arrow-right"></i>
-            </p>
+            <div class="inner">
+              <div class="title-wrap">
+                <span v-if="!isMobile">Перейти</span>
+                <span v-if="isMobile" class="title">{{ post.title }}</span>
+                <i class="fa fa-arrow-right"></i>
+              </div>
+            </div>
           </router-link>
         </div>
       </div>
@@ -45,10 +46,7 @@ export default {
 }
 #blogSection{
   background-image: url('../../assets/patternBlack.png');
-}
-
-#blogSection .wide-container {
-  background: rgba(180, 180, 180, 0.9);
+  background-color: rgba(180, 180, 180, 0.9);
 }
 
 #postGrid {
@@ -84,15 +82,18 @@ export default {
   transition: all 0.4s ease-in-out;
   color: white;
 }
-.post-link p {
+.inner {
   margin: auto;
   text-decoration: none;
   text-transform: uppercase;
   z-index: 300;
   background: #CCCCCC99;
   border: 2px solid #999;
-  color: #333;
+  color:#333;
   padding: .6em;
+}
+.inner .title-wrap{
+  margin: auto;
 }
 .post-link img {
   position: absolute;
@@ -122,6 +123,9 @@ export default {
   top: 0;
   left: 0;
 }
+.fa-arrow-right{
+  padding-left: .2em;
+}
 .post-wrap:hover .inner-post-wrap {
   transform: scale(0);
 }
@@ -147,11 +151,15 @@ export default {
 #postGrid .post-wrap:nth-child(5) {
   grid-area: fifthPost;
 }
+
 #blogSection{
   padding-top: 5em;
   overflow: auto;
 }
 @media(max-width: 800px){
+  #blogSection .wide-container{
+    max-width: unset;
+  }
   #blogSection{
     padding-top: 4em;
   }
@@ -166,11 +174,15 @@ export default {
   }
 }
 @media(max-width: 500px){
+
   #postGrid{
     height: auto;
+    padding: 2em 0.2em;
+    margin: 0;
+    grid-gap: 0.6em;
   }
   #blogSection{
-    padding-top: 3em;
+    padding-top: 0em;
   }
   .wide-container{
     padding: 0;
@@ -193,6 +205,9 @@ export default {
   }
   .post-wrap .post-link {
     transform: scale(1);
+  }
+  .inner{
+    display: none;
   }
 }
 </style>

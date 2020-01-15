@@ -7,11 +7,11 @@
         <div id="offersText">Ассортимент «Дьюти Фри» насчитывает около 3000 алкогольных напитков со всего мира — от демократичных бестселлеров до мировых звезд, отмеченных престижными рейтингами. Благодаря тому, что мы напрямую сотрудничаем с ведущими импортерами, цены для вас мы постарались сделать максимально низкими.</div>
         <div id="offersWrap">
           <carousel
-            :autoplay="false"
+            :autoplay="true"
             :loop="false"
             :centerMode="true"
             :perPage="perPage"
-            :paginationEnabled="true"
+            :paginationEnabled="false"
             :navigationEnabled="true"
             :paginationColor="'#454545'"
           >
@@ -60,8 +60,7 @@ export default {
   position: relative;
   z-index: 200;
 }
-#offersSection .wide-container{
-}
+/* #offersSection .wide-container{} */
 #offersContent {
   display: flex;
   justify-content: space-between;
@@ -73,7 +72,7 @@ export default {
   overflow: hidden;
 }
 .VueCarousel-wrapper {
-  padding: 30px 15px;
+  padding: 1.2em 0.5em;
 }
 #offersText {
   flex: 1;
@@ -162,6 +161,11 @@ export default {
   }
   #offersBtn{
     border: 2px solid #222;
+  }
+  #offers-title{
+    background:#424141eb;
+    margin: auto;
+    padding: 1em;
   }
 }
 
