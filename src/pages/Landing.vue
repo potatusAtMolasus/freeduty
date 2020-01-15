@@ -76,6 +76,7 @@ main {
   justify-content: center;
   flex-direction: column;
 	position: relative;
+  min-height: 60vh;
 }
 
 #logo {
@@ -107,6 +108,7 @@ main {
 #iframe{
 	width: 100%;
 	z-index: 200;
+  min-height: 40vh;
 }
 @media (max-width: 500px) {
   #logo {

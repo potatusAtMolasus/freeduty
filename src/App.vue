@@ -117,13 +117,6 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-  // I can remember what was correct:
-  $fa-font-path: "font-awesome/fonts";
-  $fa-font-path: "~font-awesome/fonts";
-  $fa-font-path: "./node_modules/font-awesome/fonts";
-
-</style>
 <style>
 
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
