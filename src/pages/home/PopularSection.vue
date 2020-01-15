@@ -9,8 +9,10 @@
 
         <div id="popularItemsWrap">
           <carousel
-            :autoplay="true"
-            :loop="false"
+            :autoplay="false"
+            :scrollPerPage="false"
+            :loop="true"
+            :autoplayTimeout="2500"
             :centerMode="true"
             :perPage="perPage"
             :paginationEnabled="false"
@@ -87,6 +89,7 @@ export default {
 #popularItemsWrap {
   z-index: 300;
   margin-bottom: 10px;
+  width: 100%;
   /* box-shadow: #555 2px 2px 10px 5px; */
 }
 
@@ -181,6 +184,9 @@ export default {
 }
 
 @media(max-width: 500px){
+  #popuplarWrap{
+    display: block;
+  }
   .wide-container{
     padding: 0;
   }

@@ -8,12 +8,14 @@
         <div id="offersWrap">
           <carousel
             :autoplay="true"
-            :loop="false"
+            :loop="true"
+            :scrollPerPage="false"
             :centerMode="true"
             :perPage="perPage"
             :paginationEnabled="false"
             :navigationEnabled="true"
             :paginationColor="'#454545'"
+            :autoplayTimeout="2500"
           >
             <slide v-for="i in offers" :key="i.id">
               <item :item="i"></item>
@@ -70,9 +72,6 @@ export default {
   padding: 3em;
   flex: 3;
   overflow: hidden;
-}
-.VueCarousel-wrapper {
-  padding: 1.2em 0.5em;
 }
 #offersText {
   flex: 1;

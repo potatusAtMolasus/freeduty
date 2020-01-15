@@ -3,9 +3,9 @@
     <div class="wide-container">
       <div id="postGrid">
         <div class="post-wrap" v-for="post in posts" :key="post.id">
-          <div class="inner-post-wrap">
+          <!-- <div class="inner-post-wrap">
             <h2 class="title">{{ post.title }}</h2>
-          </div>
+          </div> -->
           <router-link class="post-link" :to="'/post/' + post.id">
             <img :src="getImgUrl(post.images[0])">
             <div class="inner">
@@ -50,11 +50,11 @@ export default {
 }
 
 #postGrid {
-  padding: 30px;
-  height: 60vh;
-  margin: 20px auto;
+  padding: 0;
+  height: 70vh;
+  margin: 0;
   display: grid;
-  grid-gap: 0.8em;
+  grid-gap: 0;
   grid-template-areas:
     "firstPost firstPost secondPost fourthPost"
     "firstPost firstPost secondPost fifthPost"
@@ -76,21 +76,26 @@ export default {
   left: 0;
   background: #333;
   opacity: 0.8;
-  transform: scale(0);
+  transform: scale(1);
   z-index: 100;
   display: flex;
   transition: all 0.4s ease-in-out;
   color: white;
+  overflow: hidden;
 }
 .inner {
-  margin: auto;
   text-decoration: none;
   text-transform: uppercase;
   z-index: 300;
   background: #CCCCCC99;
-  border: 2px solid #999;
+  /* border: 2px solid #999; */
   color:#333;
   padding: .6em;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  transition: all 0.2s;
 }
 .inner .title-wrap{
   margin: auto;
@@ -101,6 +106,8 @@ export default {
   z-index: 200;
   width: 100%;
   height: 100%;
+  transform: scale(1);
+  transition: all 0.2s;
 }
 .post-link p i {
   position: relative;
@@ -126,11 +133,17 @@ export default {
 .fa-arrow-right{
   padding-left: .2em;
 }
-.post-wrap:hover .inner-post-wrap {
+/* .post-wrap:hover .inner-post-wrap {
   transform: scale(0);
 }
 .post-wrap:hover .post-link {
   transform: scale(1);
+} */
+.post-wrap:hover img{
+  transform: scale(1.2);
+}
+.post-wrap:hover .inner {
+  opacity: 1;
 }
 .inner-post-wrap .title {
   margin: auto;
@@ -153,7 +166,7 @@ export default {
 }
 
 #blogSection{
-  padding-top: 5em;
+  padding: 5em 0;
   overflow: auto;
 }
 @media(max-width: 800px){
@@ -198,7 +211,7 @@ export default {
       "thridPost";
   }
   .post-wrap{
-    padding: 5rem;
+    padding: 8rem;
   }
   .post-wrap .inner-post-wrap {
     transform: scale(0);

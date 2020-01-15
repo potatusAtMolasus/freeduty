@@ -11,7 +11,7 @@ import notFound from "./pages/404.vue";
 import landing from "./pages/Landing.vue";
 
 const routes = [
-    { path: '/404', alias: '404', component: notFound},
+    { path: '/404', alias: '/404', component: notFound},
     { path: '*', alias: '/landing', name: 'landing', component: landing},
 
     { path: "/home", component: home },

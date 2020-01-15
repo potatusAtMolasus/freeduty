@@ -4,15 +4,18 @@
       <h2 blog-title>Блог</h2>
       <div id="postsWrap">
         <div class="post-wrap" v-for="post in posts" :key="post.id">
-          <div class="inner-post-wrap">
+          <!-- <div class="inner-post-wrap">
             <h2 class="title">{{ post.title }}</h2>
-          </div>
+          </div> -->
           <router-link class="post-link" :to="'/post/' + post.id">
-            <img :src="getImgUrl(post.image)">
-            <p>
-              Перейти
-              <i class="fa fa-arrow-right"></i>
-            </p>
+            <img :src="getImgUrl(post.images[0])">
+            <div class="inner">
+              <div class="title-wrap">
+                <span v-if="!isMobile">Перейти</span>
+                <span v-if="isMobile" class="title">{{ post.title }}</span>
+                <i class="fa fa-arrow-right"></i>
+              </div>
+            </div>
           </router-link>
         </div>
       </div>
@@ -102,16 +105,29 @@ main{
   left: 0;
   background: #333;
   opacity: 0.8;
-  transform: scale(0);
+  transform: scale(1);
   z-index: 100;
   display: flex;
   transition: all 0.4s ease-in-out;
   color: white;
+  overflow: hidden;
 }
-.post-link p {
-  margin: auto;
+.inner {
   text-decoration: none;
   text-transform: uppercase;
+  z-index: 300;
+  background: #CCCCCC99;
+  /* border: 2px solid #999; */
+  color:#333;
+  padding: .6em;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  transition: all 0.2s;
+}
+.inner .title-wrap{
+  margin: auto;
 }
 .post-link p i {
   position: relative;
@@ -120,5 +136,16 @@ main{
 }
 .post-link p:hover i {
   right: -0.6em;
+}
+.post-wrap:hover img{
+  transform: scale(1.2);
+}
+.post-wrap:hover .inner {
+  opacity: 1;
+}
+@media(max-width: 500px){
+  .container{
+    padding: 3em 0em;
+  }
 }
 </style>

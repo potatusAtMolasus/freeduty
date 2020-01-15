@@ -63,9 +63,13 @@ export default {
     };
   },
   methods:{
-    getImgUrl(pic) {  
-      return require('../assets/'+pic)
-    }
+    getImgUrl(pic) {
+      try{
+        return require('../assets/'+pic);
+      } catch(e) {
+        return '';
+      }
+    },
   }
 };
 </script>
@@ -89,7 +93,7 @@ a{
   box-shadow: 2px 3px 15px 3px #666;
 }
 .outer-wrap{
-  margin: 0 0.5em;
+  margin: 2em 0.5em;
   background: white;
 }
 .item-img-wrap{
@@ -127,7 +131,7 @@ p.title {
   position: relative;
 }
 .rating i{
-  color: gold;
+  color: red;
   font-size: 2em;
 }
 .rating span{

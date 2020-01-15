@@ -21,6 +21,7 @@
     </div>
     <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
     <modal></modal>
+    <loader></loader>
   </div>
 </template>
 
@@ -29,6 +30,8 @@ import MainHeader from "./components/layout/AppHeader.vue";
 import MainFooter from "./components/layout/AppFooter.vue";
 import Modal from "./components/Modal.vue";
 import axios from "axios";
+
+import Loader from "./components/Loader.vue";
 
 export default {
   name: "App",
@@ -109,11 +112,20 @@ export default {
   components: {
     MainHeader,
     MainFooter,
-    Modal
+    Modal,
+    Loader
   }
 };
 </script>
+<style lang="scss">
+  // I can remember what was correct:
+  $fa-font-path: "font-awesome/fonts";
+  $fa-font-path: "~font-awesome/fonts";
+  $fa-font-path: "./node_modules/font-awesome/fonts";
+
+</style>
 <style>
+
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 * {
   font-family: "Roboto", sans-serif;

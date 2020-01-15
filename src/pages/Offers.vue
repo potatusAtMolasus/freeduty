@@ -3,21 +3,21 @@
     <div class="container">
       <h2>Акции</h2>
       <div id="offerWrap">
-        <offer v-for="i in offers" :key="i.id" :offerData="i"></offer>
+        <item v-for="i in offers" :key="i.id" :item="i"></item>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import Offer from "@/components/Item.vue";
+import Item from "@/components/Item.vue";
 
 export default {
   props: {
     offers: Array
   },
   components: {
-    Offer
+    Item
   }
 };
 </script>
@@ -30,30 +30,31 @@ main {
   padding: 3em 1em;
 }
 #offerWrap {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-#offerWrap .offer-wrap.outer {
-  margin: 1em;
+@media(max-width: 992px){
+  #offerWrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
-#offerWrap .offer-wrap {
-  background: white;
-  box-shadow: none;
+@media(max-width: 768px){
+  #offerWrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
-#offerWrap .offer-wrap {
-  background: white;
-  box-shadow: none;
-  border: 1px solid red;
-}
-#offerWrap .offer-wrap:hover {
-  box-shadow: none;
-}
-#offerWrap .offer-wrap:hover .discount{
-  transform: none;
-}
-#offerWrap .offer-wrap:hover .discount img{
-  filter: none; 
+@media(max-width: 576px){
+  #offerWrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #offersPage .container {
+    padding: 3em 0em;
+  }
 }
 </style>
 <style scoped>

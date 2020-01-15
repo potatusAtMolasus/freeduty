@@ -104,9 +104,13 @@ export default {
     }
   },
   methods:{
-    getImgUrl(pic) {  
-      return require('../assets/'+pic)
-    }
+    getImgUrl(pic) {
+      try{
+        return require('../assets/'+pic);
+      } catch(e) {
+        return '';
+      }
+    },
   },
 }
 </script>
@@ -215,6 +219,9 @@ export default {
 @media(max-width: 500px){
   .item-wrap{
     flex-direction: column-reverse;
+  }
+  .content{
+    padding: 1em;
   }
   .image-wrap{
     margin: 0;
