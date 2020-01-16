@@ -1,5 +1,6 @@
 <template>
-  <div class="loader-back">
+  <!-- <div class="loader-back" :class="{'hidden': !show}"> -->
+  <div class="loader-back" :class="{'hidden': false}">
     <div class="svg-wrap">
       <svg class="svg-line" width="400" height="600" viewBox="0 0 100 100">
         <polyline
@@ -78,10 +79,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['show'],
+};
 </script>
 
 <style scoped>
+
 .loader-back {
   position: fixed;
   top: 0;
@@ -93,6 +97,10 @@ export default {};
   overflow: visible;
   display: flex;
 }
+.loader-back.hidden{
+  z-index: -100;
+  visibility: hidden;
+}
 .svg-wrap {
   margin: auto;
   position: relative;
@@ -103,16 +111,17 @@ svg {
 }
 .svg-line {
   overflow: visible;
+  left: 25px;
 }
 .svg-path {
   position: relative;
-  left: -26px;
+  left: 0px;
   overflow: hidden;
   /* overflow: visible; */
 }
 .svg-cubes {
   position: absolute;
-  left: 0;
+  left: 30px;
   animation: bounce 2s linear infinite 1s ;
 }
 
@@ -149,6 +158,23 @@ path {
   }
   100% {
     top: 0px;
+  }
+}
+@media (max-width: 576px) {
+  .svg-line{
+    width: 250px;
+    height: 450px;
+    left: 20px;
+  }
+  .svg-path{
+    width: 236px;
+    height: 350px;
+    left: 0px;
+  }
+  .svg-cubes{
+    width: 250px;
+    height: 350px;
+    left: 30px;
   }
 }
 </style>

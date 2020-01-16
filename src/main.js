@@ -9,6 +9,7 @@ Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 Vue.use(VueCarousel);
+
 Vue.directive('click-outside', {
   bind: function (el, binding, vNode) {
     // Provided expression must evaluate to a function.
@@ -39,8 +40,6 @@ Vue.directive('click-outside', {
 
   }
 })
-
-
 
 const router = new VueRouter({ routes });
 

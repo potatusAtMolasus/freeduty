@@ -21,7 +21,7 @@
     </div>
     <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
     <modal></modal>
-    <loader></loader>
+    <loader :show="!loaded"></loader>
   </div>
 </template>
 
@@ -29,9 +29,8 @@
 import MainHeader from "./components/layout/AppHeader.vue";
 import MainFooter from "./components/layout/AppFooter.vue";
 import Modal from "./components/Modal.vue";
-import axios from "axios";
-
 import Loader from "./components/Loader.vue";
+import axios from "@/js/AxiosInstance.js";
 
 export default {
   name: "App",
@@ -67,23 +66,48 @@ export default {
 
       foundData: [],
       activeFilters: { category: '' },
+      loaded: false,
     };
   },
   async mounted() {
+    axios.interceptors.request.use(config => {
+      console.log('request');
+      this.loaded = false;
+      return config;
+    })
+
+    axios.interceptors.response.use(response => {
+      console.log('response');
+
+      this.loaded = true;
+      return response;
+    })
+
+    this.$router.beforeResolve((to, from, next) => {
+      console.log('beforeResolve');
+      
+      this.loaded = false;
+      next()
+    })
+
+    this.$router.afterEach(() => {
+      console.log('afterEach');
+
+      this.loaded = true;
+    })
+
     window.addEventListener("scroll", this.updateScroll);
 
-    this.categories = (await axios.post(
-      "http://127.0.0.1:5000/get-categories"
-    )).data;
-    this.offers = (await axios.post("http://127.0.0.1:5000/get-offers")).data;
-    this.popular = (await axios.post("http://127.0.0.1:5000/get-popular")).data;
-    this.posts = (await axios.post("http://127.0.0.1:5000/get-posts")).data;
-    this.foundData = (await axios.post("http://127.0.0.1:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
+    this.categories = (await axios.post("get-categories")).data;
+    this.offers = (await axios.post("get-offers")).data;
+    this.popular = (await axios.post("get-popular")).data;
+    this.posts = (await axios.post("get-posts")).data;
+    this.foundData = (await axios.post("find", { query: this.activeQuery, ...this.activeFilters })).data;
   },
   methods: {
     async search(query) {
       this.activeQuery = query;
-      this.foundData = (await axios.post("http://127.0.0.1:5000/find", { query, ...this.activeFilters })).data;
+      this.foundData = (await axios.post("find", { query, ...this.activeFilters })).data;
       this.$router.push({ path: '/search/0/' });
     },
     updateScroll() {
@@ -91,7 +115,7 @@ export default {
     },
     async setFilters(newFilters){
       this.activeFilters = newFilters;
-      this.foundData = (await axios.post("http://127.0.0.1:5000/find", { query: this.activeQuery, ...this.activeFilters })).data;
+      this.foundData = (await axios.post("find", { query: this.activeQuery, ...this.activeFilters })).data;
       // this.router.push({ path: 'search' })
     }
   },
@@ -113,7 +137,7 @@ export default {
     MainHeader,
     MainFooter,
     Modal,
-    Loader
+    Loader,
   }
 };
 </script>
