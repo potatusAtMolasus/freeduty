@@ -101,7 +101,7 @@ main {
 #postWrap {
   margin: 5% auto;
   background: #fff;
-  width: 800px;
+  /*width: 800px;*/
 }
 .imageWrap img {
   width: 100%;

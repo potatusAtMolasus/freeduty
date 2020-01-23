@@ -42,7 +42,7 @@
       </div>
 
       <div id="franchaise" class="container">
-        <a class="franchaise-wrap" href="#">
+        <a class="franchaise-wrap" href="http://duty-free-franchise.info/">
           <p>Франшиза</p>
         </a>
       </div>

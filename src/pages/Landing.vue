@@ -4,13 +4,13 @@
       <div id="landingWrapper">
         <div id="logo">
           <div id="logoWrap">
-            <img src="../assets/logo.png" id="logo" />
+            <img src="../assets/logo.png"/>
           </div>
         </div>
         <div id="contacts">
-          <p id="phone">
+          <p id="phone" @click="phoneMe">
             <span>
-              <i class="fa fa-phone"></i> +7 989 163-88-33
+              <i class="fa fa-phone"></i>+7 989 163-88-33
             </span>
           </p>
           <p id="address">
@@ -34,7 +34,12 @@
 
 <script>
 export default {
-  mounted() {}
+  mounted() {},
+  methods: {
+    phoneMe() {
+      window.location.href = 'tel:+79891638833';
+    },
+  }
 };
 </script>
 
@@ -80,10 +85,9 @@ main {
 
 #logo {
   width: 450px;
-	margin: 3em auto auto auto;
+	margin: 0em auto auto auto;
 }
 #logoWrap {
-  margin: 10px;
   width: 100%;
 }
 #logoWrap img {
@@ -93,16 +97,18 @@ main {
   color: white;
   display: flex;
   flex-direction: column;
-	width: 450px;
-	margin: 4em auto 5em auto;
+  margin: 0 auto 2em auto;
+  z-index: 10000;
 }
 #phone,
 #address {
   margin: 3px;
   font-size: 2em;
-  text-shadow: red 2px 2px 8px;
+  text-shadow: red 0 1px 10px;
 }
-/* #phone{} */
+#phone {
+  border-bottom: 2px solid rgba(255, 0, 0, 0.50);
+}
 /* #address{} */
 #iframe{
 	width: 100%;
