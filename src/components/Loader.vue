@@ -1,158 +1,180 @@
 <template>
-  <div class="loader-back">
-    <!-- <svg width="200" height="200" viewBox="0 0 100 100"> -->
-      <!-- <polyline
-        class="line-cornered stroke-still"
-        points="0,0 100,0 100,100"
-        stroke-width="10"
-        fill="none"
-      /> -->
-      <!-- <polyline
-        class="line-cornered stroke-still"
-        points="0,0 0,100 100,100 100,0 0,0"
-        stroke-width="10"
-        fill="none"
-      /> -->
-      <!-- <polyline
-        class="line-cornered stroke-animation"
-        points="0,0 100,0 100,100"
-        stroke-width="10"
-        fill="none"
-      /> -->
-      <!-- <polyline
-        class="line-cornered stroke-animation"
-        points="0,0 0,100 100,100 100,0 0,0"
-        stroke-width="10"
-        fill="none"
-      /> -->
-
-
-      <!-- <polyline
-        class="line-cornered stroke-animation"
-        points="15,0 -10,0 5,100 95,100 110,0 0,0"
-        stroke-width="5"
-        fill="none"
-        stroke="#333"
-      /> -->
-      <!-- <path class="path"
-            d="M-5,30
-              A25,50 0 0,1 20,30
-              A25,50 0 0,0 40,30
-              A25,50 0 0,1 60,30
-              A25,50 0 0,0 80,30
-              A25,50 0 0,1 104,30
-              L95,100
-              L5,100
-              L-5,30
-              A25,50 0 0,1 20,30"
-            style="fill: none"
-            stroke="#333"
-            stroke-width="5" />  -->
-      <!-- <path class="path"
-            d="M-5,30
-              L95,100"
-            style="fill: none"
-            stroke="#333"
-            stroke-width="5" />  -->
-
-
-    <!-- </svg> -->
+  <!-- <div class="loader-back" :class="{'hidden': !show}"> -->
+  <div class="loader-back" :class="{'hidden': !show}">
+    <div class="svg-wrap">
+      <svg class="svg-line" width="400" height="600" viewBox="0 0 100 100">
+        <polyline
+          class="line-cornered stroke-animation"
+          points="15,0 -10,0 5,90 75,90 90,0 0,0"
+          stroke-width="2"
+          fill="none"
+          stroke="red"
+        />
+      </svg>
+      <svg class="svg-path" width="370" height="500" viewBox="0 0 100 100">
+        <path
+          class="path"
+          width="200"
+          d="M0,35
+          A25,50 0 0,1 20,35
+          A25,50 0 0,0 40,35
+          A25,50 0 0,1 60,35
+          A25,50 0 0,0 80,35
+          A25,50 0 0,1 100,35
+          A25,50 0 0,0 120,35
+          A25,50 0 0,1 140,35"
+          style="fill: none"
+          stroke="red"
+          stroke-width="2"
+        />
+      </svg>
+      <svg class="svg-cubes" width="400" height="500" viewBox="0 0 100 100">
+        <rect
+          class="first-rect"
+          x="50"
+          y="50"
+          width="10"
+          height="10"
+          stroke="red"
+          stroke-width="2"
+          fill="none"
+          rx="1"
+        />
+        <rect
+          class="second-rect"
+          x="70"
+          y="80"
+          width="12"
+          height="12"
+          stroke="red"
+          stroke-width="2"
+          fill="none"
+          rx="1"
+        />
+        <rect
+          class="third-rect"
+          x="20"
+          y="80"
+          width="10"
+          height="10"
+          stroke="red"
+          stroke-width="2"
+          fill="none"
+          rx="1"
+        />
+        <rect
+          class="fourth-rect"
+          x="10"
+          y="45"
+          width="6"
+          height="6"
+          stroke="red"
+          stroke-width="1.3"
+          fill="none"
+          rx="1"
+        />
+      </svg>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['show'],
+};
 </script>
 
 <style scoped>
-svg:hover path{
-  d: path("M5,2 Q 8,5 5,8");
-  /* d: path("M -5 30 A 25 50 0 0 1 20 30 A25 50 0 0 0 40 30 A 25 50 0 0 1 60 30 A 25 50 0 0 0 80 30 A 25 50 0 0 1 104 30 L 95 100 L5 100 L -5 30 A 25 50 0 0 1 20 30"); */
 
-}
-/* .path{
-  d: path("M -5 30 A 25 50 0 0 1 20 30 A25 50 0 0 0 40 30 A 25 50 0 0 1 60 30 A 25 50 0 0 0 80 30 A 25 50 0 0 1 104 30 L 95 100 L5 100 L -5 30 A 25 50 0 0 1 20 30");
-} */
-.path.animate{
-  animation: stroke-spacing 2s ease-in, stroke-color 8s linear;
-  animation-iteration-count: infinite;
-  animation-delay: 0;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  transform-origin: center center;
-}
-.circle{
-  transform: scale(1.25);
-}
-.circle.animate{
-  animation: stroke-spacing 2s ease-in, stroke-color 8s linear;
-  animation-iteration-count: infinite;
-  animation-delay: 0;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  transform-origin: center center;
-}
-
-.loader-back{
+.loader-back {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
   background: #111;
   z-index: 500;
   overflow: visible;
+  display: flex;
 }
-
-svg {
-  overflow: visible;
-
+.loader-back.hidden{
+  z-index: -100;
+  visibility: hidden;
+}
+.svg-wrap {
   margin: auto;
-  /* -webkit-transform: rotate(-45deg) scale(1); */
+  position: relative;
+  transform: rotate(0.75);
+}
+svg {
+  position: absolute;
+}
+.svg-line {
+  overflow: visible;
+  left: 25px;
+}
+.svg-path {
+  position: relative;
+  left: 0px;
+  overflow: hidden;
+  /* overflow: visible; */
+}
+.svg-cubes {
+  position: absolute;
+  left: 30px;
+  animation: bounce 2s linear infinite 1s ;
 }
 
-.stroke-still {
-  stroke: #232323;
+path {
+  position: relative;
+  animation: wiggle 2s linear infinite;
 }
-
-@keyframes stroke-spacing {
+.first-rect{
+  transform: translate(10px, -10px) rotate(9deg);
+}
+.second-rect{
+  transform: translate(7px, -20px) rotate(20deg);
+}
+.third-rect{
+  transform: translate(80px, 10px) rotate(56deg);
+}
+.fourth-rect{
+  transform: translate(40px, 10px) rotate(49deg);
+}
+@keyframes wiggle {
   0% {
-    stroke-dasharray: 0 400;
-  }
-  45% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 400 400;
-  }
-  90% {
-    stroke-dashoffset: -400;
-    stroke-dasharray: 400 400;
+    transform: translate(1px, 0px);
   }
   100% {
-    stroke-dashoffset: -400;
-    stroke-dasharray: 400 400;
+    transform: translate(-39px, 0px);
   }
 }
-@keyframes stroke-color {
-  0%  { stroke: #3498DB; }
-  24% { stroke: #643232; }
-  25% { stroke: #327864; }
-  49% { stroke: #327864; }
-  50% { stroke: #32326e; }
-  74% { stroke: #32326e; }
-  75% { stroke: #78325a; }
-  99% { stroke: #78325a; }
+@keyframes bounce {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 20px;
+  }
+  100% {
+    top: 0px;
+  }
 }
-@keyframes fill-color {
-  0%  { fill: #3498DB; }
-  24% { fill: #643232; }
-  25% { fill: #327864; }
-  49% { fill: #327864; }
-  50% { fill: #32326e; }
-  74% { fill: #32326e; }
-  75% { fill: #78325a; }
-  99% { fill: #78325a; }
+@media (max-width: 576px) {
+  .svg-line{
+    width: 250px;
+    height: 450px;
+    left: 20px;
+  }
+  .svg-path{
+    width: 236px;
+    height: 350px;
+    left: 0px;
+  }
+  .svg-cubes{
+    width: 250px;
+    height: 350px;
+    left: 30px;
+  }
 }
 </style>

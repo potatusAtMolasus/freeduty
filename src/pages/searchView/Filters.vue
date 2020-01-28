@@ -14,7 +14,7 @@
 
 <script>
 import Filter from "@/components/Filter.vue";
-import axios from "axios";
+import axios from "@/js/AxiosInstance.js";
 
 export default {
   data() {
@@ -40,8 +40,7 @@ export default {
     },
   },
   async mounted() {
-    const filters = (await axios.post("http://127.0.0.1:5000/get-filters"))
-      .data;
+    const filters = (await axios.post("get-filters")).data;
     this.categories = filters.categories;
     this.brands = filters.brands;
     this.countries = filters.countries;

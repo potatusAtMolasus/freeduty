@@ -30,11 +30,11 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/js/AxiosInstance.js";
 
 export default {
   async created() {
-    this.showWarning = !(await axios.post("http://127.0.0.1:5000/confirm-age")).data;
+    this.showWarning = !(await axios.post("confirm-age")).data;
   },
   data() {
     return {
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async ageConfirmed(){
-      await axios.post("http://127.0.0.1:5000/age-confirmed");
+      await axios.post("age-confirmed");
       this.showWarning = false;
     }
   }
