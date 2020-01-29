@@ -74,6 +74,10 @@ export default {
   flex: 1;
 }
 
+#logo {
+  max-width: 180px;
+}
+
 #headerLinks {
   display: flex;
   justify-content: left;

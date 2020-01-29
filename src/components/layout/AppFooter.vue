@@ -31,11 +31,11 @@
                   <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
               </li> -->
+              <a href="https://www.instagram.com/dutyfree_sochi/">
               <li>
-                <a href="#">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
               </li>
+              </a>
             </ul>
           </div>
         </div>
@@ -48,12 +48,11 @@
       </div>
 
       <div id="rights" class="container">
-        <p>Duty Free © Все права защищены 2019</p>
+        <p>Duty Free © Все права защищены 2020</p>
       </div>
     </div>
     <div id="footerMessage">
-      <!-- <p>Чрезмерное употребление алкоголя вредит вашему здоровью</p> -->
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, amet!</p>
+      <p>ЧРЕЗМЕРНОЕ УПОТРЕБЛЕНИЕ АЛКОГОЛЯ ВРЕДИТ ВАШЕМУ ЗДОРОВЬЮ</p>
     </div>
   </footer>
 </template>
@@ -116,9 +115,10 @@ li {
   color: rgba(167, 146, 129, 0.6);
 }
 #social-buttons li {
+  font-size: 100px;
   list-style-type: none;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   line-height: 50px;
   padding: 1%;
   border: 1px solid rgba(167, 146, 129, 0.4);

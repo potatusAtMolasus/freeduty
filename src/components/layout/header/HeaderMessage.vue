@@ -1,8 +1,8 @@
 <template>
   <div id="HeaderMessage" :class="{'no-height': scrollPosition>0}">
-    <p>Tommodi repellat. Voluptatum corporis consequuntur, fugiat quae libero, assumend porro ab</p>
-    <p>A labore explicabo aliquam mollitia similique 8:12 safa 12:23 quasi debitis rem quod nobis. Consequuntur, quisquam.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad facilis voluptates deserunt voluptate</p>
+    <p>Ресурс <a href="http://dutyfreesochi.ru/">dutyfreesochi.ru</a> не занимается дистанционной реализацией алкогольной продукции.<br>
+      Товары, представленные в сети DUTY FREE можно приобрести с 8:00 до 23:00 только в специализированном магазине.<br>
+      Доставка алкогольной продукции не предусмотрена!</p>
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
     font-size: 0.8em;
   }
   #HeaderMessage {
-    padding: .1em;
+    padding: 1em;
     height: auto;
   }
 }
@@ -59,7 +59,7 @@ export default {
     font-size: 0.7em;
   }
   #HeaderMessage {
-    padding: .1em;
+    padding: 1em;
     height: auto;
   }
 }
