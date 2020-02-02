@@ -57,6 +57,11 @@ export default {
       this.$emit('input', this.checkedOptions);
     },
   },
+  methods: {
+    reset(){
+      this.checkedOptions = [];
+    }
+  },
 };
 </script>
 

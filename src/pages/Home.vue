@@ -3,7 +3,7 @@
     <main>
       <banner></banner>
       <offers-section :isMobile="isMobile" :offers="offers"></offers-section>
-      <popular-section :isMobile="isMobile" :popularItems="popular"></popular-section>
+      <popular-section :isMobile="isMobile" :width="width" :popularItems="popular"></popular-section>
       <blog-section :isMobile="isMobile" :posts="posts.slice(0, 5)"></blog-section>
     </main>
   </div>
@@ -21,6 +21,7 @@ export default {
     popular: Array,
     posts: Array,
     isMobile: Boolean,
+    width: Number,
   },
   components: {
     Banner,

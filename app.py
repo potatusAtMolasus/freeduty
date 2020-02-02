@@ -343,6 +343,10 @@ def get_filters():
             {'value': 'usa', 'label': 'США'},
             {'value': 'ukraine', 'label': 'Украина'}
         ],
+        'price': {
+            'lowest': 100,
+            'highiest': 5000
+        }
     })
 
 if __name__ == '__main__':

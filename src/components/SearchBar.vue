@@ -2,34 +2,31 @@
   <div id="searchWrap" v-click-outside="()=>showFull=searchQuery.length">
 
 
-      <div :class="{searchBox: true, showFull: showFull}">
-        <div class="field">
-          <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" placeholder="Поиск" />
-          <button class="searchButton" @click="searchClicked">
-            <i v-if="showFull" class="fa fa-arrow-right" aria-hidden="true"></i>
-            <i v-if="!showFull" class="fa fa-search" aria-hidden="true"></i>
-          </button>
-        </div>
+    <div :class="{searchBox: true, showFull: showFull}">
+      <div class="field">
+        <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" placeholder="Поиск" />
+        <button class="searchButton" @click="searchClicked">
+          <i v-if="showFull" class="fa fa-arrow-right" aria-hidden="true"></i>
+          <i v-if="!showFull" class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
 
 
-        <div id="dropDownList">
-          <div v-for="item in dropdownList" :key="item.id" class="list-item">
-            <div class="item-wrap">
+      <div id="dropDownList" :class="{'show': showFull}">
+        <div v-for="item in dropdownList" :key="item.id" class="list-item">
+          <router-link :to="'/item/' + item.id">
+
+            <div class="item-wrap" @click="searchQuery='';showFull=false;dropdownList=[]">
               <span class="image">
                 <img :src="getImgUrl(item.image)" :alt="item.title">
               </span>
               <span class="title">{{item.title}}</span>
               <span class="price">{{item.sale ? item.salePrice : item.price}}</span>
-
             </div>
-          </div>
+          </router-link>  
         </div>
-
-
       </div>
-
-
-
+    </div>
   </div>
 </template>
 
@@ -59,6 +56,7 @@ export default {
     typing(){
       clearTimeout(this.timeout);
       if (this.searchQuery.length < 4){
+        this.dropdownList = []
         return;
       }
       var self = this;
@@ -79,6 +77,7 @@ export default {
 };
 </script>
 <style scoped>
+
 #searchWrap {
   position: relative;
   width: 320px;
@@ -152,11 +151,18 @@ button:active, button:focus, a:active, a:focus {
   z-index: 50;
   overflow: hidden;
   top: 0px;
+  max-height: 0;
+  transition: all .5s linear; 
+  width: 100%;
+  opacity: 0;
+}
+#dropDownList.show{
+  max-height: 1000px;
+  opacity: 1;
 }
 .list-item{
   height: 80px;
-  width: 95%;
-  margin: auto;
+  width: 100%;
   border-bottom: 1px solid #888;
 }
 .item-wrap{
@@ -164,16 +170,33 @@ button:active, button:focus, a:active, a:focus {
   justify-content: space-between;
   width: 100%;
   height: 80px;
-  padding: 5px 3px;
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
+.item-wrap:hover{
+  background: #888c;
+}
+
 .image{
-  width: 20%;
+  width: 50%;
 }
 .image img{
   width: 100%;
 }
-/* .title{} */
-/* .price{} */
+.title{
+  padding: 0 10px;
+  line-height: 1.5em;
+  height: 3em;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+}
+.price{
+  color: #a90000;
+}
 
 
 @media screen and (max-width: 620px) {

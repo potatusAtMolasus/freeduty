@@ -1,10 +1,12 @@
 <template>
   <div class="combo-wrap">
     <div @click="toggle=!toggle" class="combo-top">
-      <span>{{ label }}</span>
-      <span class="toggle">
-        <i :class="{rotate: toggle}" class="fa fa-chevron-down"></i>
-      </span>
+      <div>
+        <span>{{ label }}</span>
+        <span class="toggle">
+          <i :class="{rotate: toggle}" class="fa fa-chevron-down"></i>
+        </span>
+      </div>
     </div>
     <div :class="{'combo-options': true, 'no-height': !toggle}">
       <div v-for="option in options" :key="option.value" class="combo-option" @click="pick(option)">
@@ -75,9 +77,9 @@ export default {
 }
 .combo-top {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   width: 100%;
-  padding: 1em 1.1em 1em 5em;
+  padding: 1em;
   background: #efefef;
   box-sizing: border-box;
   color: #aaa;
