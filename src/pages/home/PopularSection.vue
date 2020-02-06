@@ -54,13 +54,13 @@ export default {
   },
   computed:{
     perPage(){    
-      let x;
-      if (this.width > 2080) x = 9;
-      else if (this.width > 1680) x = 7;
-      else if (this.width > 1400) x = 5;
-      else if (this.width > 1200) x = 4;
-      else if (this.width > 900) x = 3;
-      return this.isMobile ? 2 : x;
+      let perPage;
+      if (this.width > 2080) perPage = 9;
+      else if (this.width > 1680) perPage = 7;
+      else if (this.width > 1400) perPage = 5;
+      else if (this.width > 1200) perPage = 4;
+      else if (this.width > 900) perPage = 3;
+      return this.isMobile ? 2 : perPage;
     }
   }
 };

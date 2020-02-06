@@ -1,5 +1,5 @@
 <template>
-  <!-- <div class="loader-back" :class="{'hidden': !show}"> -->
+  <!-- <div class="loader-back" :class="{'hidden': false}"> -->
   <div class="loader-back" :class="{'hidden': !show}">
     <div class="svg-wrap">
       <svg class="svg-line" width="400" height="600" viewBox="0 0 100 100">

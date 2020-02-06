@@ -1,7 +1,14 @@
 <template>
-  <main>
+  <main id="blogPage" :class="{'padded-top': scrollPosition !== 0}">
     <div class="container">
-      <h2 blog-title>Блог</h2>
+
+      <div class="title-section">
+        <div class="title-wrap">
+          <h2 class="title">Блог</h2>
+          <span class="line"></span>
+        </div>
+      </div>
+      
       <div id="postsWrap">
         <div class="post-wrap" v-for="post in posts" :key="post.id">
           <!-- <div class="inner-post-wrap">
@@ -27,6 +34,7 @@
 export default {
   props:{
     posts: Array,
+    scrollPosition: Number
   },
   methods:{
     getImgUrl(pic) {
@@ -47,13 +55,46 @@ main{
 }
 .container{
   background-color: #999;
-  padding: 3em 1em;
+  padding: 3em 0em;
+}
+#blogPage.padded-top .container{
+  padding-top: 15em;
 }
 #postsWrap{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 1em;
 }
+.title-section {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+.title-wrap {
+  background: black;
+  direction: inline-block;
+  padding: 0.25em 18em 0.25em 6em;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  position: relative;
+  left: -1em;
+  display: flex;
+}
+.title {
+  color: #ccc;
+}
+.line {
+  background: red;
+  height: 100%;
+  width: 6em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%);
+}
+
 .post-wrap {
   flex: 1 0 350px;
   height: 350px;
@@ -142,6 +183,11 @@ main{
 }
 .post-wrap:hover .inner {
   opacity: 1;
+}
+@media(max-width: 776px){
+  #blogPage.padded-top .container {
+    padding-top: 3em;
+  }
 }
 @media(max-width: 500px){
   .container{
