@@ -215,4 +215,16 @@ i.rotate {
 #dropdown:hover i {
   top: 0.2em;
 }
+
+@media (max-width: 1500px) {
+  #headerLinks .btn1{
+    margin: 0;
+  }
+}
+@media (max-width: 1200px) {
+  #headerLinks .btn1{
+    padding: 0.5em;
+  }
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="searchView" :class="{'not-top': scrollPosition}">
     <filters @filterChange="filterChange"></filters>
-    <found-data-view :data="foundData"></found-data-view>
+    <found-data-view @find="find" :data="foundData"></found-data-view>
   </div>
 </template>
 
@@ -17,6 +17,9 @@ export default {
   methods:{
     filterChange(newFilters){
       this.$emit("filtersChanged", newFilters);
+    },
+    find(query){
+      this.$emit('find', query);
     },
   },
   components:{

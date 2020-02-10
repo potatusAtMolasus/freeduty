@@ -4,7 +4,7 @@
 
     <div :class="{searchBox: true, showFull: showFull}">
       <div class="field">
-        <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" placeholder="Поиск" />
+        <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" @keyup.enter="find" placeholder="Поиск" />
         <button class="searchButton" @click="searchClicked">
           <i v-if="showFull" class="fa fa-arrow-right" aria-hidden="true"></i>
           <i v-if="!showFull" class="fa fa-search" aria-hidden="true"></i>
@@ -62,9 +62,11 @@ export default {
       var self = this;
       // this.timeout = setTimeout(() => self.$emit('search', self.searchQuery), 1000);
       this.timeout = setTimeout(() => self.find(self.searchQuery), 1000);
+      this.$router.push({ path: "/search/" });
     },
     async find(query){
       this.dropdownList = (await axios.post("find", { query, category: '' })).data;
+      this.$router.push({ path: "/search/" });
     },
     getImgUrl(pic) {
       try{
@@ -125,6 +127,12 @@ export default {
   transition: 0.4s;
   outline: none;
   z-index: 100;
+  position: absolute;
+  right: .75em;
+}
+.showFull.searchBox .searchButton{
+  position: absolute;
+  right: .5em;
 }
 button:active, button:focus, a:active, a:focus {
   outline: none;
@@ -139,8 +147,9 @@ button:active, button:focus, a:active, a:focus {
   font-size: 16px;
   transition: 0.4s;
   line-height: 40px;
-  width: 0px;
+  width: 40px;
   z-index: 100;
+  display: flex;
 }
 
 #dropDownList{

@@ -18,6 +18,7 @@
         :foundData="foundData"
         :width="width"
         @filtersChanged="setFilters"
+        @find="search"
       />
     </div>
     <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
@@ -111,7 +112,6 @@ export default {
         query,
         ...this.activeFilters
       })).data;
-      this.$router.push({ path: "/search/0/" });
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
@@ -134,6 +134,8 @@ export default {
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
         )
+        || 
+        this.width < 900
       ) {
         return true;
       } else {
