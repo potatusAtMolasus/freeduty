@@ -35,7 +35,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 #contactsPage {
   background-image: url("../assets/patternBlack.png");
 }
