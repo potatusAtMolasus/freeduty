@@ -62,9 +62,8 @@ export default {
       var self = this;
       // this.timeout = setTimeout(() => self.$emit('search', self.searchQuery), 1000);
       this.timeout = setTimeout(() => self.find(self.searchQuery), 1000);
-      this.$router.push({ path: "/search/" });
     },
-    async find(query){
+    async find(query){      
       this.dropdownList = (await axios.post("find", { query, category: '' })).data;
       this.$router.push({ path: "/search/" });
     },

@@ -19,6 +19,7 @@ const routes = [
     { path: "/contacts", component: contacts },
 
     { path: "/search/:id", component: searchPage },
+    { path: "/search/", component: home },
     { path: "/post/:id", component: postPage },
     { path: "/item/:id", component: itemPage }
 ];

@@ -155,6 +155,13 @@ export default {
 }
 
 @media(max-width: 800px){
+    #popuplarWrap{
+    display: block;
+  }
+  #popularText{
+    width: 100%;
+    box-sizing: border-box;
+  }
   #popularItemsWrap {
     border: none;
     margin-bottom: 10px;

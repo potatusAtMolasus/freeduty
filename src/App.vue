@@ -74,6 +74,7 @@ export default {
   },
   async mounted() {
     window.addEventListener('resize', this.updateWidth);
+    this.updateWidth();
 
     axios.interceptors.request.use(config => {
       this.loaded = false;
