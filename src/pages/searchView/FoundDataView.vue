@@ -18,7 +18,7 @@
       <div class="selector-wrap">
         <span>Сортировать по</span>
         <div>
-          <combobox :options="comboOptions" v-model="sortBy"></combobox>
+          <combobox placeholder="Сортировать по" :options="comboOptions" v-model="sortBy"></combobox>
         </div>
       </div>
     </div>
@@ -208,12 +208,33 @@ main {
 #pageSelector .page-num:hover {
   background: red;
 }
+@media (max-width: 1000px) {
+  #wrap {
+    padding: 1em;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 700px) {
+  #wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+  .search-input{
+    width: 13em;
+  }
+  .selector-wrap{
+    width: 10em;
+  }
+  .selector-wrap span{
+    width: 20em;
+    font-size: .85em;
+    display: none;
+  }
+}
 @media (max-width: 500px) {
   main {
     margin: 0;
   }
   #wrap {
-    padding: 1em;
     grid-template-columns: 1fr 1fr;
   }
   .selector-wrap span {

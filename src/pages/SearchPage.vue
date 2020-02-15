@@ -14,6 +14,9 @@ export default {
     scrollPosition: Number,
     foundData: Array,
   },
+  mounted(){
+    this.$emit('find', '');
+  },
   methods:{
     filterChange(newFilters){
       this.$emit("filtersChanged", newFilters);

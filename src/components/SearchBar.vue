@@ -1,29 +1,32 @@
 <template>
   <div id="searchWrap" v-click-outside="()=>showFull=searchQuery.length">
-
-
     <div :class="{searchBox: true, showFull: showFull}">
       <div class="field">
-        <input v-model="searchQuery" class="searchInput" @keyup="typing" type="text" @keyup.enter="find" placeholder="Поиск" />
+        <input
+          v-model="searchQuery"
+          class="searchInput"
+          @keyup="typing"
+          type="text"
+          @keyup.enter="enterClicked"
+          placeholder="Поиск"
+        />
         <button class="searchButton" @click="searchClicked">
           <i v-if="showFull" class="fa fa-arrow-right" aria-hidden="true"></i>
           <i v-if="!showFull" class="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
 
-
       <div id="dropDownList" :class="{'show': showFull}">
         <div v-for="item in dropdownList" :key="item.id" class="list-item">
           <router-link :to="'/item/' + item.id">
-
             <div class="item-wrap" @click="searchQuery='';showFull=false;dropdownList=[]">
               <span class="image">
-                <img :src="getImgUrl(item.image)" :alt="item.title">
+                <img :src="getImgUrl(item.image)" :alt="item.title" />
               </span>
               <span class="title">{{item.title}}</span>
               <span class="price">{{item.sale ? item.salePrice : item.price}}</span>
             </div>
-          </router-link>  
+          </router-link>
         </div>
       </div>
     </div>
@@ -31,7 +34,7 @@
 </template>
 
 <script>
-import axios from "@/js/AxiosInstance.js";
+import axios from "axios";
 
 export default {
   name: "SearchBar",
@@ -40,45 +43,54 @@ export default {
       searchQuery: "",
       showFull: false,
       timeout: null,
-      dropdownList: [],
+      dropdownList: []
     };
   },
   methods: {
-    // async 
+    // async
     searchClicked() {
-      if (!this.showFull){
+      if (!this.showFull) {
         this.showFull = true;
-      }
-      else{
-        this.$emit('search', this.searchQuery);
+      } else {
+        this.showFull = false;
+        this.dropdownList = [];
+        this.$emit("search", this.searchQuery);
+        this.$router.push({ path: "/search/all" });
       }
     },
-    typing(){
+    typing() {
       clearTimeout(this.timeout);
-      if (this.searchQuery.length < 4){
-        this.dropdownList = []
+      if (this.searchQuery.length < 4) {
+        this.dropdownList = [];
         return;
       }
       var self = this;
       // this.timeout = setTimeout(() => self.$emit('search', self.searchQuery), 1000);
       this.timeout = setTimeout(() => self.find(self.searchQuery), 1000);
     },
-    async find(query){      
-      this.dropdownList = (await axios.post("find", { query, category: '' })).data;
-      this.$router.push({ path: "/search/" });
+    enterClicked() {
+      this.find(this.searchQuery);
+      this.$router.push({ path: "/search/all" });
+      this.showFull = false;
+      this.dropdownList = [];
+    },
+    async find(query) {
+      this.dropdownList = (
+        await axios.post("http://127.0.0.1:5000/find", { query, category: "" })
+      ).data;
+      this.$emit("search", query);
     },
     getImgUrl(pic) {
-      try{
-        return require('../assets/'+pic);
-      } catch(e) {
-        return '';
+      try {
+        return require("../assets/" + pic);
+      } catch (e) {
+        return "";
       }
-    },
+    }
   }
 };
 </script>
 <style scoped>
-
 #searchWrap {
   position: relative;
   width: 320px;
@@ -91,7 +103,7 @@ export default {
   border-radius: 40px;
   position: relative;
 }
-.field{
+.field {
   height: 40px;
   z-index: 100;
   height: 40px;
@@ -101,7 +113,8 @@ export default {
   position: relative;
 }
 
-.showFull .field, .showFull.searchBox{
+.showFull .field,
+.showFull.searchBox {
   background: #2f3640;
 }
 .showFull.searchBox .searchInput {
@@ -127,13 +140,16 @@ export default {
   outline: none;
   z-index: 100;
   position: absolute;
-  right: .75em;
+  right: 0.75em;
 }
-.showFull.searchBox .searchButton{
+.showFull.searchBox .searchButton {
   position: absolute;
-  right: .5em;
+  right: 0.5em;
 }
-button:active, button:focus, a:active, a:focus {
+button:active,
+button:focus,
+a:active,
+a:focus {
   outline: none;
 }
 .searchInput {
@@ -151,7 +167,7 @@ button:active, button:focus, a:active, a:focus {
   display: flex;
 }
 
-#dropDownList{
+#dropDownList {
   position: absolute;
   background-color: #ccccccc4;
   border-radius: 40px;
@@ -160,20 +176,20 @@ button:active, button:focus, a:active, a:focus {
   overflow: hidden;
   top: 0px;
   max-height: 0;
-  transition: all .5s linear; 
+  transition: all 0.5s linear;
   width: 100%;
   opacity: 0;
 }
-#dropDownList.show{
+#dropDownList.show {
   max-height: 1000px;
   opacity: 1;
 }
-.list-item{
+.list-item {
   height: 80px;
   width: 100%;
   border-bottom: 1px solid #888;
 }
-.item-wrap{
+.item-wrap {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -182,30 +198,29 @@ button:active, button:focus, a:active, a:focus {
   box-sizing: border-box;
   cursor: pointer;
 }
-.item-wrap:hover{
+.item-wrap:hover {
   background: #888c;
 }
 
-.image{
+.image {
   width: 50%;
 }
-.image img{
+.image img {
   width: 100%;
 }
-.title{
+.title {
   padding: 0 10px;
   line-height: 1.5em;
   height: 3em;
   overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-box-orient: vertical;
-   -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-.price{
+.price {
   color: #a90000;
 }
-
 
 @media screen and (max-width: 620px) {
   .showFull.searchBox > .searchInput {

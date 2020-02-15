@@ -44,7 +44,7 @@ export default {
           url: "/home",
           label: "Главная"
         }, {
-          url: "/catalog",
+          url: "/search/all",
           label: "Каталог"
         }, {
           url: "/offers",

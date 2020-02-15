@@ -12,14 +12,13 @@ import notFound from "./pages/404.vue";
 const routes = [
     { path: '/404', alias: '/404', component: notFound},
 
-    { path: "*", component: home },
+    { path: "/home", alias: '*', component: home },
     { path: "/about", component: about },
     { path: "/offers", component: offers },
     { path: "/blog", component: blog },
     { path: "/contacts", component: contacts },
 
     { path: "/search/:id", component: searchPage },
-    { path: "/search/", component: home },
     { path: "/post/:id", component: postPage },
     { path: "/item/:id", component: itemPage }
 ];

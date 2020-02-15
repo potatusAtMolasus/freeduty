@@ -1,6 +1,7 @@
 <template>
   <div class="combo-wrap">
     <div @click="toggle=!toggle" class="combo-top">
+      <div>{{placeholder}}</div>
       <div>
         <span>{{ label }}</span>
         <span class="toggle">
@@ -8,6 +9,7 @@
         </span>
       </div>
     </div>
+
     <div :class="{'combo-options': true, 'no-height': !toggle}">
       <div v-for="option in options" :key="option.value" class="combo-option" @click="pick(option)">
         <span
@@ -24,6 +26,9 @@
 <script>
 export default {
   props: {
+    placeholder: {
+      type: String,
+    },
     options: {
       type: Array,
       default() {
@@ -103,6 +108,7 @@ export default {
 .combo-option:hover {
   background: #ebe8f7;
 }
+
 .combo-option .label {
   width: 100%;
   height: 100%;
@@ -127,5 +133,15 @@ export default {
   position: absolute;
   top: 0.2em;
   left: 0.2em;
+}
+
+@media (max-width: 700px) {
+  .combo-option .label {
+    padding: .5em;
+  }
+  .combo-top{
+    padding: .85em 2.5em .85em 2.5em;
+    width: 16em;
+  }
 }
 </style>

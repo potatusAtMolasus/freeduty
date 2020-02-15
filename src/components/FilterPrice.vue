@@ -154,4 +154,9 @@ export default {
   border-radius: 5px;
   display: inline;  
 }
+@media (max-width: 1200px) {
+  .inpur-number{
+    width: 5em;
+  }
+}
 </style>
