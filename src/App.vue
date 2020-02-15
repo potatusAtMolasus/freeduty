@@ -19,6 +19,7 @@
         :width="width"
         @filtersChanged="setFilters"
         @find="search"
+        @pageSelected="getNewPage"
       />
     </div>
     <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
@@ -69,6 +70,7 @@ export default {
 
       foundData: [],
       activeFilters: { category: "" },
+      currentPage: 1,
       loaded: false,
     };
   },
@@ -111,7 +113,8 @@ export default {
       this.activeQuery = query;
       this.foundData = (await axiosNoLoad.post("http://127.0.0.1:5000/find", {
         query,
-        ...this.activeFilters
+        ...this.activeFilters,
+        page: this.currentPage,
       })).data;
     },
     updateScroll() {
@@ -124,10 +127,19 @@ export default {
       this.activeFilters = newFilters;
       this.foundData = (await axiosNoLoad.post("http://127.0.0.1:5000/find", {
         query: this.activeQuery,
-        ...this.activeFilters
+        ...this.activeFilters,
+        page: this.currentPage
       })).data;
       // this.router.push({ path: 'search' })
-    }
+    },
+    async getNewPage(newPage){
+      this.currentPage = newPage;
+      this.foundData = (await axiosNoLoad.post("http://127.0.0.1:5000/find", {
+        query: this.activeQuery,
+        ...this.activeFilters,
+        page: this.currentPage,
+      })).data;
+    },
   },
   computed: {
     isMobile() {

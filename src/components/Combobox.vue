@@ -1,7 +1,7 @@
 <template>
   <div class="combo-wrap">
     <div @click="toggle=!toggle" class="combo-top">
-      <div>{{placeholder}}</div>
+      <div v-if="pickedOption === ''">{{placeholder}}</div>
       <div>
         <span>{{ label }}</span>
         <span class="toggle">

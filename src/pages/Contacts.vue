@@ -34,7 +34,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 #contactsPage {
   background-image: url("../assets/patternBlack.png");
@@ -84,6 +83,16 @@ export default {
   padding: 0 3em;
 }
 @media(max-width: 776px){
+  .content{
+    padding: .1em;
+  }
+  .title-wrap{
+    padding: 0.25em 11.5em 0.25em 2em;
+  }
+  .line{
+    width: 4.3em;
+    clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%);
+  }
   #contactsPage.padded-top .container {
     padding-top: 3em;
   }

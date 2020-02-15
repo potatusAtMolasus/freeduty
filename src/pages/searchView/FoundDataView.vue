@@ -29,8 +29,8 @@
     </div>
 
     <div id="pageSelector">
-      <div v-for="i in pages" :class='{current: current === i.id, "page-num": true}' :key="i.id">
-        <span @click="getPage(i.id)">{{ i.id }}</span>
+      <div v-for="i in pages" :class="{current: current === i, 'page-num': true}" :key="i">
+        <span @click="getPage(i)">{{ i }}</span>
       </div>
     </div>
   </main>
@@ -42,12 +42,14 @@ import Combobox from "@/components/Combobox.vue";
 
 export default {
   props: {
-    data: Array
+    data: Array,
+    currentPage: Number,
+    maxPage: Number
   },
   data() {
     return {
       current: 1,
-      pages: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
+      pages: [],
       query: "",
       items: [],
       sortBy: "",
@@ -58,7 +60,15 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.current = this.currentPage;
+    this.pages = this.getRange(this.currentPage);
+  },
   watch: {
+    currentPage() {
+      this.current = this.currentPage;
+      this.pages = this.getRange(this.currentPage);
+    },
     data() {
       this.items = this.data;
     },
@@ -80,13 +90,28 @@ export default {
     }
   },
   methods: {
+    getRange(n) {
+      let start = n;
+      if (n < 4) {
+        start = 3;
+      }
+      let array = [];
+      if (n >= this.maxPage - 2) {
+        for (let i = this.maxPage - 4; i <= this.maxPage; i++) {
+          array.push(i);
+        }
+      } else {
+        for (let i = start - 2; i <= start + 2; i++) {
+          array.push(i);
+        }
+      }
+      return array;
+    },
     find() {
       this.$emit("find", this.query);
     },
     getPage(i) {
-      // call()
-      
-      this.current = i;
+      this.$emit("pageSelected", i);
     }
   },
   components: {
@@ -191,19 +216,17 @@ main {
 }
 #pageSelector .current.page-num {
   background: #444;
-  
 }
 #pageSelector .page-num {
   background: #aaa;
   cursor: pointer;
-  margin: 1em .7em;
+  margin: 1em 0.7em;
   transition: all 0.2s linear;
   border-radius: 3px;
-
 }
 #pageSelector .page-num span {
   display: block;
-  padding: .5em .8em;
+  padding: 0.5em 0.8em;
 }
 #pageSelector .page-num:hover {
   background: red;
@@ -218,15 +241,15 @@ main {
   #wrap {
     grid-template-columns: 1fr 1fr;
   }
-  .search-input{
+  .search-input {
     width: 13em;
   }
-  .selector-wrap{
+  .selector-wrap {
     width: 10em;
   }
-  .selector-wrap span{
+  .selector-wrap span {
     width: 20em;
-    font-size: .85em;
+    font-size: 0.85em;
     display: none;
   }
 }

@@ -34,7 +34,8 @@
 export default {
   props:{
     posts: Array,
-    scrollPosition: Number
+    scrollPosition: Number,
+    isMobile: Boolean,
   },
   methods:{
     getImgUrl(pic) {
@@ -185,8 +186,17 @@ main{
   opacity: 1;
 }
 @media(max-width: 776px){
+  #postsWrap{
+    flex-direction: column;
+  }
   #blogPage.padded-top .container {
     padding-top: 3em;
+  }
+  .inner{
+    box-sizing: border-box;
+  }
+  .post-wrap{
+    box-sizing: border-box;
   }
 }
 @media(max-width: 500px){

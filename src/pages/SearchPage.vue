@@ -1,7 +1,7 @@
 <template>
   <div id="searchView" :class="{'not-top': scrollPosition}">
     <filters @filterChange="filterChange"></filters>
-    <found-data-view @find="find" :data="foundData"></found-data-view>
+    <found-data-view @pageSelected="getNewPage" @find="find" :current-page="page" :max-page="maxPage" :data="displaydata"></found-data-view>
   </div>
 </template>
 
@@ -10,14 +10,30 @@ import FoundDataView from '@/pages/searchView/FoundDataView.vue';
 import Filters from '@/pages/searchView/Filters.vue';
 
 export default {
-  props:{
-    scrollPosition: Number,
-    foundData: Array,
+  props:['scrollPosition', 'foundData'],
+  data(){
+    let displaydata = this.foundData ? this.foundData.data : [];
+    let page = this.foundData ? this.foundData.current_page : 1;
+    let maxPage = this.foundData ? this.foundData.last_page : 1;
+    return {
+      displaydata,
+      page,
+      maxPage,
+    }
   },
   mounted(){
     this.$emit('find', '');
   },
+  watch:{
+    foundData(){
+      this.displaydata = this.foundData.data;
+      this.page = this.foundData.current_page;
+    },
+  },
   methods:{
+    getNewPage(i){
+      this.$emit("pageSelected", i);
+    },
     filterChange(newFilters){
       this.$emit("filtersChanged", newFilters);
     },
