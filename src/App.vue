@@ -21,6 +21,7 @@
         @filtersChanged="setFilters"
         @find="search"
         @pageSelected="getNewPage"
+        @offersPageSelected="getNewOffersPage"
       />
     </div>
     <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
@@ -142,6 +143,9 @@ export default {
         ...this.activeFilters,
         page: this.currentPage,
       })).data;
+    },
+    async getNewOffersPage(id){
+      this.offers = (await axiosNoLoad.post("http://127.0.0.1:5000/all-offers", {id})).data;
     },
   },
   computed: {

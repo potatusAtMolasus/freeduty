@@ -9,7 +9,12 @@
       </div>
       </div>
       <div id="offerWrap">
-        <item v-for="i in offers" :key="i.id" :item="i"></item>
+        <item v-for="i in displaydata" :key="i.id" :item="i"></item>
+      </div>
+    </div>
+    <div id="pageSelector">
+      <div v-for="i in pages" :class="{current: currentPage === i, 'page-num': true}" :key="i">
+        <span @click="getPage(i)">{{ i }}</span>
       </div>
     </div>
   </main>
@@ -19,13 +24,58 @@
 import Item from "@/components/Item.vue";
 
 export default {
-  props: {
-    offers: Array,
-    scrollPosition: Number,
-  },
+  props: ['offers', 'scrollPosition'],
   components: {
     Item
-  }
+  },
+  data(){
+    let displaydata = this.offers ? this.offers.data : [];
+    let page = this.offers ? this.offers.current_page : 1;
+    let maxPage = this.offers ? this.offers.last_page : 1;
+    let pages = this.getRange(page);
+    let currentPage = page;
+
+    return {
+      displaydata,
+      page,
+      maxPage,
+      pages,
+      currentPage,
+    }
+  },
+  mounted() {
+  },
+  watch: {
+    offers() {
+      this.displaydata = this.offers.data;
+      this.page = this.offers.current_page;
+      this.currentPage = this.offers.current_page;
+      this.maxPage = this.offers.last_page;
+      this.pages = this.getRange(this.page);
+    },
+  },
+  methods:{
+    getPage(i){
+      this.$emit("offersPageSelected", i);
+    },
+    getRange(n) {
+      let start = n;
+      if (n < 4) {
+        start = 3;
+      }
+      let array = [];
+      if (n >= this.maxPage - 2) {
+        for (let i = this.maxPage - 4; i <= this.maxPage; i++) {
+          array.push(i);
+        }
+      } else {
+        for (let i = start - 2; i <= start + 2; i++) {
+          array.push(i);
+        }
+      }
+      return array;
+    },
+  },
 };
 </script>
 <style scoped>
@@ -76,6 +126,29 @@ main {
   top: 0;
   display: block;
   clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%);
+}
+#pageSelector {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1em;
+}
+#pageSelector .current.page-num {
+  background: #444;
+}
+#pageSelector .page-num {
+  background: #aaa;
+  cursor: pointer;
+  margin: 1em 0.7em;
+  transition: all 0.2s linear;
+  border-radius: 3px;
+}
+#pageSelector .page-num span {
+  display: block;
+  padding: 0.5em 0.8em;
+}
+#pageSelector .page-num:hover {
+  background: red;
 }
 @media(max-width: 992px){
   #offerWrap {
