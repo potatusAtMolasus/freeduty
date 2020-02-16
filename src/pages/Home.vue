@@ -2,7 +2,7 @@
   <div class="content">
     <main>
       <banner></banner>
-      <offers-section :isMobile="isMobile" :offers="offers"></offers-section>
+      <offers-section :homeOffers="homeOffers" :isMobile="isMobile" :offers="offers"></offers-section>
       <popular-section :isMobile="isMobile" :width="width" :popularItems="popular"></popular-section>
       <blog-section :isMobile="isMobile" :posts="posts.slice(0, 5)"></blog-section>
     </main>
@@ -18,6 +18,7 @@ import Banner from "@/pages/home/Banner.vue";
 export default {
   props: {
     offers: Array,
+    homeOffers: Array,
     popular: Array,
     posts: Array,
     isMobile: Boolean,

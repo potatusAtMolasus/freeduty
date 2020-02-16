@@ -17,7 +17,7 @@
             :paginationColor="'#454545'"
             :autoplayTimeout="2500"
           >
-            <slide v-for="i in offers" :key="i.id">
+            <slide v-for="i in homeOffers" :key="i.id">
               <item :item="i"></item>
             </slide>
           </carousel>
@@ -43,7 +43,7 @@ export default {
   name: "OffersSection",
   props: {
     isMobile: Boolean,
-    offers: Array
+    homeOffers: Array
   },
   components: {
     Item

@@ -563,6 +563,66 @@ def get_offers():
         'popularity': "9.1", 
     }])
 
+@app.route('/get-offers', methods=['POST'])
+def get_some_offers():
+    return jsonify([{
+        'id': 1,
+        'title': "Коньяк Максим Трижоль ВС Эйфелева Башня 40% 0,5л п/у",
+        'image': "image.jpg",
+        'salePrice': "2 699.00",
+        'sale': True,
+        'price': "3290",
+        'popularity': "9.1", 
+    }, {
+        'id': 3,
+        'title': "Текила Монтезума Белая 40% 0,75л",
+        'image': "image.jpg",
+        'salePrice': "2 699.00",
+        'sale': True,
+        'price': "3290",
+        'popularity': "9.1", 
+    }, {
+        'id': 4,
+        'title': "You may think he loves you for your money 40% 0,5л п/у",
+        'image': "image.jpg",
+        'salePrice': "2 699.00",
+        'sale': True,
+        'price': "3290",
+        'popularity': "9.1", 
+    }, {
+        'id': 5,
+        'title': "But I Know What he Actually loves you For 15% 0,6л п/у",
+        'image': "image.jpg",
+        'salePrice': "2 699.00",
+        'sale': True,
+        'price': "3290",        
+        'popularity': "9.1", 
+    }, {
+        'id': 6,
+        'title': "Коньяк Максим Трижоль ВС Эйфелева Башня 40% 0,5л п/у",
+        'image': "image.jpg",
+        'salePrice': "2 699.00",
+        'sale': True,
+        'price': "3290",
+        'popularity': "9.1", 
+    }, {
+        'id': 7,
+        'title': "Thats your brand new Leopard Skin PilBox Hat 40% 0,5л п/у",
+        'image': "image.jpg",
+        'salePrice': "2 699.00",
+        'sale': True,
+        'price': "3290",
+        'popularity': "9.1", 
+    }, {
+        'id': 8,
+        'title': "Коньяк Максим Трижоль ВС Эйфелева Башня 40% 0,5л п/у",
+        'image': "image.jpg",
+        'salePrice': "2 699.00",
+        'sale': True,
+        'price': "3290",
+        'popularity': "9.1", 
+    }])
+
 @app.route('/get-popular', methods=['POST'])
 def get_popular():
     return jsonify([{

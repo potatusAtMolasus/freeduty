@@ -13,6 +13,7 @@
         :scrollPosition="scrollPosition"
         :isMobile="isMobile"
         :offers="offers"
+        :homeOffers="homeOffers"
         :popular="popular"
         :posts="posts"
         :foundData="foundData"
@@ -65,6 +66,7 @@ export default {
       width: 0,
       categories: [],
       offers: [],
+      homeOffers: [],
       popular: [],
       posts: [],
 
@@ -101,6 +103,7 @@ export default {
 
     this.categories = (await axios.post("get-categories")).data;
     this.offers = (await axios.post("all-offers")).data;
+    this.homeOffers = (await axios.post("get-offers")).data;
     this.popular = (await axios.post("get-popular")).data;
     this.posts = (await axios.post("get-posts")).data;
     this.foundData = (await axios.post("find", {
