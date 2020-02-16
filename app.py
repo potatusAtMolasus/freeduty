@@ -20,7 +20,7 @@ def check_age():
     # return jsonify(True)
     return jsonify(age_confirmed)
 
-@app.route('/age-confirmed', methods=['POST'])
+@app.route('/is-age-confirmed', methods=['POST'])
 def confirm_age():
     global age_confirmed
     age_confirmed = True
@@ -489,7 +489,7 @@ def get_categories():
         'label': 'Категория 8',
     }])
 
-@app.route('/get-offers', methods=['POST'])
+@app.route('/all-offers', methods=['POST'])
 def get_offers():
 
         # 'id': 1,

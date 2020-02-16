@@ -100,7 +100,7 @@ export default {
     window.addEventListener("scroll", this.updateScroll);
 
     this.categories = (await axios.post("get-categories")).data;
-    this.offers = (await axios.post("get-offers")).data;
+    this.offers = (await axios.post("all-offers")).data;
     this.popular = (await axios.post("get-popular")).data;
     this.posts = (await axios.post("get-posts")).data;
     this.foundData = (await axios.post("find", {

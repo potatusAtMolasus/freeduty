@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async ageConfirmed(){
-      await axios.post("age-confirmed");
+      await axios.post("is-age-confirmed");
       this.showWarning = false;
     }
   }
