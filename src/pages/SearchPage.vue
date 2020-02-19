@@ -23,6 +23,7 @@ export default {
     }
   },
   mounted(){
+    this.$emit("pageSelected", 1);
     this.$emit('find', '');
   },
   watch:{

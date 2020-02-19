@@ -20,7 +20,7 @@ export default {
     offers: Object,
     homeOffers: Array,
     popular: Array,
-    posts: Object,
+    posts: Array,
     isMobile: Boolean,
     width: Number,
   },
@@ -32,7 +32,7 @@ export default {
   },
   computed:{
     homePosts(){
-      return this.posts.data ? this.posts.data.slice(0, 5) : []
+      return this.posts.length ? this.posts.slice(0, 5) : []
     }
   },
 };

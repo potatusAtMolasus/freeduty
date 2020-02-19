@@ -122,8 +122,6 @@ export default {
   },
   methods: {
     async search(query, load = false) {
-      console.log(load);
-      
       this.activeQuery = query;
       if (load) {
         this.foundData = (
