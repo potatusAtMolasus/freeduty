@@ -17,11 +17,11 @@
       </div>
 
       <div id="dropDownList" :class="{'show': showFull}">
-        <div v-for="item in dropdownList" :key="item.id" class="list-item">
+        <div v-for="item in dropdownList.data" :key="item.id" class="list-item">
           <router-link :to="'/item/' + item.id">
             <div class="item-wrap" @click="searchQuery='';showFull=false;dropdownList=[]">
               <span class="image">
-                <img :src="getImgUrl(item.image)" :alt="item.title" />
+                <img :src="getImgUrl(item.photo)" :alt="item.title" />
               </span>
               <span class="title">{{item.title}}</span>
               <span class="price">{{item.sale ? item.salePrice : item.price}}</span>
@@ -76,16 +76,18 @@ export default {
     },
     async find(query) {
       this.dropdownList = (
-        await axios.post("http://127.0.0.1:5000/find", { query, category: "" })
+        await axios.post("http://1cf015d6.ngrok.io/find", { query, category: "" })
       ).data;
       this.$emit("search", query);
     },
     getImgUrl(pic) {
-      try {
-        return require("../assets/" + pic);
-      } catch (e) {
-        return "";
-      }
+      return pic || require('../assets/image.jpg');
+      
+      // try {
+      //   return require("../assets/" + pic);
+      // } catch (e) {
+      //   return "";
+      // }
     }
   }
 };
@@ -102,6 +104,9 @@ export default {
   background: red;
   border-radius: 40px;
   position: relative;
+}
+a{
+  color: unset;
 }
 .field {
   height: 40px;

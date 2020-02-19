@@ -27,7 +27,7 @@
 
         <div id="popularFooterWrapWrap">
           <div id="popularFooterWrap">
-            <router-link id="popularsBtn" to="/popular">
+            <router-link id="popularsBtn" to="/search/all">
               <span>
                  Товары
                 <i class="fa fa-arrow-right"></i>

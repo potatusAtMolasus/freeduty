@@ -4,7 +4,7 @@
       <banner></banner>
       <offers-section :homeOffers="homeOffers" :isMobile="isMobile" :offers="offers"></offers-section>
       <popular-section :isMobile="isMobile" :width="width" :popularItems="popular"></popular-section>
-      <blog-section :isMobile="isMobile" :posts="posts.slice(0, 5)"></blog-section>
+      <blog-section :isMobile="isMobile" :posts="homePosts"></blog-section>
     </main>
   </div>
 </template>
@@ -17,10 +17,10 @@ import Banner from "@/pages/home/Banner.vue";
 
 export default {
   props: {
-    offers: Array,
+    offers: Object,
     homeOffers: Array,
     popular: Array,
-    posts: Array,
+    posts: Object,
     isMobile: Boolean,
     width: Number,
   },
@@ -29,7 +29,12 @@ export default {
     OffersSection,
     PopularSection,
     BlogSection
-  }
+  },
+  computed:{
+    homePosts(){
+      return this.posts.data ? this.posts.data.slice(0, 5) : []
+    }
+  },
 };
 </script>
 <style scoped>

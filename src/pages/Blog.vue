@@ -15,11 +15,11 @@
             <h2 class="title">{{ post.title }}</h2>
           </div> -->
           <router-link class="post-link" :to="'/post/' + post.id">
-            <img :src="getImgUrl(post.images[0])">
+            <img :src="getImgUrl(post.image_url)">
             <div class="inner">
               <div class="title-wrap">
                 <span v-if="!isMobile">Перейти</span>
-                <span v-if="isMobile" class="title">{{ post.title }}</span>
+                <!-- <span v-if="isMobile" class="title">{{ post.title }}</span> -->
                 <i class="fa fa-arrow-right"></i>
               </div>
             </div>
@@ -39,11 +39,13 @@ export default {
   },
   methods:{
     getImgUrl(pic) {
-      try{
-        return require('../assets/'+pic);
-      } catch(e) {
-        return '';
-      }
+      return pic || require('../assets/image.jpg');
+
+      // try{
+      //   return require('../assets/'+pic);
+      // } catch(e) {
+      //   return '';
+      // }
     },
   },
 };
@@ -73,7 +75,7 @@ main{
   overflow: hidden;
   position: relative;
 }
-.title-wrap {
+.title-section .title-wrap {
   background: black;
   direction: inline-block;
   padding: 0.25em 18em 0.25em 6em;
@@ -179,6 +181,10 @@ main{
 .post-link p:hover i {
   right: -0.6em;
 }
+.post-wrap img{
+  transition: all .2s linear;
+}
+
 .post-wrap:hover img{
   transform: scale(1.2);
 }

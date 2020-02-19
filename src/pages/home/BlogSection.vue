@@ -7,7 +7,7 @@
             <h2 class="title">{{ post.title }}</h2>
           </div> -->
           <router-link class="post-link" :to="'/post/' + post.id">
-            <img :src="getImgUrl(post.images[0])">
+            <img :src="post.image_url">
             <div class="inner">
               <div class="title-wrap">
                 <span v-if="!isMobile">Перейти</span>
@@ -31,11 +31,13 @@ export default {
   },
   methods:{
     getImgUrl(pic) {
-      try{
-        return require('../../assets/'+pic);
-      } catch(e) {
-        return '';
-      }
+      return pic || require('../../assets/image.jpg');
+
+      // try{
+      //   return require('../../assets/'+pic);
+      // } catch(e) {
+      //   return '';
+      // }
     },
   },
 };

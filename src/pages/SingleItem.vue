@@ -30,7 +30,7 @@
             <div class="old-price">{{ price }}</div>
           </div>
           <div class="sale-desc">
-            <p><i class="fa fa-exclamation"></i>{{ saleDescription }}</p>            
+            <p><i class="fa fa-exclamation"></i>{{ sale }}</p>            
           </div>
         </template>
       </div>
@@ -83,18 +83,18 @@ export default {
     }
   },
   async mounted(){
-    const data = (await axios.post("get-item", )).data;
-   
+    const data = (await axios.post("get-item", {id: this.$route.params.id})).data;
+    
     this.title = data.title, 
     this.photo = data.photo, 
     this.description = data.description, 
     this.country = data.country,
     this.price = data.price,
-    this.salePrice = data.salePrice,
-    this.sale = data.sale,
+    this.salePrice = data.offer_price,
+    this.sale = data.offer_name,
     this.category = data.category,
     this.volume = data.volume,
-    this.strength = data.strength,
+    this.strength = data.concentration,
     this.brand = data.brand,
     this.popularity = data.popularity
   },
@@ -105,11 +105,13 @@ export default {
   },
   methods:{
     getImgUrl(pic) {
-      try{
-        return require('../assets/'+pic);
-      } catch(e) {
-        return '';
-      }
+      return pic || require('../assets/image.jpg');
+
+      // try{
+      //   return require('../assets/'+pic);
+      // } catch(e) {
+      //   return '';
+      // }
     },
   },
 }

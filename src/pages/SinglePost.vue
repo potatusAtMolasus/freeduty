@@ -12,7 +12,7 @@
           :navigationEnabled="true"
           :paginationColor="'#454545'"
         >
-          <slide v-for="i in currentPost.images" :key="i">
+          <slide v-for="i in [currentPost.image_url]" :key="i">
             <div class="imageWrap">
               <img
                 :src="getImgUrl(i)"
@@ -25,13 +25,13 @@
       </div>
       <div id="navigation">
         <router-link id="prev" v-if="prevPost.id" :to="'/post/' + prevPost.id">
-          <div :style="{ 'background-image': 'url('+getImgUrl(prevPost.images[0])+')' }">
+          <div :style="{ 'background-image': 'url('+getImgUrl(prevPost.image_url)+')' }">
             <p>{{ prevPost.title }}</p>
           </div>
         </router-link>
 
         <router-link id="next" v-if="nextPost.id" :to="'/post/' + nextPost.id">
-          <div :style="{ 'background-image': `url(${getImgUrl(nextPost.images[0])})` }">
+          <div :style="{ 'background-image': `url(${getImgUrl(nextPost.image_url)})` }">
             <p>{{ nextPost.title }}</p>
           </div>
         </router-link>
@@ -79,11 +79,13 @@ export default {
         this.posts.find(post => post.id === Number(this.$route.params.id)) || {};
     },
     getImgUrl(pic) {
-      try {
-        return require("../assets/" + pic);
-      } catch (e) {
-        return "";
-      }
+      return pic || require('../assets/image.jpg');
+
+      // try {
+      //   return require("../assets/" + pic);
+      // } catch (e) {
+      //   return "";
+      // }
     }
   }
 };

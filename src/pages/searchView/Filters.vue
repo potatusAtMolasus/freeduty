@@ -31,7 +31,7 @@ export default {
       categories: [],
       brands: [],
       countries: [],
-      priceDefaults: [],
+      priceDefaults: {},
       checkedCategories: [],
       checkedBrands: [],
       checkedCountries: [],
@@ -57,7 +57,7 @@ export default {
     this.categories = filters.categories;
     this.brands = filters.brands;
     this.countries = filters.countries;
-    this.priceDefaults = filters.price;
+    this.priceDefaults = filters.price || {lowest: 1, highiest: 20000};
   },
   methods:{
     throwValue(){

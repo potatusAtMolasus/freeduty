@@ -39,7 +39,7 @@ export default {
       this.$emit("filtersChanged", newFilters);
     },
     find(query){
-      this.$emit('find', query);
+      this.$emit('find', query, true);
     },
   },
   components:{

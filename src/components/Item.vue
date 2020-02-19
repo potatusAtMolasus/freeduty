@@ -16,6 +16,9 @@
           <img src="../assets/discount.png" />
         </div>
 
+        <div v-if="sale" class="discount sale-text-wrap">
+          <h2 class="sale-text">{{sale}}</h2>
+        </div>
 
         <div class="item-img-wrap">
           <img :src="getImgUrl(image)" />
@@ -49,12 +52,12 @@ export default {
     return {
       id: this.item.id,
       title: this.item.title,
-      image: this.item.image,
+      image: this.item.photo,
       // description: this.item.description,
       country: this.item.country,
       price: this.item.price,
-      salePrice: this.item.salePrice,
-      sale: this.item.sale,
+      salePrice: this.item.offer_price,
+      sale: this.item.offer_name,
       // category: this.item.category,
       // volume: this.item.volume,
       // strength: this.item.strength,
@@ -64,11 +67,13 @@ export default {
   },
   methods:{
     getImgUrl(pic) {
-      try{
-        return require('../assets/'+pic);
-      } catch(e) {
-        return '';
-      }
+      return pic || require('../assets/image.jpg');
+      
+      // try{
+      //   return require('../assets/'+pic);
+      // } catch(e) {
+      //   return '';
+      // }
     },
   }
 };
@@ -102,7 +107,7 @@ a{
   display: flex;
 }
 .item-wrap img {
-  height: 100%;
+  width: 100%;
   margin: auto;
 }
 .price-wrap{
@@ -124,7 +129,7 @@ a{
   position: absolute;
 }
 p.title {
-  height: 4.8em;
+  height: 5.8em;
 }
 
 .rating{
@@ -188,7 +193,27 @@ p.title {
 .item-wrap:hover .discount img{
   filter: drop-shadow(5px 5px 5px #222); 
 }
+.sale-text-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sale-text{
+  position: relative;
+  right: 0;
+  color: white;
+  width: 50%;
+  font-size: .75em;
+  line-height: 2em;
+  text-transform: uppercase;
+  text-align: center;
+}
 
+@media(max-width: 900px){
+  p.title {
+    height: 7.6em;
+  }
+}
 @media(max-width: 500px){
   .discount{
     width: 6em;
@@ -208,8 +233,11 @@ p.title {
     font-size: .7rem;
   }
   p.title {
-    height: 6.6em;
-    font-size: 1.1em;
+    height: 6.8em;
+    font-size: .9em;
+    width: 100%;
+    overflow: hidden;
+    word-wrap: break-word;
   }
   .price-wrap{
     font-size: 1.5em;

@@ -46,19 +46,24 @@ export default {
         {
           url: "/home",
           label: "Главная"
-        }, {
+        },
+        {
           url: "/search/all",
           label: "Каталог"
-        }, {
+        },
+        {
           url: "/offers",
           label: "Акции"
-        }, {
+        },
+        {
           url: "/about",
           label: "О нас"
-        }, {
+        },
+        {
           url: "/contacts",
           label: "Контакты"
-        }, {
+        },
+        {
           url: "/blog",
           label: "Блог"
         }
@@ -66,19 +71,19 @@ export default {
       scrollPosition: null,
       width: 0,
       categories: [],
-      offers: [],
+      offers: {},
       homeOffers: [],
       popular: [],
       posts: [],
 
-      foundData: [],
+      foundData: {},
       activeFilters: { category: "" },
       currentPage: 1,
-      loaded: false,
+      loaded: false
     };
   },
   async mounted() {
-    window.addEventListener('resize', this.updateWidth);
+    window.addEventListener("resize", this.updateWidth);
     this.updateWidth();
 
     axios.interceptors.request.use(config => {
@@ -106,20 +111,37 @@ export default {
     this.offers = (await axios.post("all-offers")).data;
     this.homeOffers = (await axios.post("get-offers")).data;
     this.popular = (await axios.post("get-popular")).data;
-    this.posts = (await axios.post("get-posts")).data;
-    this.foundData = (await axios.post("find", {
-      query: this.activeQuery,
-      ...this.activeFilters
-    })).data;
+
+    this.posts = (await axios.post("get-posts")).data.data;
+    this.foundData = (
+      await axios.post("find", {
+        query: this.activeQuery,
+        ...this.activeFilters
+      })
+    ).data;
   },
   methods: {
-    async search(query) {
+    async search(query, load = false) {
+      console.log(load);
+      
       this.activeQuery = query;
-      this.foundData = (await axiosNoLoad.post("http://127.0.0.1:5000/find", {
-        query,
-        ...this.activeFilters,
-        page: this.currentPage,
-      })).data;
+      if (load) {
+        this.foundData = (
+          await axios.post("find", {
+            query,
+            ...this.activeFilters,
+            page: this.currentPage
+          })
+        ).data;
+      } else {
+        this.foundData = (
+          await axiosNoLoad.post("http://1cf015d6.ngrok.io/find", {
+            query,
+            ...this.activeFilters,
+            page: this.currentPage
+          })
+        ).data;
+      }
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
@@ -129,32 +151,35 @@ export default {
     },
     async setFilters(newFilters) {
       this.activeFilters = newFilters;
-      this.foundData = (await axiosNoLoad.post("http://127.0.0.1:5000/find", {
-        query: this.activeQuery,
-        ...this.activeFilters,
-        page: this.currentPage
-      })).data;
+      this.foundData = (
+        await axiosNoLoad.post("http://1cf015d6.ngrok.io/find", {
+          query: this.activeQuery,
+          ...this.activeFilters,
+          page: this.currentPage
+        })
+      ).data;
       // this.router.push({ path: 'search' })
     },
-    async getNewPage(newPage){
+    async getNewPage(newPage) {
       this.currentPage = newPage;
-      this.foundData = (await axiosNoLoad.post("http://127.0.0.1:5000/find", {
-        query: this.activeQuery,
-        ...this.activeFilters,
-        page: this.currentPage,
-      })).data;
+      this.foundData = (
+        await axios.post("find", {
+          query: this.activeQuery,
+          ...this.activeFilters,
+          page: this.currentPage
+        })
+      ).data;
     },
-    async getNewOffersPage(id){
-      this.offers = (await axiosNoLoad.post("http://127.0.0.1:5000/all-offers", {id})).data;
-    },
+    async getNewOffersPage(id) {
+      this.offers = (await axios.post("all-offers", { page: id })).data;
+    }
   },
   computed: {
     isMobile() {
       if (
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
-        )
-        || 
+        ) ||
         this.width < 900
       ) {
         return true;
