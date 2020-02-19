@@ -107,7 +107,7 @@ a{
   display: flex;
 }
 .item-wrap img {
-  width: 100%;
+  height: 100%;
   margin: auto;
 }
 .price-wrap{
@@ -181,12 +181,8 @@ p.title {
   height: 8em;
   right: -1em;
   top: 0em;
-  transform: rotate(0deg);
-  transition: transform .2s;
 }
-.item-wrap:hover .discount{
-  transform: rotate(400deg);
-}
+
 .discount img{
   filter: none; 
 }
