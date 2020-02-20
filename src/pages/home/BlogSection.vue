@@ -2,20 +2,88 @@
   <section id="blogSection">
     <div class="wide-container">
       <div id="postGrid">
-        <div class="post-wrap" v-for="post in posts" :key="post.id">
-          <!-- <div class="inner-post-wrap">
-            <h2 class="title">{{ post.title }}</h2>
-          </div> -->
-          <router-link class="post-link" :to="'/post/' + post.id">
-            <img :src="post.image_url">
-            <div class="inner">
-              <div class="title-wrap">
-                <span v-if="!isMobile">Перейти</span>
-                <span v-if="isMobile" class="title">{{ post.title }}</span>
-                <i class="fa fa-arrow-right"></i>
+        <div class="col">
+          <div v-if="posts[0]" class="post-wrap">
+            <router-link class="post-link" :to="'/post/' + posts[0].id">
+              <img :src="posts[0].image_url" />
+              <div class="inner">
+                <div class="title-wrap">
+                  <span v-if="!isMobile">Перейти</span>
+                  <span v-if="isMobile" class="title">{{ posts[0].title }}</span>
+                  <i class="fa fa-arrow-right"></i>
+                </div>
               </div>
-            </div>
-          </router-link>
+            </router-link>
+          </div>
+
+          <div v-if="posts[1]" class="post-wrap">
+            <router-link class="post-link" :to="'/post/' + posts[1].id">
+              <img :src="posts[1].image_url" />
+              <div class="inner">
+                <div class="title-wrap">
+                  <span v-if="!isMobile">Перейти</span>
+                  <span v-if="isMobile" class="title">{{ posts[1].title }}</span>
+                  <i class="fa fa-arrow-right"></i>
+                </div>
+              </div>
+            </router-link>
+          </div>
+        </div>
+
+        <div class="col">
+          <div v-if="posts[2]" class="post-wrap">
+            <router-link class="post-link" :to="'/post/' + posts[2].id">
+              <img :src="posts[2].image_url" />
+              <div class="inner">
+                <div class="title-wrap">
+                  <span v-if="!isMobile">Перейти</span>
+                  <span v-if="isMobile" class="title">{{ posts[2].title }}</span>
+                  <i class="fa fa-arrow-right"></i>
+                </div>
+              </div>
+            </router-link>
+          </div>
+
+          <div v-if="posts[3]" class="post-wrap">
+            <router-link class="post-link" :to="'/post/' + posts[3].id">
+              <img :src="posts[3].image_url" />
+              <div class="inner">
+                <div class="title-wrap">
+                  <span v-if="!isMobile">Перейти</span>
+                  <span v-if="isMobile" class="title">{{ posts[3].title }}</span>
+                  <i class="fa fa-arrow-right"></i>
+                </div>
+              </div>
+            </router-link>
+          </div>
+        </div>
+
+        <div class="col">
+          <div v-if="posts[4]" class="post-wrap">
+            <router-link class="post-link" :to="'/post/' + posts[4].id">
+              <img :src="posts[4].image_url" />
+              <div class="inner">
+                <div class="title-wrap">
+                  <span v-if="!isMobile">Перейти</span>
+                  <span v-if="isMobile" class="title">{{ posts[4].title }}</span>
+                  <i class="fa fa-arrow-right"></i>
+                </div>
+              </div>
+            </router-link>
+          </div>
+
+          <div v-if="posts[5]" class="post-wrap">
+            <router-link class="post-link" :to="'/post/' + posts[5].id">
+              <img :src="posts[5].image_url" />
+              <div class="inner">
+                <div class="title-wrap">
+                  <span v-if="!isMobile">Перейти</span>
+                  <span v-if="isMobile" class="title">{{ posts[5].title }}</span>
+                  <i class="fa fa-arrow-right"></i>
+                </div>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -29,31 +97,31 @@ export default {
     isMobile: Boolean,
     posts: Array
   },
-  methods:{
+  methods: {
     getImgUrl(pic) {
-      return pic || require('../../assets/image.jpg');
+      return pic || require("../../assets/image.jpg");
 
       // try{
       //   return require('../../assets/'+pic);
       // } catch(e) {
       //   return '';
       // }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
-.wide-container{
+.wide-container {
   box-sizing: border-box;
 }
-#blogSection{
-  background-image: url('../../assets/patternBlack.png');
+#blogSection {
+  background-image: url("../../assets/patternBlack.png");
   background-color: rgba(180, 180, 180, 0.9);
 }
 
 #postGrid {
   padding: 0;
-  height: 70vh;
+  /* height: 70vh; */
   margin: 0;
   display: grid;
   grid-gap: 0;
@@ -62,22 +130,22 @@ export default {
     "firstPost firstPost secondPost fifthPost"
     "firstPost firstPost thridPost thridPost";
   background: transparent;
-
 }
 .post-wrap {
-  background: #ccc;
+  /* background: #ccc; */
+  background: #f005;
   position: relative;
-  padding: 0.7em;
+  padding: 0.1em;
   cursor: pointer;
 }
 .post-link {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* height: 100%; */
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
   background: #333;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   transform: scale(1);
   z-index: 100;
   display: flex;
@@ -89,26 +157,27 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
   z-index: 300;
-  background: #CCCCCC99;
+  background: #cccccc99;
   /* border: 2px solid #999; */
-  color:#333;
-  padding: .6em;
+  color: #333;
+  /* padding: 0.6em; */
   width: 100%;
   height: 100%;
   display: flex;
   opacity: 0;
   transition: all 0.2s;
+  position: absolute;
 }
-.inner .title-wrap{
+.inner .title-wrap {
   margin: auto;
 }
 .post-link img {
-  position: absolute;
+  /* position: absolute; */
   margin: auto;
   z-index: 200;
   width: 100%;
-  height: 100%;
-  transform: scale(1);
+  /* height: 100%; */
+  transform: scale(1.02);
   transition: all 0.2s;
 }
 .post-link p i {
@@ -132,8 +201,8 @@ export default {
   top: 0;
   left: 0;
 }
-.fa-arrow-right{
-  padding-left: .2em;
+.fa-arrow-right {
+  padding-left: 0.2em;
 }
 /* .post-wrap:hover .inner-post-wrap {
   transform: scale(0);
@@ -141,7 +210,7 @@ export default {
 .post-wrap:hover .post-link {
   transform: scale(1);
 } */
-.post-wrap:hover img{
+.post-wrap:hover img {
   transform: scale(1.2);
 }
 .post-wrap:hover .inner {
@@ -150,7 +219,7 @@ export default {
 .inner-post-wrap .title {
   margin: auto;
 }
-
+/* 
 #postGrid .post-wrap:nth-child(1) {
   grid-area: firstPost;
 }
@@ -165,22 +234,36 @@ export default {
 }
 #postGrid .post-wrap:nth-child(5) {
   grid-area: fifthPost;
-}
+} */
 
-#blogSection{
+#blogSection {
   padding: 5em 0;
   overflow: auto;
 }
-@media(max-width: 800px){
-  #blogSection .wide-container{
+#postGrid{
+  display: flex;
+  justify-content: center;
+}
+.col{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media (max-width: 800px) {
+  #postGrid .col:nth-child(3){
+    display: none;
+  }
+
+  #blogSection .wide-container {
     max-width: unset;
   }
-  #blogSection{
+  #blogSection {
     padding-top: 4em;
   }
   #postGrid .post-wrap:nth-child(4),
   #postGrid .post-wrap:nth-child(5) {
-    display: none;  
+    display: none;
   }
   #postGrid {
     grid-template-areas:
@@ -188,23 +271,25 @@ export default {
       "secondPost thridPost";
   }
 }
-@media(max-width: 500px){
-
-  #postGrid{
+@media (max-width: 500px) {
+  #postGrid {
+    flex-direction: column;
+  }
+  #postGrid {
     height: auto;
     padding: 2em 0.2em;
     margin: 0;
     grid-gap: 0.6em;
   }
-  #blogSection{
+  #blogSection {
     padding-top: 0em;
   }
-  .wide-container{
+  .wide-container {
     padding: 0;
   }
   #postGrid .post-wrap:nth-child(4),
   #postGrid .post-wrap:nth-child(5) {
-    display: none;  
+    display: none;
   }
   #postGrid {
     grid-template-areas:
@@ -212,8 +297,8 @@ export default {
       "secondPost"
       "thridPost";
   }
-  .post-wrap{
-    padding: 8rem;
+  .post-wrap {
+    /* padding: 8rem; */
   }
   .post-wrap .inner-post-wrap {
     transform: scale(0);
@@ -221,7 +306,7 @@ export default {
   .post-wrap .post-link {
     transform: scale(1);
   }
-  .inner{
+  .inner {
     display: none;
   }
 }

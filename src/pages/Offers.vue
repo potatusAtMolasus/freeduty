@@ -2,11 +2,10 @@
   <main id="offersPage" :class="{'padded-top': scrollPosition !== 0}">
     <div class="wide-container">
       <div class="title-section">
-      <div class="title-wrap">
-  
-        <h2 class="title">Акции</h2>
-        <span class="line"></span>
-      </div>
+        <div class="title-wrap">
+          <h2 class="title">Акции</h2>
+          <span class="line"></span>
+        </div>
       </div>
       <div id="offerWrap">
         <item v-for="i in displaydata" :key="i.id" :item="i"></item>
@@ -24,11 +23,11 @@
 import Item from "@/components/Item.vue";
 
 export default {
-  props: ['offers', 'scrollPosition'],
+  props: ["offers", "scrollPosition"],
   components: {
     Item
   },
-  data(){
+  data() {
     let displaydata = this.offers ? this.offers.data : [];
     let page = this.offers ? this.offers.current_page : 1;
     let maxPage = this.offers ? this.offers.last_page : 1;
@@ -40,11 +39,10 @@ export default {
       page,
       maxPage,
       pages,
-      currentPage,
-    }
+      currentPage
+    };
   },
-  mounted() {
-  },
+  mounted() {},
   watch: {
     offers() {
       this.displaydata = this.offers.data;
@@ -52,10 +50,10 @@ export default {
       this.currentPage = this.offers.current_page;
       this.maxPage = this.offers.last_page;
       this.pages = this.getRange(this.page);
-    },
+    }
   },
-  methods:{
-    getPage(i){
+  methods: {
+    getPage(i) {
       this.$emit("offersPageSelected", i);
     },
     getRange(n) {
@@ -73,19 +71,35 @@ export default {
           array.push(i);
         }
       }
+      if (this.maxPage < 5) {
+        array = [];
+        let i;
+        if (start - 2 > 0) {
+          i = start - 2;
+        } else if (start - 1 > 0) {
+          i = start - 1;
+        } else {
+          i = start;
+        }
+        while (i <= this.maxPage) {
+          array.push(i);
+          i++;
+        }
+      }
+
       return array;
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
 main {
   background-color: #280909;
 }
-#offersPage{
-  background-image: url('../assets/patternBlack.png');
+#offersPage {
+  background-image: url("../assets/patternBlack.png");
 }
-#offersPage.padded-top .wide-container{
+#offersPage.padded-top .wide-container {
   padding-top: 15em;
 }
 #offersPage .wide-container {
@@ -99,25 +113,25 @@ main {
   justify-content: space-between;
   padding: 1em;
 }
-.title-section{
+.title-section {
   width: 100%;
   display: flex;
   overflow: hidden;
   position: relative;
 }
-.title-wrap{
+.title-wrap {
   background: black;
   direction: inline-block;
-  padding: .25em 8em .25em 6em;
+  padding: 0.25em 8em 0.25em 6em;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
   position: relative;
   left: -1em;
   display: flex;
 }
-.title{
+.title {
   color: #ccc;
 }
-.line{
+.line {
   background: red;
   height: 100%;
   width: 4em;
@@ -150,19 +164,19 @@ main {
 #pageSelector .page-num:hover {
   background: red;
 }
-@media(max-width: 992px){
+@media (max-width: 992px) {
   #offerWrap {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
-@media(max-width: 768px){
+@media (max-width: 768px) {
   #offerWrap {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-@media(max-width: 576px){
+@media (max-width: 576px) {
   #offerWrap {
     display: grid;
     grid-template-columns: 1fr 1fr;

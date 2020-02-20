@@ -32,7 +32,7 @@ export default {
   },
   computed:{
     homePosts(){
-      return this.posts.length ? this.posts.slice(0, 5) : []
+      return this.posts.length ? this.posts.slice(0, 6) : []
     }
   },
 };

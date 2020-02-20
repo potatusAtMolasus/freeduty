@@ -67,16 +67,14 @@ export default {
   },
   methods: {
     getPosts() {
-      this.nextPost =
-        this.posts.find(
-          post => post.id === Number(this.$route.params.id) + 1
-        ) || {};
-      this.prevPost =
-        this.posts.find(
-          post => post.id === Number(this.$route.params.id) - 1
-        ) || {};
-      this.currentPost =
-        this.posts.find(post => post.id === Number(this.$route.params.id)) || {};
+      let postId =
+        this.posts.findIndex(
+          post => post.id === Number(this.$route.params.id)
+        );
+
+      this.nextPost = postId === -1 ? {} : this.posts[postId + 1];
+      this.prevPost = postId === -1 ? {} : this.posts[postId - 1];
+      this.currentPost = this.posts[postId];
     },
     getImgUrl(pic) {
       return pic || require('../assets/image.jpg');

@@ -10,13 +10,14 @@
           <span>{{ popularity }}</span>
         </div>
 
-        <div class="brand">
+        <div v-if="brand" class="brand">
           <p>Брэнд: {{ brand }}</p>
         </div>
 
-        <div class="country">
+        <div v-if="country" class="country">
           <p>Страна производитель: {{ country }}</p>
         </div>
+
 
       </div>
 
@@ -35,18 +36,19 @@
         </template>
       </div>
 
-      <div class="category">
+      <div v-if="category" class="category">
         <p>Категория: {{ category }}</p>
       </div>
-      <div class="volume">
+      <div v-if="volume" class="volume">
         <p>Объем: {{ volume }}</p>
       </div>
-      <div class="strength">
+      <div v-if="strength" class="strength">
         <p>Крепость: {{ strength }}</p>
       </div>
-      <div class="description">
+      <div v-if="description" class="description">
         <p>{{ description }}</p>
       </div>
+
 
     </div>
     <div class="image-wrap">

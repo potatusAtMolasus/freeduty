@@ -105,6 +105,22 @@ export default {
           array.push(i);
         }
       }
+      if (this.maxPage < 5) {
+        array = [];
+        let i;
+        if (start - 2 > 0) {
+          i = start - 2;
+        } else if (start - 1 > 0) {
+          i = start - 1;
+        } else {
+          i = start;
+        }
+        while (i <= this.maxPage) {
+          array.push(i);
+          i++;
+        }
+      }
+
       return array;
     },
     find() {
