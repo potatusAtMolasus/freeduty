@@ -157,19 +157,23 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
   z-index: 300;
-  background: #cccccc99;
+  background: #cccccc00;
   /* border: 2px solid #999; */
   color: #333;
   /* padding: 0.6em; */
   width: 100%;
   height: 100%;
   display: flex;
-  opacity: 0;
+  /* opacity: 0; */
   transition: all 0.2s;
   position: absolute;
 }
 .inner .title-wrap {
+  position: relative;
   margin: auto;
+  transition: all 0.2s;
+  top: 100%;
+
 }
 .post-link img {
   /* position: absolute; */
@@ -213,8 +217,12 @@ export default {
 .post-wrap:hover img {
   transform: scale(1.2);
 }
-.post-wrap:hover .inner {
-  opacity: 1;
+.post-wrap:hover .inner{
+  background: #cccccc99;
+}
+
+.post-wrap:hover .inner .title-wrap{
+  top: 0;
 }
 .inner-post-wrap .title {
   margin: auto;
