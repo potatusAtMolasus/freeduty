@@ -160,17 +160,20 @@ main{
   text-decoration: none;
   text-transform: uppercase;
   z-index: 300;
-  background: #CCCCCC99;
+  background: #CCCCCC00;
   /* border: 2px solid #999; */
   color:#333;
   padding: .6em;
   width: 100%;
   height: 100%;
   display: flex;
-  opacity: 0;
+  /* opacity: 0; */
   transition: all 0.2s;
 }
 .inner .title-wrap{
+  transition: all 0.2s;
+  position: relative;
+  top: 100%;
   margin: auto;
 }
 .post-link p i {
@@ -189,7 +192,12 @@ main{
   transform: scale(1.2);
 }
 .post-wrap:hover .inner {
-  opacity: 1;
+  background: #CCCCCC99;
+
+  /* opacity: 1; */
+}
+.post-wrap:hover .inner .title-wrap{
+  top: 0;
 }
 @media(max-width: 776px){
   #postsWrap{
