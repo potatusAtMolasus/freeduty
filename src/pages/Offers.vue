@@ -10,20 +10,23 @@
       <div id="offerWrap">
         <item v-for="i in displaydata" :key="i.id" :item="i"></item>
       </div>
-    </div>
-    <div id="pageSelector">
-      <div v-for="i in pages" :class="{current: currentPage === i, 'page-num': true}" :key="i">
-        <span @click="getPage(i)">{{ i }}</span>
+      <div id="pageSelector">
+        <div v-for="i in pages" :class="{current: currentPage === i, 'page-num': true}" :key="i">
+          <span @click="getPage(i)">{{ i }}</span>
+        </div>
       </div>
+
     </div>
   </main>
 </template>
 
 <script>
 import Item from "@/components/Item.vue";
+import axiosNoLoad from "axios";
+import axios from "@/js/AxiosInstance.js";
 
 export default {
-  props: ["offers", "scrollPosition"],
+  props: ["scrollPosition"],
   components: {
     Item
   },
@@ -39,10 +42,13 @@ export default {
       page,
       maxPage,
       pages,
-      currentPage
+      currentPage,
+      offers: []
     };
   },
-  mounted() {},
+  async mounted() {
+    this.offers = (await axiosNoLoad.post("http://82b3c652.ngrok.io/all-offers")).data;
+  },
   watch: {
     offers() {
       this.displaydata = this.offers.data;
@@ -53,8 +59,8 @@ export default {
     }
   },
   methods: {
-    getPage(i) {
-      this.$emit("offersPageSelected", i);
+    async getPage(i) {
+      this.offers = (await axios.post("all-offers", { page: i })).data;
     },
     getRange(n) {
       let start = n;

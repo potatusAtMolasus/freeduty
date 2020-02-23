@@ -12,7 +12,6 @@
       <router-view
         :scrollPosition="scrollPosition"
         :isMobile="isMobile"
-        :offers="offers"
         :homeOffers="homeOffers"
         :popular="popular"
         :posts="posts"
@@ -21,7 +20,6 @@
         @filtersChanged="setFilters"
         @find="search"
         @pageSelected="getNewPage"
-        @offersPageSelected="getNewOffersPage"
       />
     </div>
     <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
@@ -96,29 +94,29 @@ export default {
       return response;
     });
 
-    this.$router.beforeResolve((to, from, next) => {
-      this.loaded = false;
-      next();
-    });
+    // this.$router.beforeResolve((to, from, next) => {
+    //   this.loaded = false;
+    //   next();
+    // });
 
-    this.$router.afterEach(() => {
-      this.loaded = true;
-    });
+    // this.$router.afterEach(() => {
+    //   this.loaded = true;
+    // });
 
     window.addEventListener("scroll", this.updateScroll);
 
     this.categories = (await axios.post("get-categories")).data;
-    this.offers = (await axios.post("all-offers")).data;
+    // this.offers = (await axios.post("all-offers")).data;
     this.homeOffers = (await axios.post("get-offers")).data;
     this.popular = (await axios.post("get-popular")).data;
 
     this.posts = (await axios.post("get-posts")).data.data;
-    this.foundData = (
-      await axios.post("find", {
-        query: this.activeQuery,
-        ...this.activeFilters
-      })
-    ).data;
+    // this.foundData = (
+    //   await axios.post("find", {
+    //     query: this.activeQuery,
+    //     ...this.activeFilters
+    //   })
+    // ).data;
   },
   methods: {
     async search(query, load = false) {
@@ -133,7 +131,7 @@ export default {
         ).data;
       } else {
         this.foundData = (
-          await axiosNoLoad.post("http://b36b8f8b.ngrok.io/find", {
+          await axiosNoLoad.post("http://82b3c652.ngrok.io/find", {
             query,
             ...this.activeFilters,
             page: this.currentPage
@@ -150,7 +148,7 @@ export default {
     async setFilters(newFilters) {
       this.activeFilters = newFilters;
       this.foundData = (
-        await axiosNoLoad.post("http://b36b8f8b.ngrok.io/find", {
+        await axiosNoLoad.post("http://82b3c652.ngrok.io/find", {
           query: this.activeQuery,
           ...this.activeFilters,
           page: this.currentPage
@@ -168,9 +166,6 @@ export default {
         })
       ).data;
     },
-    async getNewOffersPage(id) {
-      this.offers = (await axios.post("all-offers", { page: id })).data;
-    }
   },
   computed: {
     isMobile() {
