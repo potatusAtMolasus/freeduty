@@ -131,7 +131,7 @@ export default {
         ).data;
       } else {
         this.foundData = (
-          await axiosNoLoad.post("http://82b3c652.ngrok.io/find", {
+          await axiosNoLoad.post("http://bfe6e340.ngrok.io/find", {
             query,
             ...this.activeFilters,
             page: this.currentPage
@@ -148,7 +148,7 @@ export default {
     async setFilters(newFilters) {
       this.activeFilters = newFilters;
       this.foundData = (
-        await axiosNoLoad.post("http://82b3c652.ngrok.io/find", {
+        await axiosNoLoad.post("http://bfe6e340.ngrok.io/find", {
           query: this.activeQuery,
           ...this.activeFilters,
           page: this.currentPage

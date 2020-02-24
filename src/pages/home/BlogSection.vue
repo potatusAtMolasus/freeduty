@@ -1,6 +1,13 @@
 <template>
   <section id="blogSection">
     <div class="wide-container">
+      <div class="title-section">
+        <div class="title-wrap">
+          <h2 class="title">Блог</h2>
+          <span class="line"></span>
+        </div>
+      </div>
+
       <div id="postGrid">
         <div class="col">
           <div v-if="posts[0]" class="post-wrap">
@@ -8,9 +15,14 @@
               <img :src="posts[0].image_url" />
               <div class="inner">
                 <div class="title-wrap">
-                  <span v-if="!isMobile">Перейти</span>
-                  <span v-if="isMobile" class="title">{{ posts[0].title }}</span>
-                  <i class="fa fa-arrow-right"></i>
+                  <span v-if="!isMobile">
+                    {{ posts[0].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
+                  <span v-if="isMobile" class="title">
+                    {{ posts[0].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
                 </div>
               </div>
             </router-link>
@@ -21,9 +33,14 @@
               <img :src="posts[1].image_url" />
               <div class="inner">
                 <div class="title-wrap">
-                  <span v-if="!isMobile">Перейти</span>
-                  <span v-if="isMobile" class="title">{{ posts[1].title }}</span>
-                  <i class="fa fa-arrow-right"></i>
+                  <span v-if="!isMobile">
+                    {{ posts[1].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
+                  <span v-if="isMobile" class="title">
+                    {{ posts[1].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
                 </div>
               </div>
             </router-link>
@@ -36,9 +53,14 @@
               <img :src="posts[2].image_url" />
               <div class="inner">
                 <div class="title-wrap">
-                  <span v-if="!isMobile">Перейти</span>
-                  <span v-if="isMobile" class="title">{{ posts[2].title }}</span>
-                  <i class="fa fa-arrow-right"></i>
+                  <span v-if="!isMobile">
+                    {{ posts[2].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
+                  <span v-if="isMobile" class="title">
+                    {{ posts[2].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
                 </div>
               </div>
             </router-link>
@@ -49,9 +71,14 @@
               <img :src="posts[3].image_url" />
               <div class="inner">
                 <div class="title-wrap">
-                  <span v-if="!isMobile">Перейти</span>
-                  <span v-if="isMobile" class="title">{{ posts[3].title }}</span>
-                  <i class="fa fa-arrow-right"></i>
+                  <span v-if="!isMobile">
+                    {{ posts[3].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
+                  <span v-if="isMobile" class="title">
+                    {{ posts[3].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
                 </div>
               </div>
             </router-link>
@@ -64,9 +91,14 @@
               <img :src="posts[4].image_url" />
               <div class="inner">
                 <div class="title-wrap">
-                  <span v-if="!isMobile">Перейти</span>
-                  <span v-if="isMobile" class="title">{{ posts[4].title }}</span>
-                  <i class="fa fa-arrow-right"></i>
+                  <span v-if="!isMobile">
+                    {{ posts[4].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
+                  <span v-if="isMobile" class="title">
+                    {{ posts[4].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
                 </div>
               </div>
             </router-link>
@@ -77,9 +109,14 @@
               <img :src="posts[5].image_url" />
               <div class="inner">
                 <div class="title-wrap">
-                  <span v-if="!isMobile">Перейти</span>
-                  <span v-if="isMobile" class="title">{{ posts[5].title }}</span>
-                  <i class="fa fa-arrow-right"></i>
+                   <span v-if="!isMobile">
+                    {{ posts[5].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
+                  <span v-if="isMobile" class="title">
+                    {{ posts[5].caption.slice(0, 30) + '...' }}
+                    <i class="fa fa-arrow-right"></i>
+                  </span>
                 </div>
               </div>
             </router-link>
@@ -173,7 +210,6 @@ export default {
   margin: auto;
   transition: all 0.2s;
   top: 100%;
-
 }
 .post-link img {
   /* position: absolute; */
@@ -217,11 +253,11 @@ export default {
 .post-wrap:hover img {
   transform: scale(1.2);
 }
-.post-wrap:hover .inner{
+.post-wrap:hover .inner {
   background: #cccccc99;
 }
 
-.post-wrap:hover .inner .title-wrap{
+.post-wrap:hover .inner .title-wrap {
   top: 0;
 }
 .inner-post-wrap .title {
@@ -243,23 +279,60 @@ export default {
 #postGrid .post-wrap:nth-child(5) {
   grid-area: fifthPost;
 } */
+.title-section {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+.title-section .title-wrap {
+  background: black;
+  direction: inline-block;
+  padding: 0.25em 18em 0.25em 6em;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  position: relative;
+  left: -1em;
+  display: flex;
+}
+.title {
+  color: #ccc;
+}
+.line {
+  background: red;
+  height: 100%;
+  width: 6em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.inner .title-wrap span {
+  width: 50%;
+  display: block;
+  margin: auto;
+  background: #333c;
+  padding: 1em;
+  color: #ccc;
+}
 
 #blogSection {
   padding: 5em 0;
   overflow: auto;
 }
-#postGrid{
+#postGrid {
   display: flex;
   justify-content: center;
 }
-.col{
+.col {
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 @media (max-width: 800px) {
-  #postGrid .col:nth-child(3){
+  #postGrid .col:nth-child(3) {
     display: none;
   }
 

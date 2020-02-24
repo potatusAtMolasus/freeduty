@@ -2,35 +2,26 @@
   <main>
     <div id="postWrap" :class="{'top': scrollPosition}">
       <div id="postContent">
-        <carousel
-          :key="currentPost.id"
-          :autoplay="false"
-          :loop="false"
-          :adjustableHeight="true"
-          :perPage="1"
-          :paginationEnabled="false"
-          :navigationEnabled="true"
-          :paginationColor="'#454545'"
-        >
-          <slide v-for="i in [currentPost.image_url]" :key="i">
+        <div>
+          <div v-for="i in [currentPost.image_url]" :key="i">
             <div class="imageWrap">
               <img
                 :src="getImgUrl(i)"
                 alt="Не удалось загрузить картинку, посетите страницу в instagram"
               />
             </div>
-          </slide>
-        </carousel>
-        <p id="text">{{ currentPost.text }}</p>
+          </div>
+        </div>
+        <p id="text">{{ currentPost.caption }}</p>
       </div>
       <div id="navigation">
-        <router-link id="prev" v-if="prevPost.id" :to="'/post/' + prevPost.id">
+        <router-link id="prev" v-if="prevPost" :to="'/post/' + prevPost.id">
           <div :style="{ 'background-image': 'url('+getImgUrl(prevPost.image_url)+')' }">
             <p>{{ prevPost.title }}</p>
           </div>
         </router-link>
 
-        <router-link id="next" v-if="nextPost.id" :to="'/post/' + nextPost.id">
+        <router-link id="next" v-if="nextPost" :to="'/post/' + nextPost.id">
           <div :style="{ 'background-image': `url(${getImgUrl(nextPost.image_url)})` }">
             <p>{{ nextPost.title }}</p>
           </div>
@@ -44,7 +35,7 @@
 export default {
   props: {
     posts: Array,
-    scrollPosition: Number,
+    scrollPosition: Number
   },
   data() {
     return {
@@ -55,7 +46,6 @@ export default {
   },
   mounted() {
     this.getPosts();
-    setTimeout(()=>this.$children[0].computeCarouselHeight(), 1000)
   },
   watch: {
     posts() {
@@ -67,17 +57,18 @@ export default {
   },
   methods: {
     getPosts() {
-      let postId =
-        this.posts.findIndex(
-          post => post.id === Number(this.$route.params.id)
-        );
+
+      let postId = this.posts.findIndex(
+        post => post.id === Number(this.$route.params.id)
+      );
+      if (postId === -1) return;
 
       this.nextPost = postId === -1 ? {} : this.posts[postId + 1];
       this.prevPost = postId === -1 ? {} : this.posts[postId - 1];
       this.currentPost = this.posts[postId];
     },
     getImgUrl(pic) {
-      return pic || require('../assets/image.jpg');
+      return pic || require("../assets/image.jpg");
 
       // try {
       //   return require("../assets/" + pic);
@@ -94,6 +85,8 @@ main {
   width: 100%;
   background: #aaa;
   display: flex;
+  padding: 1em;
+  box-sizing: border-box;
 }
 #postWrap.top {
   margin: 20% auto;
@@ -151,6 +144,26 @@ main {
 #prev div p,
 #next div p {
   margin: auto;
+}
+#text{
+  /* font-family: 'Open Sans Condensed', sans-serif; */
+  /* font-family: 'Nunito', sans-serif; */
+  /* font-family: 'Pacifico', cursive; */
+  /* font-family: 'Comfortaa', cursive; */
+  font-family: "Alegreya", serif;
+  text-align: justify;
+  text-indent: 3em;
+  padding: 1em;
+  background: #222c;
+  margin: 0;
+  word-wrap: pre;
+  color: #ccc;
+}
+#text::first-letter {
+  font-size: 1.3em;
+  padding-right: 0.1em;
+  font-family: "Pacifico", cursive;
+  color: #ccc7;
 }
 </style>
 <style>
