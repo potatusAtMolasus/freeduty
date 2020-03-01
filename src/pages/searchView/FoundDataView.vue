@@ -92,23 +92,23 @@ export default {
   methods: {
     getRange(n) {
       let start = n;
-      if (n < 9) {
-        start = 8;
+      if (n < 5) {
+        start = 4;
       }
       let array = [];
-      if (n >= this.maxPage - 7) {
-        for (let i = this.maxPage - 9; i <= this.maxPage; i++) {
+      if (n >= this.maxPage - 3) {
+        for (let i = this.maxPage - 5; i <= this.maxPage; i++) {
           array.push(i);
         }
       } else {
-        for (let i = start - 7; i <= start + 1; i++) {
+        for (let i = start - 3; i <= start + 1; i++) {
           array.push(i);
         }
       }
-      if (this.maxPage < 10) {
+      if (this.maxPage < 6) {
         array = [];
         let i;
-        let j = 7;
+        let j = 3;
         while(j>=0 && start - j > 0){
           i = start - j;
           j--;
