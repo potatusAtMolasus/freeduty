@@ -14,7 +14,7 @@
         </div>
         <p id="text">{{ currentPost.caption }}</p>
       </div>
-      <div id="navigation">
+      <!-- <div id="navigation">
         <router-link id="prev" v-if="prevPost" :to="'/post/' + prevPost.id">
           <div :style="{ 'background-image': 'url('+getImgUrl(prevPost.image_url)+')' }">
             <p>{{ prevPost.title }}</p>
@@ -26,12 +26,14 @@
             <p>{{ nextPost.title }}</p>
           </div>
         </router-link>
-      </div>
+      </div> -->
     </div>
   </main>
 </template>
 
 <script>
+import axios from "@/js/AxiosInstance.js";
+
 export default {
   props: {
     posts: Array,
@@ -39,8 +41,8 @@ export default {
   },
   data() {
     return {
-      nextPost: {},
-      prevPost: {},
+      // nextPost: {},
+      // prevPost: {},
       currentPost: {}
     };
   },
@@ -56,16 +58,21 @@ export default {
     }
   },
   methods: {
-    getPosts() {
+    async getPosts() {
+      // console.log(this.$route.params.id);
+      
+      this.currentPost = (await axios.post("post", {id: this.$route.params.id})).data;
+      // console.log(this.currentPost);
+      
 
-      let postId = this.posts.findIndex(
-        post => post.id === Number(this.$route.params.id)
-      );
-      if (postId === -1) return;
+      // let postId = this.posts.findIndex(
+      //   post => post.id === Number(this.$route.params.id)
+      // );
+      // if (postId === -1) return;
 
-      this.nextPost = postId === -1 ? {} : this.posts[postId + 1];
-      this.prevPost = postId === -1 ? {} : this.posts[postId - 1];
-      this.currentPost = this.posts[postId];
+      // this.nextPost = postId === -1 ? {} : this.posts[postId + 1];
+      // this.prevPost = postId === -1 ? {} : this.posts[postId - 1];
+      // this.currentPost = this.posts[postId];
     },
     getImgUrl(pic) {
       return pic || require("../assets/image.jpg");
@@ -94,10 +101,11 @@ main {
 #postWrap {
   margin: 5% auto;
   background: #fff;
-  /*width: 800px;*/
+  max-width: 800px;
 }
 .imageWrap img {
   width: 100%;
+  display: block;
 }
 #navigation {
   display: flex;

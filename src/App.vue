@@ -111,6 +111,9 @@ export default {
     this.popular = (await axios.post("get-popular")).data;
 
     this.posts = (await axios.post("get-posts")).data.data;
+
+    console.log( (await axios.post("get-posts")).data);
+    
     // this.foundData = (
     //   await axios.post("find", {
     //     query: this.activeQuery,
