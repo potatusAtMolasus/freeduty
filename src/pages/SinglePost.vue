@@ -59,11 +59,8 @@ export default {
   },
   methods: {
     async getPosts() {
-      // console.log(this.$route.params.id);
       
       this.currentPost = (await axios.post("post", {id: this.$route.params.id})).data;
-      // console.log(this.currentPost);
-      
 
       // let postId = this.posts.findIndex(
       //   post => post.id === Number(this.$route.params.id)
@@ -172,6 +169,11 @@ main {
   padding-right: 0.1em;
   font-family: "Pacifico", cursive;
   color: #ccc7;
+}
+@media (max-width: 992px) {
+  #postWrap{
+    width: 100%;
+  }
 }
 </style>
 <style>

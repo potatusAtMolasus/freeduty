@@ -8,11 +8,13 @@ import searchPage from "./pages/SearchPage.vue";
 import postPage from "./pages/SinglePost.vue";
 import itemPage from "./pages/SingleItem.vue";
 import notFound from "./pages/404.vue";
+import landing from "./pages/Landing.vue";
 
 const routes = [
     { path: '/404', alias: '/404', component: notFound},
 
-    { path: "/home", alias: '*', component: home },
+    { path: "/landing", alias: '*', component: landing },
+    { path: "/home", component: home },
     { path: "/about", component: about },
     { path: "/offers", component: offers },
     { path: "/blog", component: blog },

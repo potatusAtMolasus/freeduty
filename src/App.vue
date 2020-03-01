@@ -2,7 +2,7 @@
   <div id="app">
     <div id="page">
       <main-header
-        v-if="$route.name!=='landing'"
+        v-if="$route.matched[0].path!=='/landing'"
         :scrollPosition="scrollPosition"
         :isMobile="isMobile"
         :links="links"
@@ -22,7 +22,7 @@
         @pageSelected="getNewPage"
       />
     </div>
-    <main-footer v-if="$route.name!=='landing'" :links="links" :categories="categories"></main-footer>
+    <main-footer v-if="$route.matched[0].path!=='/landing'" :links="links" :categories="categories"></main-footer>
     <modal></modal>
     <loader :show="!loaded"></loader>
   </div>
@@ -83,7 +83,7 @@ export default {
   async mounted() {
     window.addEventListener("resize", this.updateWidth);
     this.updateWidth();
-
+  
     axios.interceptors.request.use(config => {
       this.loaded = false;
       return config;
@@ -112,8 +112,6 @@ export default {
 
     this.posts = (await axios.post("get-posts")).data.data;
 
-    console.log( (await axios.post("get-posts")).data);
-    
     // this.foundData = (
     //   await axios.post("find", {
     //     query: this.activeQuery,
