@@ -153,6 +153,7 @@ export default {
 }
 #blogSection {
   background-image: url("../../assets/patternBlack.png");
+  background-size: 300px;
   background-color: rgba(180, 180, 180, 0.9);
 }
 

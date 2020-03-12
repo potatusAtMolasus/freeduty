@@ -54,6 +54,7 @@ export default {
 <style scoped>
 main{
   background-image: url('../assets/patternWhite.png');
+  background-size: 300px;
   background-color: #ccc;
 }
 .container{

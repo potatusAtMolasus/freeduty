@@ -5,12 +5,14 @@
         <div id="modal-content-wrap">
           <div id="modal-title-wrap">
             <div id="circle">
-              <h2>OK</h2>
-              <!-- <h2>18+</h2> -->
+              <!-- <h2>OK</h2> -->
+              <h2>18+</h2>
             </div>
           </div>
           <div id="modal-msg-wrap">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores voluptates sed saepe, eveniet aperiam maxime excepturi! Modi consectetur architecto hic, id consequatur dolor minima, exercitationem accusamus repellat voluptatum quia sequi. Veniam, corrupti corporis maxime alias rem ipsa hic totam, tempore delectus quod ratione animi voluptatem id quidem ipsum rerum suscipit.</p>
+            <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores voluptates sed saepe, eveniet aperiam maxime excepturi! Modi consectetur architecto hic, id consequatur dolor minima, exercitationem accusamus repellat voluptatum quia sequi. Veniam, corrupti corporis maxime alias rem ipsa hic totam, tempore delectus quod ratione animi voluptatem id quidem ipsum rerum suscipit.</p> -->
+            <p>Данный сайт содержит материалы, предназначенные для просмотра только лицам, достигшим совершеннолетия. <b>Для входа на сайт подтвердите свой возраст.</b></p>
+
           </div>
           <div id="modal-btns-wrap">
             <button class="confirm-btn" @click="ageConfirmed">
@@ -34,7 +36,7 @@ import axios from "@/js/AxiosInstance.js";
 
 export default {
   async created() {
-    this.showWarning = !(await axios.post("confirm-age")).data;
+    this.showWarning = !(await axios.post("is-age-confirmed")).data;
   },
   data() {
     return {
@@ -43,7 +45,7 @@ export default {
   },
   methods: {
     async ageConfirmed(){
-      await axios.post("is-age-confirmed");
+      await axios.post("confirm-age");
       this.showWarning = false;
     }
   }

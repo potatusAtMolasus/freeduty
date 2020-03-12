@@ -58,7 +58,7 @@ export default {
 <style scoped>
 #offersSection{
   background-image: url('../../assets/patternBlack.png');
-  
+  background-size: 300px;
   position: relative;
   z-index: 200;
 }

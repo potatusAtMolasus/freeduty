@@ -63,6 +63,7 @@ export default {
   justify-content: space-between;
   background-color: #e9e9e9;
   background-image: url("../assets/patternBlack.png");
+  background-size: 300px;
 }
 #searchView.not-top {
   margin: 10% auto 0 auto;

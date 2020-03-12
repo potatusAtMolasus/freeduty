@@ -37,6 +37,7 @@ export default {
 <style scoped>
 #contactsPage {
   background-image: url("../assets/patternBlack.png");
+  background-size: 300px;
 }
 #contactsPage .container {
   background: rgba(180, 180, 180, 0.9);

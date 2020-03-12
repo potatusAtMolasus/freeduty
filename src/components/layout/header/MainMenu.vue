@@ -58,7 +58,10 @@ export default {
 <style scoped>
 #mainMenu {
   display: flex;
+  justify-content: center;
   background: rgba(0,0,0,0.9);
+  width: auto;
+  padding-left: 10%;
 }
 #mainMenu #logoWrapper{
   padding: .6em .5em;
@@ -81,7 +84,7 @@ export default {
 #headerLinks {
   display: flex;
   justify-content: left;
-  flex: 4;
+  /* flex: 4; */
 }
 #headerLinks a {
   display: inline-flex;

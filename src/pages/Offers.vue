@@ -47,7 +47,7 @@ export default {
     };
   },
   async mounted() {
-    this.offers = (await axiosNoLoad.post("http://17b8f12e.ngrok.io/all-offers")).data;
+    this.offers = (await axiosNoLoad.post("http://63f0c113.ngrok.io/all-offers")).data;
   },
   watch: {
     offers() {
@@ -102,6 +102,7 @@ main {
 }
 #offersPage {
   background-image: url("../assets/patternBlack.png");
+  background-size: 300px;
 }
 #offersPage.padded-top .wide-container {
   padding-top: 15em;

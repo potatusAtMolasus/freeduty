@@ -76,7 +76,7 @@ export default {
     },
     async find(query) {
       this.dropdownList = (
-        await axios.post("http://17b8f12e.ngrok.io/find", { query, category: "" })
+        await axios.post("http://63f0c113.ngrok.io/find", { query, category: "" })
       ).data;
       this.$emit("search", query);
     },
@@ -120,9 +120,11 @@ a{
 
 .showFull .field,
 .showFull.searchBox {
+  position: relative;
   background: #2f3640;
 }
 .showFull.searchBox .searchInput {
+  position: relative;
   width: 150px;
   padding: 0 6px;
 }

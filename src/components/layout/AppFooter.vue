@@ -115,20 +115,23 @@ li {
   color: rgba(167, 146, 129, 0.6);
 }
 #social-buttons li {
-  font-size: 100px;
+  /* font-size: 100px; */
+  font-size: 60px;
   list-style-type: none;
-  width: 100px;
-  height: 100px;
+  /* width: 100px; */
+  width: 60px;
+  /* height: 100px; */
+  height: 60px;
   line-height: 50px;
   padding: 1%;
-  border: 1px solid rgba(167, 146, 129, 0.4);
+  /* border: 1px solid rgba(167, 146, 129, 0.4); */
   cursor: pointer;
   margin: auto 10px;
   transition: ease 0.3s;
 }
 #social-buttons li:hover {
   color: #a79281;
-  border: 1px solid #a79281;
+  /* border: 1px solid #a79281; */
 }
 .social:hover > li,
 ul:hover li {

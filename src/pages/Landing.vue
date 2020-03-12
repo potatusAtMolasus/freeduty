@@ -99,7 +99,7 @@ main {
   display: flex;
   flex-direction: column;
   margin: 0 auto 2em auto;
-  z-index: 10000;
+  z-index: 400;
 }
 #phone,
 #address {

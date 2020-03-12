@@ -69,6 +69,7 @@ export default {
 
 #popularSection {
   background-image: url('../../assets/patternBlack.png');
+  background-size: 300px;
   background-color: #4f4f4f;
   position: relative;
   z-index: 300;

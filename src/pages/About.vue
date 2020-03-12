@@ -86,6 +86,7 @@ main {
 }
 #aboutPage {
   background-image: url("../assets/patternBlack.png");
+  background-size: 300px;
 }
 .wrapper {
   width: 100%;
