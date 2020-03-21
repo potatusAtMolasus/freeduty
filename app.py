@@ -983,7 +983,8 @@ def get_popular():
 
 @app.route('/get-posts', methods=['POST'])
 def get_posts():
-    return jsonify([{
+    print('get')
+    return jsonify({"data": [{
         'id': 1,
         'title': "Фламинго",
         'images': ["flamingo.jpg","man.jpg", "climate.jpg",],
@@ -1034,7 +1035,7 @@ def get_posts():
         'title': "Работа Фронтэндера",
         'images': ["discount.png"],
         'text': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque in sequi illo laborum neque."
-    }])
+    }]})
 
 @app.route('/get-filters', methods=['POST'])
 def get_filters():   

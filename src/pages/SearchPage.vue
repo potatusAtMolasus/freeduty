@@ -44,6 +44,8 @@ export default {
       this.$emit("pageSelected", i);
     },
     filterChange(newFilters) {
+      console.log(newFilters);
+      
       this.$emit("filtersChanged", newFilters);
     },
     find(query) {
@@ -74,3 +76,4 @@ export default {
   }
 }
 </style>
+

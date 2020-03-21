@@ -333,6 +333,16 @@ export default {
   overflow: hidden;
 }
 @media (max-width: 800px) {
+  .post-wrap{
+    padding: 0.5em;
+    background: transparent;
+  }
+  .post-link {
+    padding: 0;
+    margin: 0;
+    float: none;
+    display: inline-block !important;
+  }
   #postGrid .col:nth-child(3) {
     display: none;
   }

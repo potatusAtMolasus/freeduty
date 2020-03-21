@@ -209,6 +209,9 @@ p.title {
   p.title {
     height: 7.6em;
   }
+  .sale-text{
+    font-size: .6em;
+  }
 }
 @media(max-width: 500px){
   .discount{

@@ -61,6 +61,8 @@ export default {
   },
   methods:{
     throwValue(){
+      console.log(this.priceBorders[0]);
+      console.log(this.priceBorders[1]);
       this.$emit("filterChange", {
         categories: this.checkedCategories,
         brands: this.checkedBrands,

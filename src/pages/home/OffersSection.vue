@@ -1,7 +1,14 @@
 <template>
   <section id="offersSection">
     <div class="wide-container">
-      <h2 id="offers-title">Наши Акции</h2>
+      <div class="title-section">
+        <div class="title-wrap">
+          <h2 class="title">Наши Акции</h2>
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <!-- <h2 id="offers-title">Наши Акции</h2> -->
 
       <div id="offersContent">
         <div id="offersText">Ассортимент «Дьюти Фри» насчитывает около 3000 алкогольных напитков со всего мира — от демократичных бестселлеров до мировых звезд, отмеченных престижными рейтингами. Благодаря тому, что мы напрямую сотрудничаем с ведущими импортерами, цены для вас мы постарались сделать максимально низкими.</div>
@@ -56,6 +63,44 @@ export default {
 };
 </script>
 <style scoped>
+.title-section {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+.title-section .title-wrap {
+  background: black;
+  direction: inline-block;
+  padding: 0.25em 18em 0.25em 6em;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  position: relative;
+  left: -1em;
+  display: flex;
+}
+.title {
+  color: #ccc;
+}
+.line {
+  background: red;
+  height: 100%;
+  width: 6em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.inner .title-wrap span {
+  width: 50%;
+  display: block;
+  margin: auto;
+  background: #333c;
+  padding: 1em;
+  color: #ccc;
+}
+
 #offersSection{
   background-image: url('../../assets/patternBlack.png');
   background-size: 300px;

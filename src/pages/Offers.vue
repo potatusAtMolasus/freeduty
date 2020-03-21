@@ -47,7 +47,11 @@ export default {
     };
   },
   async mounted() {
-    this.offers = (await axiosNoLoad.post("http://63f0c113.ngrok.io/all-offers")).data;
+    this.offers = (await axiosNoLoad.post("http://764ef1b1.ngrok.io/all-offers", {}, {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          })).data;
   },
   watch: {
     offers() {

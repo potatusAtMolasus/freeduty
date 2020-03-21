@@ -83,7 +83,7 @@ export default {
   async mounted() {
     window.addEventListener("resize", this.updateWidth);
     this.updateWidth();
-  
+
     axios.interceptors.request.use(config => {
       this.loaded = false;
       return config;
@@ -132,10 +132,14 @@ export default {
         ).data;
       } else {
         this.foundData = (
-          await axiosNoLoad.post("http://63f0c113.ngrok.io/find", {
+          await axiosNoLoad.post("http://764ef1b1.ngrok.io/find", {
             query,
             ...this.activeFilters,
             page: this.currentPage
+          }, {
+            headers: {
+              'Content-Type': 'application/json',
+            }
           })
         ).data;
       }
@@ -149,10 +153,14 @@ export default {
     async setFilters(newFilters) {
       this.activeFilters = newFilters;
       this.foundData = (
-        await axiosNoLoad.post("http://63f0c113.ngrok.io/find", {
+        await axiosNoLoad.post("http://764ef1b1.ngrok.io/find", {
           query: this.activeQuery,
-          ...this.activeFilters,
+          ...newFilters,
           page: this.currentPage
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          }
         })
       ).data;
       // this.router.push({ path: 'search' })
@@ -164,9 +172,13 @@ export default {
           query: this.activeQuery,
           ...this.activeFilters,
           page: this.currentPage
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          }
         })
       ).data;
-    },
+    }
   },
   computed: {
     isMobile() {

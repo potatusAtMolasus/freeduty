@@ -76,7 +76,11 @@ export default {
     },
     async find(query) {
       this.dropdownList = (
-        await axios.post("http://63f0c113.ngrok.io/find", { query, category: "" })
+        await axios.post("http://764ef1b1.ngrok.io/find", { query, category: "" }, {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          })
       ).data;
       this.$emit("search", query);
     },
