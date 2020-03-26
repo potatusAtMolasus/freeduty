@@ -297,6 +297,7 @@
     }
 
     .wide-container {
+        padding-bottom: 3em;
         max-width: 960px;
         width: 100%;
         margin-right: auto;
@@ -376,9 +377,11 @@
         #cor {
             width: 100%;
             margin: 0;
+            padding-bottom: 3em;
         }
 
         .wide-container {
+            padding-bottom: 3em;
             padding: 0;
         }
 

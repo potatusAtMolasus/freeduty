@@ -114,7 +114,7 @@ export default {
         ).data;
       } else {
         this.foundData = (
-          await axiosNoLoad.post("http://127.0.0.1:8000/find", {
+          await axiosNoLoad.post("https://dutyfreesochi.ru//find", {
             query,
             ...this.activeFilters,
             page: this.currentPage
@@ -138,7 +138,7 @@ export default {
     async setFilters(newFilters) {
       this.activeFilters = newFilters;
       this.foundData = (
-        await axiosNoLoad.post("http://127.0.0.1:8000/find", {
+        await axiosNoLoad.post("https://dutyfreesochi.ru//find", {
           query: this.activeQuery,
           ...newFilters,
           page: this.currentPage

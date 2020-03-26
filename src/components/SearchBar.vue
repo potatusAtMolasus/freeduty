@@ -76,7 +76,7 @@ export default {
     },
     async find(query) {
       this.dropdownList = (
-        await axios.post("http://127.0.0.1:8000/find", { query, category: "" }, {
+        await axios.post("https://dutyfreesochi.ru//find", { query, category: "" }, {
             headers: {
               'Content-Type': 'application/json',
             }

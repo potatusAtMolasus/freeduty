@@ -47,7 +47,7 @@ export default {
     };
   },
   async mounted() {
-    this.offers = (await axiosNoLoad.post("http://127.0.0.1:8000/all-offers", {}, {
+    this.offers = (await axiosNoLoad.post("https://dutyfreesochi.ru//all-offers", {}, {
             headers: {
               'Content-Type': 'application/json',
             }
