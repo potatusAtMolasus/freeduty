@@ -1,15 +1,12 @@
 <template>
+  <div class="wide-container-wrapper">
+  <div class="wide-container">
   <div :class="{ 'item-wrap': true, 'not-top': scrollPosition&&!isMobile }">
     <div class="content">
       <div class="title">
         {{ title }}
       </div>
       <div class="country-populaity">
-        <div class="rating">
-          <i class="fa fa-star"></i>
-          <span>{{ popularity }}</span>
-        </div>
-
         <div v-if="brand" class="brand">
           <p>Брэнд: {{ brand }}</p>
         </div>
@@ -57,6 +54,8 @@
       </div>
     </div>
 
+  </div>
+  </div>
   </div>
 </template>
 
@@ -120,6 +119,19 @@ export default {
 </script>
 
 <style scoped>
+.wide-container {
+  max-width: 960px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  background: white;
+}
+
+.wide-container-wrapper {
+  background: #e9e9e9 url('../assets/patternWhite.png') repeat center -638px;
+  background-size: 300px;
+}
+
 .item-wrap{
   display: flex;
   margin: 0 5%;

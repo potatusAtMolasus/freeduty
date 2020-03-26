@@ -80,8 +80,8 @@ aside{
   transform: rotate(180deg);
 }
 .filter-options{
-  overflow: hidden;
-  max-height: 200px;
+  overflow: scroll;
+  max-height: 400px;
   transition: max-height .4s linear;
 }
 .filter-options.no-height{

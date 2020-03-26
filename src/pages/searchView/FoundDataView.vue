@@ -55,8 +55,7 @@ export default {
       sortBy: "",
       comboOptions: [
         { label: "По возрастанию цены", value: "priceIncr" },
-        { label: "По уменьшению цены", value: "priceDecr" },
-        { label: "По популярности", value: "popularity" }
+        { label: "По уменьшению цены", value: "priceDecr" }
       ]
     };
   },

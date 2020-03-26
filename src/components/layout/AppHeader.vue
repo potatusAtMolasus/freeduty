@@ -51,6 +51,6 @@ header.fixed {
 header {
   width: 100%;
   position: relative;
-  z-index: 500;
+  z-index: 99999;
 }
 </style>

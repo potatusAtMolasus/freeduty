@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div id="postWrap" :class="{'top': scrollPosition}">
+    <div id="postWrap">
       <div id="postContent">
         <div>
           <div v-for="i in [currentPost.image_url]" :key="i">
@@ -86,8 +86,9 @@ export default {
 
 <style scoped>
 main {
+  background: #e9e9e9 url('../assets/patternWhite.png') repeat center -638px;
+  background-size: 300px;
   width: 100%;
-  background: #aaa;
   display: flex;
   padding: 1em;
   box-sizing: border-box;

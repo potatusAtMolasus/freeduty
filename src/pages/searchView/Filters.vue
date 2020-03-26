@@ -57,7 +57,7 @@ export default {
     this.categories = filters.categories;
     this.brands = filters.brands;
     this.countries = filters.countries;
-    this.priceDefaults = filters.price || {lowest: 1, highiest: 20000};
+    this.priceDefaults = filters.price || {lowest: filters.min_price, highiest: filters.max_price};
   },
   methods:{
     throwValue(){

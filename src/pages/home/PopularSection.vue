@@ -1,5 +1,6 @@
 <template>
   <section id="popularSection">
+    <div class="back"></div>
       <div id="popuplarWrap">
         <div id="popularTitleWrapWrap">
           <div id="popularTitleWrap">
@@ -9,6 +10,7 @@
 
         <div id="popularItemsWrap">
           <carousel
+                  id="popcor"
             :autoplay="false"
             :scrollPerPage="false"
             :loop="true"
@@ -24,18 +26,6 @@
             </slide>
           </carousel>
         </div>
-
-        <div id="popularFooterWrapWrap">
-          <div id="popularFooterWrap">
-            <router-link id="popularsBtn" to="/search/all">
-              <span>
-                 Товары
-                <i class="fa fa-arrow-right"></i>
-              </span>
-            </router-link>
-          </div>
-        </div>
-
       </div>
   </section>
 </template>
@@ -67,19 +57,67 @@ export default {
 </script>
 <style scoped>
 
+ #popcor {
+   padding-bottom: 3em;
+ }
+.back {
+  color: #222;
+  font-style: normal;
+  line-height: 1.5;
+  cursor: auto;
+  font-family: roboto,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  width: 696px;
+  height: 480px;
+  padding-top: 105px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -348px;
+}
+
 #popularSection {
-  background-image: url('../../assets/patternBlack.png');
+  background: #4f4f4f;
   background-size: 300px;
-  background-color: #4f4f4f;
   position: relative;
   z-index: 300;
+  clear: both;
+  padding-left: 1em;
+  padding-right: 1em;
 }
+
+#popularSection:before {
+  left: 50%;
+  margin-left: -950px;
+}
+
+#popularSection:after {
+  right: 50%;
+  margin-right: -950px;
+}
+
+#popularSection:before,
+#popularSection:after {
+  content: '';
+  background: url(../../assets/patternBlack.png) repeat-y center -638px;
+  width: 554px;
+  height: 543px;
+  position: absolute;
+  top: 0;
+}
+
+
 #popuplarWrap {
   position: relative;
   display: flex;
   justify-content: center;
   overflow: visible;
-  padding: 6em 4em 6em 4em;
+  padding: 3em 4em 4em 4em;
 }
 #popularTitleWrapWrap {
   position: absolute;
@@ -89,71 +127,28 @@ export default {
 }
 #popularTitleWrap {
   position: relative;
-  padding: 1em 10em;
+  padding: 1em 15.9em;
   background: black;
   color: #ddd;
   margin: auto;
 }
+
+#popularTitleWrap h2 {
+  margin-top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-family: roboto, Arial, sans-serif;
+}
+
 #popularItemsWrap {
   z-index: 300;
-  margin-bottom: 10px;
   width: 100%;
   /* box-shadow: #555 2px 2px 10px 5px; */
 }
 
-#popularFooterWrapWrap{
-  position: absolute;
-  bottom: -4em;
-  left: 0;
-  display: flex;
-  width: 100%;
-  z-index: 200;
-}
-#popularFooterWrap{
-  position: relative;
-  padding: 3.5em 8em;
-  background: black;
-  color: #ddd;
-  margin: auto;
-}
-
-#popularsBtn{
-  text-decoration: none;
-  color: red;
-}
-#popularsBtn{
-  padding: 18px 40px;
-  margin: 20px 0 10px 0;
-  /* background: linear-gradient(180deg, white 5%, green 150%); */
-  /* border-radius: 30px; */
-  border: 1px solid red;
-  font-size: 18px;
-  position: relative;
-  transition: color .3s;
-}
-#popularsBtn:after{
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0px;
-  transition: height .3s;
-  background: red;
-  z-index: 100;
-}
-#popularsBtn span{
-  position: relative;
-  z-index: 200;
-}
-#popularsBtn:hover:after{
-  height: 100%;
-}
-#popularsBtn:hover{
-  color: white;
-  box-shadow: #232323 2px 2px 15px 7px;
-}
 
 @media(max-width: 800px){
     #popuplarWrap{
@@ -165,7 +160,6 @@ export default {
   }
   #popularItemsWrap {
     border: none;
-    margin-bottom: 10px;
   }
   #popularFooterWrapWrap{
     position: relative;
@@ -191,14 +185,21 @@ export default {
     top: 0;
   }
   #popularTitleWrap{
-    padding: 1em;
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 0;
+    padding-top: 1em;
+    max-width: 696px;
   }
 }
 
 @media(max-width: 500px){
+  #popularSection:before,
+  #popularSection:after {
+    position: static;
+  }
+
   #popuplarWrap{
     display: block;
   }

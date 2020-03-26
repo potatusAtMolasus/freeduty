@@ -1,13 +1,9 @@
 <template>
   <section id="blogSection">
+    <div id="blogTitleWrap">
+      НОВОСТИ
+    </div>
     <div class="wide-container">
-      <div class="title-section">
-        <div class="title-wrap">
-          <h2 class="title">Блог</h2>
-          <span class="line"></span>
-        </div>
-      </div>
-
       <div id="postGrid">
         <div class="col">
           <div v-if="posts[0]" class="post-wrap">
@@ -16,12 +12,12 @@
               <div class="inner">
                 <div class="title-wrap">
                   <span v-if="!isMobile">
-                    {{ posts[0].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[0].caption.slice(0, 80) + '...'  }}
+                    
                   </span>
                   <span v-if="isMobile" class="title">
-                    {{ posts[0].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[0].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                 </div>
               </div>
@@ -34,12 +30,12 @@
               <div class="inner">
                 <div class="title-wrap">
                   <span v-if="!isMobile">
-                    {{ posts[1].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[1].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                   <span v-if="isMobile" class="title">
-                    {{ posts[1].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[1].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                 </div>
               </div>
@@ -54,12 +50,12 @@
               <div class="inner">
                 <div class="title-wrap">
                   <span v-if="!isMobile">
-                    {{ posts[2].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[2].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                   <span v-if="isMobile" class="title">
-                    {{ posts[2].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[2].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                 </div>
               </div>
@@ -72,12 +68,12 @@
               <div class="inner">
                 <div class="title-wrap">
                   <span v-if="!isMobile">
-                    {{ posts[3].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[3].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                   <span v-if="isMobile" class="title">
-                    {{ posts[3].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[3].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                 </div>
               </div>
@@ -92,12 +88,12 @@
               <div class="inner">
                 <div class="title-wrap">
                   <span v-if="!isMobile">
-                    {{ posts[4].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[4].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                   <span v-if="isMobile" class="title">
-                    {{ posts[4].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[4].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                 </div>
               </div>
@@ -110,12 +106,12 @@
               <div class="inner">
                 <div class="title-wrap">
                    <span v-if="!isMobile">
-                    {{ posts[5].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[5].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                   <span v-if="isMobile" class="title">
-                    {{ posts[5].caption.slice(0, 30) + '...' }}
-                    <i class="fa fa-arrow-right"></i>
+                    {{ posts[5].caption.slice(0, 80) + '...' }}
+                    
                   </span>
                 </div>
               </div>
@@ -148,13 +144,42 @@ export default {
 };
 </script>
 <style scoped>
+  #blogTitleWrap {
+    top: -53px;
+    z-index: 800;
+    width: 100%;
+    position: absolute;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-family: roboto, Arial, sans-serif;
+
+
+    font-style: normal;
+    line-height: 1.5;
+    cursor: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+  }
+
 .wide-container {
+  max-width: 960px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
   box-sizing: border-box;
 }
 #blogSection {
-  background-image: url("../../assets/patternBlack.png");
+  background: #e9e9e9 url('../../assets/patternWhite.png') repeat center -638px;
   background-size: 300px;
-  background-color: rgba(180, 180, 180, 0.9);
 }
 
 #postGrid {
@@ -170,8 +195,6 @@ export default {
   background: transparent;
 }
 .post-wrap {
-  /* background: #ccc; */
-  background: #f005;
   position: relative;
   padding: 0.1em;
   cursor: pointer;
@@ -209,8 +232,10 @@ export default {
 .inner .title-wrap {
   position: relative;
   margin: auto;
+  margin-bottom: 0;
   transition: all 0.2s;
   top: 100%;
+  width: 100%;
 }
 .post-link img {
   /* position: absolute; */
@@ -294,6 +319,7 @@ export default {
   position: relative;
   left: -1em;
   display: flex;
+  margin-bottom: 0;
 }
 .title {
   color: #ccc;
@@ -310,17 +336,18 @@ export default {
 }
 
 .inner .title-wrap span {
-  width: 50%;
+  word-break: break-all;
+  font-size: 0.9em;
+  height: 70px;
   display: block;
-  margin: auto;
   background: #333c;
   padding: 1em;
-  color: #ccc;
+  color: #ffffff;
 }
 
 #blogSection {
-  padding: 5em 0;
-  overflow: auto;
+  padding: 2em 0;
+  position: relative;
 }
 #postGrid {
   display: flex;
@@ -333,6 +360,21 @@ export default {
   overflow: hidden;
 }
 @media (max-width: 800px) {
+  .post-wrap:hover .inner {
+    background: initial;
+  }
+
+  .inner {
+    position: relative;
+  }
+
+  #blogTitleWrap {
+    position: relative;
+    color: #000000;
+    top: 4px;
+    margin-bottom: 2px;
+  }
+
   .post-wrap{
     padding: 0.5em;
     background: transparent;
@@ -351,7 +393,7 @@ export default {
     max-width: unset;
   }
   #blogSection {
-    padding-top: 4em;
+    padding: 0;
   }
   #postGrid .post-wrap:nth-child(4),
   #postGrid .post-wrap:nth-child(5) {
@@ -364,6 +406,9 @@ export default {
   }
 }
 @media (max-width: 500px) {
+  .post-wrap:hover .inner {
+    background: initial;
+  }
   #postGrid {
     flex-direction: column;
   }
@@ -399,7 +444,11 @@ export default {
     transform: scale(1);
   }
   .inner {
-    display: none;
+    position: relative;
+  }
+
+  #blogTitleWrap{
+    margin-bottom: -35px;
   }
 }
 </style>

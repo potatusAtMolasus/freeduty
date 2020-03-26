@@ -10,14 +10,25 @@
             </div>
           </div>
           <div id="modal-msg-wrap">
-            <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores voluptates sed saepe, eveniet aperiam maxime excepturi! Modi consectetur architecto hic, id consequatur dolor minima, exercitationem accusamus repellat voluptatum quia sequi. Veniam, corrupti corporis maxime alias rem ipsa hic totam, tempore delectus quod ratione animi voluptatem id quidem ipsum rerum suscipit.</p> -->
-            <p>Данный сайт содержит материалы, предназначенные для просмотра только лицам, достигшим совершеннолетия. <b>Для входа на сайт подтвердите свой возраст.</b></p>
-
+            <div class="htmlContent">
+              <p>Содержащаяся на сайте справочная информация об ассортименте алкогольной продукции не является
+                предложением о приобретении и доводится до сведения посетителей в соответствии с требованиями
+                Закона РФ от 07.02.1992 N 2300-1 'О защите прав потребителей' и Федерального закона от
+                28.12.2009 N 381-ФЗ 'Об основах государственного регулирования торговой деятельности в
+                Российской Федерации', с учетом ограничений, установленных Федеральным законом от 13.03.2006 N
+                38-ФЗ 'О рекламе' (в редакции Федерального закона от 20.07.2012 N 119-ФЗ).</p>
+              <h6 class="red_text">Исполнилось ли Вам полных 18 лет?</h6>
+            </div>
           </div>
           <div id="modal-btns-wrap">
             <button class="confirm-btn" @click="ageConfirmed">
               <span>
-                Подведить
+               Да
+              </span>
+            </button>
+            <button class="decline-btn" @click="ageDeclined">
+              <span>
+               Нет
               </span>
             </button>
             <!-- <button class="confirm-btn" @click="ageConfirmed">Мне исполнилось 18</button> -->
@@ -36,7 +47,9 @@ import axios from "@/js/AxiosInstance.js";
 
 export default {
   async created() {
-    this.showWarning = !(await axios.post("is-age-confirmed")).data;
+    this.showWarning = !(await axios.post("is-age-confirmed", {headers: {
+        'Content-Type': 'application/json',
+      }})).data;
   },
   data() {
     return {
@@ -47,12 +60,31 @@ export default {
     async ageConfirmed(){
       await axios.post("confirm-age");
       this.showWarning = false;
+    },
+    ageDeclined(){
+      window.location.replace("https://www.rosminzdrav.ru/documents/7870-prikaz-minzdravsotsrazvitiya-rossii-49-ot-19-yanvarya-2007-g");
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
+.red_text {
+  color: #ff0000; cursor: auto;
+  visibility: visible;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: roboto,Arial,sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  line-height: 1.4;
+  text-align: center!important;
+  margin: 0 0 5px;
+  clear: both;
+  font-size: 1.125rem;
+}
+
 .modal-wrap {
   position: fixed;
   top: 0;
@@ -62,7 +94,7 @@ export default {
 
 .modal-window {
   position: relative;
-  top: 20vh;
+  top: 5vh;
   width: 35%;
   padding: 15px;
   margin: auto;
@@ -113,10 +145,12 @@ export default {
 #modal-btns-wrap{
   display: flex;
   justify-content: center;
+  height: 25px;
+  margin-bottom: 20px;
 }
 .confirm-btn{
   padding: 18px 40px;
-  margin: 20px 0 10px 0;
+  margin: 0 0 10px 0;
   /* background: linear-gradient(180deg, white 5%, green 150%); */
   /* border-radius: 30px; */
   border: 1px solid red;
@@ -139,11 +173,46 @@ export default {
 .confirm-btn span{
   position: relative;
   z-index: 200;
+  bottom: 10px;
 }
 .confirm-btn:hover:after{
   height: 100%;
 }
 .confirm-btn:hover{
+  color: white;
+}
+
+.decline-btn{
+  padding: 18px 40px;
+  margin: 0 0 10px 100px;
+  /* background: linear-gradient(180deg, white 5%, green 150%); */
+  /* border-radius: 30px; */
+  border: 1px solid red;
+  font-size: 18px;
+  position: relative;
+  transition: color .3s;
+}
+.decline-btn:after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0px;
+  transition: height .3s;
+  background: red;
+  z-index: 100;
+}
+.decline-btn span{
+  position: relative;
+  z-index: 200;
+  bottom: 10px;
+}
+.decline-btn:hover:after{
+  height: 100%;
+}
+.decline-btn:hover{
   color: white;
 }
 /* .confirm-btn:hover{

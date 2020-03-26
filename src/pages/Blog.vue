@@ -1,5 +1,5 @@
 <template>
-  <main id="blogPage" :class="{'padded-top': scrollPosition !== 0}">
+  <main id="blogPage">
     <div class="container">
 
       <div class="title-section">
@@ -58,6 +58,10 @@ main{
   background-color: #ccc;
 }
 .container{
+  max-width: 960px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
   background-color: #999;
   padding: 3em 0em;
 }
@@ -79,7 +83,7 @@ main{
 .title-section .title-wrap {
   background: black;
   direction: inline-block;
-  padding: 0.25em 18em 0.25em 6em;
+  padding: 0.25em 9em 0.25em 6em;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
   position: relative;
   left: -1em;
@@ -91,11 +95,12 @@ main{
 .line {
   background: red;
   height: 100%;
-  width: 6em;
+  width: 4em;
   position: absolute;
   right: 0;
   top: 0;
   display: block;
+  -webkit-clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%);
   clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%);
 }
 

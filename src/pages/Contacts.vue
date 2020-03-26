@@ -1,12 +1,7 @@
 <template>
-  <div id="contactsPage" :class="{'padded-top': scrollPosition !== 0}">
+  <div class="wide-container">
+  <div id="contactsPage">
     <div class="container">
-      <div class="title-section">
-        <div class="title-wrap">
-          <h2 class="title">Контакты</h2>
-          <span class="line"></span>
-        </div>
-      </div>
       <div class="content">
         <h3>
           Телефон:
@@ -24,6 +19,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -35,13 +31,20 @@ export default {
 </script>
 
 <style scoped>
-#contactsPage {
-  background-image: url("../assets/patternBlack.png");
+.wide-container {
+  background: #e9e9e9 url('../assets/patternWhite.png') repeat center -638px;
   background-size: 300px;
 }
+
+#contactsPage {
+  max-width: 960px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
 #contactsPage .container {
-  background: rgba(180, 180, 180, 0.9);
-  padding: 3em 0;
+  background: white;
+  padding: 1em 0 1em 0;
 }
 #contactsPage.padded-top .container{
   padding-top: 15em;

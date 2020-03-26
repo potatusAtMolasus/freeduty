@@ -6,10 +6,10 @@
 
       <div class="item-wrap">
         
-        <div class="rating">
-          <i class="fa fa-star"></i>
-          <span>{{ popularity }}</span>
-        </div>
+<!--        <div class="rating">-->
+<!--          <i class="fa fa-star"></i>-->
+<!--          <span>{{ popularity }}</span>-->
+<!--        </div>-->
 
 
         <div v-if="sale" class="discount">
@@ -86,6 +86,7 @@ a{
   color: inherit;
 }
 .item-wrap {
+    box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
   background: #ffffff;
   padding: 10px;
   margin: 0px;
@@ -98,7 +99,7 @@ a{
   box-shadow: 2px 3px 15px 3px #666;
 }
 .outer-wrap{
-  margin: 2em 0.5em;
+  margin: 0.5em 0.5em 0.5em 0.5em;
   background: white;
 }
 .item-img-wrap{
@@ -177,18 +178,16 @@ p.title {
 
 .discount{
   position: absolute;
-  width: 8em;
-  height: 8em;
-  right: -1em;
+  width: 5em;
+  height: 5em;
+  right: -0.6em;
   top: 0em;
 }
 
 .discount img{
   filter: none; 
 }
-.item-wrap:hover .discount img{
-  filter: drop-shadow(5px 5px 5px #222); 
-}
+
 .sale-text-wrap{
   display: flex;
   align-items: center;
@@ -199,7 +198,7 @@ p.title {
   right: 0;
   color: white;
   width: 50%;
-  font-size: .75em;
+  font-size: .5em;
   line-height: 2em;
   text-transform: uppercase;
   text-align: center;

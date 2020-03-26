@@ -93,7 +93,7 @@ export default {
   width: 100vw;
   height: 100vh;
   background: #111;
-  z-index: 500;
+  z-index: 9999999;
   overflow: visible;
   display: flex;
 }

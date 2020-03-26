@@ -77,6 +77,10 @@ export default {
   flex: 1;
 }
 
+#logoWrapper img {
+  height: 70px;
+}
+
 #logo {
   max-width: 180px;
 }

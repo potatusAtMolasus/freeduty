@@ -1,7 +1,7 @@
 <template>
   <div id="HeaderMessage" :class="{'no-height': scrollPosition>0}">
-    <p>Ресурс <a href="http://dutyfreesochi.ru/">dutyfreesochi.ru</a> не занимается дистанционной реализацией алкогольной продукции.<br>
-      Товары, представленные в сети DUTY FREE можно приобрести с 8:00 до 23:00 только в специализированном магазине.<br>
+    <p>Ресурс <a href="http://dutyfreesochi.ru/">dutyfreesochi.ru</a> не занимается дистанционной реализацией алкогольной продукции в Сочи.<br>
+      Товары, представленные в сети DUTY FREE можно приобрести с 11:00 до 22:00 только в специализированном магазине.<br>
       Доставка алкогольной продукции не предусмотрена!</p>
   </div>
 </template>
@@ -50,6 +50,7 @@ export default {
     font-size: 0.8em;
   }
   #HeaderMessage {
+    font-size: 0.8em;
     padding: 1em;
     height: auto;
   }
@@ -59,6 +60,7 @@ export default {
     font-size: 0.7em;
   }
   #HeaderMessage {
+    font-size: 0.7em;
     padding: 1em;
     height: auto;
   }

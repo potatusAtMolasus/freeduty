@@ -1,5 +1,5 @@
 <template>
-  <main id="offersPage" :class="{'padded-top': scrollPosition !== 0}">
+  <main id="offersPage">
     <div class="wide-container">
       <div class="title-section">
         <div class="title-wrap">
@@ -47,7 +47,7 @@ export default {
     };
   },
   async mounted() {
-    this.offers = (await axiosNoLoad.post("http://764ef1b1.ngrok.io/all-offers", {}, {
+    this.offers = (await axiosNoLoad.post("http://127.0.0.1:8000/all-offers", {}, {
             headers: {
               'Content-Type': 'application/json',
             }
@@ -101,8 +101,14 @@ export default {
 };
 </script>
 <style scoped>
+  .wide-container {
+    max-width: 960px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
 main {
-  background-color: #280909;
+  background-color: #ff000059;
 }
 #offersPage {
   background-image: url("../assets/patternBlack.png");

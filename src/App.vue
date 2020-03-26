@@ -94,30 +94,12 @@ export default {
       return response;
     });
 
-    // this.$router.beforeResolve((to, from, next) => {
-    //   this.loaded = false;
-    //   next();
-    // });
-
-    // this.$router.afterEach(() => {
-    //   this.loaded = true;
-    // });
-
     window.addEventListener("scroll", this.updateScroll);
 
     this.categories = (await axios.post("get-categories")).data;
-    // this.offers = (await axios.post("all-offers")).data;
     this.homeOffers = (await axios.post("get-offers")).data;
     this.popular = (await axios.post("get-popular")).data;
-
     this.posts = (await axios.post("get-posts")).data.data;
-
-    // this.foundData = (
-    //   await axios.post("find", {
-    //     query: this.activeQuery,
-    //     ...this.activeFilters
-    //   })
-    // ).data;
   },
   methods: {
     async search(query, load = false) {
@@ -132,11 +114,14 @@ export default {
         ).data;
       } else {
         this.foundData = (
-          await axiosNoLoad.post("http://764ef1b1.ngrok.io/find", {
+          await axiosNoLoad.post("http://127.0.0.1:8000/find", {
             query,
             ...this.activeFilters,
             page: this.currentPage
           }, {
+            withCredentials: true,
+            credentials: 'same-origin',
+            crossdomain: true,
             headers: {
               'Content-Type': 'application/json',
             }
@@ -153,17 +138,19 @@ export default {
     async setFilters(newFilters) {
       this.activeFilters = newFilters;
       this.foundData = (
-        await axiosNoLoad.post("http://764ef1b1.ngrok.io/find", {
+        await axiosNoLoad.post("http://127.0.0.1:8000/find", {
           query: this.activeQuery,
           ...newFilters,
           page: this.currentPage
         }, {
+          withCredentials: true,
+          credentials: 'same-origin',
+          crossdomain: true,
           headers: {
             'Content-Type': 'application/json',
           }
         })
       ).data;
-      // this.router.push({ path: 'search' })
     },
     async getNewPage(newPage) {
       this.currentPage = newPage;
@@ -173,6 +160,9 @@ export default {
           ...this.activeFilters,
           page: this.currentPage
         }, {
+          withCredentials: true,
+          credentials: 'same-origin',
+          crossdomain: true,
           headers: {
             'Content-Type': 'application/json',
           }
@@ -203,6 +193,7 @@ export default {
   }
 };
 </script>
+
 <style>
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
@@ -210,10 +201,6 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 
-/* body.modal-open {
-      overflow: hidden;
-      height: 100px;
-    } */
 body,
 html {
   padding: 0;
@@ -229,68 +216,11 @@ html {
   justify-content: space-between;
 }
 
-.container,
-.wide-container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 ul {
   list-style: none;
 }
 
 a {
   text-decoration: none;
-}
-
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-
-  .wide-container {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-
-  .wide-container {
-    max-width: 840px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-
-  .wide-container {
-    max-width: 1040px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-
-  .wide-container {
-    max-width: 1300px;
-  }
-}
-
-.container-fluid {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
 }
 </style>

@@ -41,12 +41,6 @@
         </div>
       </div>
 
-      <div id="franchaise" class="container">
-        <a class="franchaise-wrap" href="http://duty-free-franchise.info/">
-          <p>Франшиза</p>
-        </a>
-      </div>
-
       <div id="rights" class="container">
         <p>Duty Free © Все права защищены 2020</p>
       </div>
@@ -164,19 +158,6 @@ ul:hover li:hover {
   text-transform: uppercase;
   margin: auto;
 }
-#franchaise {
-  width: 100%;
-  display: flex;
-  margin-bottom: 2em;
-}
-.franchaise-wrap {
-  margin: auto;
-  background: red;
-  padding: 1em 3em;
-}
-.franchaise-wrap a {
-  text-transform: uppercase;
-}
 @media (max-width: 800px) {
   #footerContent {
     padding-right: 15px;
@@ -218,9 +199,6 @@ ul:hover li:hover {
     display: flex;
     justify-content: center;
     text-align: center;
-  }
-  #franchaise.container {
-    padding: 0;
   }
   #rights {
     padding: 0;
