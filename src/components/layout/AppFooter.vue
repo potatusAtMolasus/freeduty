@@ -2,35 +2,16 @@
   <footer>
     <div id="footerContent">
       <div id="mainFooterContent" class="wide-container">
-        <div id="footerCategories">
-          <ul>
-            <li v-for="i in categories" :key="i.url">
-              <router-link :to="i.url">{{i.label}}</router-link>
-            </li>
-          </ul>
-        </div>
         <div id="footerMenu">
           <ul>
-            <li v-for="i in links" :key="i.url">
-              <router-link :to="i.url">{{i.label}}</router-link>
-            </li>
+            <li>Режим работы:11:00 - 22:00</li>
+            <li>+7 (989) 163-88-33</li>
+            <li>г. Сочи, ул. Каспийская, 37б</li>
           </ul>
         </div>
         <div id="socialLinks">
-          <!-- <h3>Мы в соц сетях</h3> -->
-
           <div id="social-buttons">
             <ul class="social">
-              <!-- <li>
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li> -->
               <a href="https://www.instagram.com/dutyfree_sochi/">
               <li>
                   <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -45,8 +26,15 @@
         <p>Duty Free © Все права защищены 2020</p>
       </div>
     </div>
+    <div>
+    <div id="footerInfoMessage">
+      <p>Ресурс <a href="http://dutyfreesochi.ru/">dutyfreesochi.ru</a> не занимается дистанционной реализацией алкогольной продукции в Сочи.<br>
+        Товары, представленные в сети DUTY FREE можно приобрести с 11:00 до 22:00 только в специализированном магазине.<br>
+        Доставка алкогольной продукции не предусмотрена!</p>
+    </div>
     <div id="footerMessage">
       <p>ЧРЕЗМЕРНОЕ УПОТРЕБЛЕНИЕ АЛКОГОЛЯ ВРЕДИТ ВАШЕМУ ЗДОРОВЬЮ</p>
+    </div>
     </div>
   </footer>
 </template>
@@ -86,10 +74,10 @@ li {
 }
 #footerCategories,
 #footerMenu {
-  border-right: 1px solid #686868;
+  text-align: right;
 }
 #footerMenu {
-  flex: 7;
+  flex: 4;
 }
 #socialLinks {
   flex: 4;
@@ -151,6 +139,17 @@ ul:hover li:hover {
   height: 70px;
   display: flex;
 }
+#footerInfoMessage {
+  background-color: black;
+}
+
+#footerInfoMessage p {
+  text-align: center;
+  color: #aaa;
+  margin: auto;
+}
+
+
 #footerMessage p {
   font-size: 1.6em;
   text-align: center;
@@ -176,15 +175,15 @@ ul:hover li:hover {
     margin: 5px 10px;
     display: inline-block;
   }
-  #footerMenu ul {
-    margin: 0;
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  #footerMenu ul li {
-    flex: 1 0 31%;
+  /*#footerMenu ul {*/
+  /*  margin: 0;*/
+  /*  padding: 5px;*/
+  /*  display: flex;*/
+  /*  justify-content: space-between;*/
+  /*  flex-wrap: wrap;*/
+  /*}*/
+  #footerMenu {
+    text-align: center;
   }
   #mainFooterContent {
     display: block;
@@ -192,9 +191,7 @@ ul:hover li:hover {
   #footerCategories {
     border-right: none;
   }
-  #footerMenu {
-    display: none;
-  }
+
   #social-buttons {
     display: flex;
     justify-content: center;

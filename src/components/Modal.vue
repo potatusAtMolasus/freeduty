@@ -89,7 +89,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 500;
+  z-index: 99999999;
 }
 
 .modal-window {

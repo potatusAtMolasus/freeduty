@@ -254,28 +254,7 @@ export default {
 .post-link p:hover i {
   right: -0.6em;
 }
-.inner-post-wrap {
-  background: #ccc;
-  border: 2px solid red;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  transition: all 0.4s ease-in-out;
-  transform: scale(1);
-  z-index: 300;
-  top: 0;
-  left: 0;
-}
-.fa-arrow-right {
-  padding-left: 0.2em;
-}
-/* .post-wrap:hover .inner-post-wrap {
-  transform: scale(0);
-}
-.post-wrap:hover .post-link {
-  transform: scale(1);
-} */
+
 .post-wrap:hover img {
   transform: scale(1.2);
 }
@@ -286,31 +265,11 @@ export default {
 .post-wrap:hover .inner .title-wrap {
   top: 0;
 }
+
 .inner-post-wrap .title {
   margin: auto;
 }
-/* 
-#postGrid .post-wrap:nth-child(1) {
-  grid-area: firstPost;
-}
-#postGrid .post-wrap:nth-child(2) {
-  grid-area: secondPost;
-}
-#postGrid .post-wrap:nth-child(3) {
-  grid-area: thridPost;
-}
-#postGrid .post-wrap:nth-child(4) {
-  grid-area: fourthPost;
-}
-#postGrid .post-wrap:nth-child(5) {
-  grid-area: fifthPost;
-} */
-.title-section {
-  width: 100%;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-}
+
 .title-section .title-wrap {
   background: black;
   direction: inline-block;
@@ -321,18 +280,9 @@ export default {
   display: flex;
   margin-bottom: 0;
 }
+
 .title {
   color: #ccc;
-}
-.line {
-  background: red;
-  height: 100%;
-  width: 6em;
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: block;
-  clip-path: polygon(70% 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .inner .title-wrap span {
@@ -434,12 +384,7 @@ export default {
       "secondPost"
       "thridPost";
   }
-  .post-wrap {
-    /* padding: 8rem; */
-  }
-  .post-wrap .inner-post-wrap {
-    transform: scale(0);
-  }
+
   .post-wrap .post-link {
     transform: scale(1);
   }

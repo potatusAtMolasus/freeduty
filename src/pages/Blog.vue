@@ -11,16 +11,11 @@
       
       <div id="postsWrap">
         <div class="post-wrap" v-for="post in posts" :key="post.id">
-          <!-- <div class="inner-post-wrap">
-            <h2 class="title">{{ post.title }}</h2>
-          </div> -->
           <router-link class="post-link" :to="'/post/' + post.id">
             <img :src="getImgUrl(post.image_url)">
             <div class="inner">
               <div class="title-wrap">
                 <span v-if="!isMobile">Перейти</span>
-                <!-- <span v-if="isMobile" class="title">{{ post.title }}</span> -->
-                <i class="fa fa-arrow-right"></i>
               </div>
             </div>
           </router-link>
@@ -122,31 +117,14 @@ main{
   width: 100%;
   height: 100%;
 }
-.inner-post-wrap {
-  background: #ccc;
-  border: 2px solid red;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  transition: all 0.4s ease-in-out;
-  transform: scale(1);
-  box-sizing: border-box;
-  z-index: 300;
-  top: 0;
-  left: 0;
-}
-.post-wrap:hover .inner-post-wrap {
-  transform: scale(0);
-}
+
 .post-wrap:hover .post-link {
   transform: scale(1);
 }
 .inner-post-wrap .title {
   margin: auto;
 }
-.inner-post-wrap .title {
-  margin: auto;
-}
+
 .post-link {
   width: 100%;
   height: 100%;

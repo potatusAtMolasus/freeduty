@@ -1,5 +1,5 @@
 <template>
-  <main id="aboutPage" :class="{'padded-top': scrollPosition !== 0}">
+  <main id="aboutPage">
     <div class="wrapper">
 
       <div class="content">

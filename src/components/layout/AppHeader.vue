@@ -1,6 +1,5 @@
 <template>
   <header :class="{'fixed': scrollPosition>0||$route.path=='/home'}">
-    <header-message :scrollPosition="scrollPosition"></header-message>
     <div id="headerContent">
       <main-menu 
         v-if="!isMobile"
@@ -18,7 +17,6 @@
 </template>
 
 <script>
-import HeaderMessage from "@/components/layout/header/HeaderMessage.vue";
 import MainMenu from "@/components/layout/header/MainMenu.vue";
 import MobileMenu from "@/components/layout/header/MobileMenu.vue";
 
@@ -38,7 +36,6 @@ export default {
     }
   },
   components: {
-    HeaderMessage,
     MainMenu,
     MobileMenu
   }

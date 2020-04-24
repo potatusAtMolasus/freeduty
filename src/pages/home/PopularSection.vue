@@ -58,7 +58,7 @@ export default {
 <style scoped>
 
  #popcor {
-   padding-bottom: 3em;
+   padding-bottom: 3.2em;
  }
 .back {
   color: #222;

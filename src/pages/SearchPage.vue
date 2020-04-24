@@ -1,5 +1,5 @@
 <template>
-  <div id="searchView" :class="{'not-top': scrollPosition}">
+  <div id="searchView">
     <filters @filterChange="filterChange"></filters>
     <found-data-view
       @pageSelected="getNewPage"

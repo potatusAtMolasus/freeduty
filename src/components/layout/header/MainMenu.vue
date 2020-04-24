@@ -1,5 +1,5 @@
 <template>
-  <div id="mainMenu" :class="{ 'main-not-top': scrollPosition||$route.path!='/home', 'padding': scrollPosition }">
+  <div id="mainMenu" :class="{ 'main-not-top': scrollPosition||$route.path!='/home' }">
     <router-link to="/home">
       <div id="logoWrapper">
         <img src="../../../assets/logo.png" id="logo" />
@@ -10,22 +10,6 @@
         <span class="circle"></span>
         <p class="text">{{i.label}}</p>
       </router-link>
-
-      <a
-        id="dropdown"
-        :class="{'router-link-active': showCategories, btn: true, btn1: true}"
-        @click="showCategories=!showCategories"
-        v-click-outside="()=>showCategories=false"
-      >
-        <i :class="{rotate: showCategories}" class="fa fa-arrow-down"></i>
-        <p class="text">Категории</p>
-        <ul id="categoriesUl" class="buttons" v-if="showCategories">
-          <!-- <ul id="categoriesUl" class="buttons" v-if="true"> -->
-          <router-link v-for="i in categories" :key="i.url" :to="i.url" class="btn btn1">
-            <p>{{i.label}}</p>
-          </router-link>
-        </ul>
-      </a>
     </div>
     <search-bar @search="search"></search-bar>
   </div>
